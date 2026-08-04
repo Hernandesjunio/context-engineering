@@ -1,0 +1,71 @@
+{
+  "evidenceId": "EV-EDITORIAL-V3.1-20260804",
+  "manuscript": {
+    "file": "context-engineering-para-times-de-desenvolvimento-v3.1.md",
+    "sha256": "1726709f23e23eac37c9cf6463ee2710abef6340e37d6aaa95bc4bb747741be7",
+    "lines": 2665,
+    "words": 14937
+  },
+  "readerProfile": "desenvolvedor iniciante em context engineering",
+  "expected": {
+    "progression": [
+      "metafora",
+      "ponte",
+      "tipos-de-artefato",
+      "validacao",
+      "estudo-de-caso",
+      "governanca",
+      "kit-copiavel"
+    ],
+    "sequenceMarkers": 21,
+    "markdownExamplesPassRate": 1.0,
+    "semanticCriteriaBeforeExercise": true
+  },
+  "observed": {
+    "sequenceMarkersFound": 21,
+    "sequenceStrictlyOrdered": true,
+    "markdownExamples": {
+      "total": 22,
+      "passed": 22,
+      "failed": 0,
+      "declaredAntiPatterns": 2
+    },
+    "semanticCriteriaBeforeExercise": true,
+    "correctionsApplied": [
+      "semantic-definition-moved-before-exercise",
+      "idempotency-defined-at-first-technical-use",
+      "markdown-examples-completed",
+      "hands-on-kit-added-to-final-chapter",
+      "long-markdown-lines-split-for-pdf-legibility",
+      "slide-13-title-repositioned-after-visual-qa"
+    ]
+  },
+  "assertionResults": [
+    {
+      "id": "ASSERT-EDITORIAL-ORDER-001",
+      "method": "deterministic-line-order",
+      "result": "PASS"
+    },
+    {
+      "id": "ASSERT-EDITORIAL-MARKDOWN-002",
+      "method": "fenced-block-structure-validator",
+      "result": "PASS"
+    },
+    {
+      "id": "ASSERT-EDITORIAL-NOVICE-003",
+      "method": "section-by-section-reader-simulation",
+      "result": "PASS"
+    },
+    {
+      "id": "ASSERT-DELIVERY-RENDER-004",
+      "method": "pdf-and-pptx-render-inspection",
+      "result": "PASS"
+    }
+  ],
+  "warnings": [
+    "routing_not_verified",
+    "real-user-reading-test-not-run"
+  ],
+  "verdict": "PASS",
+  "timestamp": "2026-08-04T09:41:02-03:00"
+}

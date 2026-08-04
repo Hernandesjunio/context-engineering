@@ -1,0 +1,120 @@
+{
+  "manuscript": "deliverables/context-engineering-ai-v3.1/context-engineering-para-times-de-desenvolvimento-v3.1.md",
+  "readerProfile": "desenvolvedor iniciante em context engineering",
+  "expectedProgression": "metafora -> ponte -> tipos -> validacao -> estudo de caso -> governanca -> kit",
+  "stages": [
+    {
+      "label": "anti_pattern_mecanico",
+      "line": 114,
+      "status": "PASS"
+    },
+    {
+      "label": "modelo_mental_oficina",
+      "line": 460,
+      "status": "PASS"
+    },
+    {
+      "label": "ponte_para_repositorio",
+      "line": 476,
+      "status": "PASS"
+    },
+    {
+      "label": "temperaturas_explicadas",
+      "line": 513,
+      "status": "PASS"
+    },
+    {
+      "label": "estrutura_backend",
+      "line": 606,
+      "status": "PASS"
+    },
+    {
+      "label": "agent",
+      "line": 638,
+      "status": "PASS"
+    },
+    {
+      "label": "playbook",
+      "line": 689,
+      "status": "PASS"
+    },
+    {
+      "label": "skill",
+      "line": 744,
+      "status": "PASS"
+    },
+    {
+      "label": "knowledge",
+      "line": 797,
+      "status": "PASS"
+    },
+    {
+      "label": "rule",
+      "line": 1121,
+      "status": "PASS"
+    },
+    {
+      "label": "contract",
+      "line": 1161,
+      "status": "PASS"
+    },
+    {
+      "label": "eval",
+      "line": 1220,
+      "status": "PASS"
+    },
+    {
+      "label": "criterios_semanticos",
+      "line": 1242,
+      "status": "PASS"
+    },
+    {
+      "label": "evidence_record",
+      "line": 1326,
+      "status": "PASS"
+    },
+    {
+      "label": "exercicio_evidence",
+      "line": 1353,
+      "status": "PASS"
+    },
+    {
+      "label": "estudo_de_caso",
+      "line": 1551,
+      "status": "PASS"
+    },
+    {
+      "label": "governanca",
+      "line": 1732,
+      "status": "PASS"
+    },
+    {
+      "label": "convencao_markdown",
+      "line": 1805,
+      "status": "PASS"
+    },
+    {
+      "label": "kit_copiavel",
+      "line": 2082,
+      "status": "PASS"
+    },
+    {
+      "label": "templates",
+      "line": 2269,
+      "status": "PASS"
+    },
+    {
+      "label": "glossario",
+      "line": 2559,
+      "status": "PASS"
+    }
+  ],
+  "checks": {
+    "noMissingStage": true,
+    "strictlyOrdered": true,
+    "semanticCriteriaBeforeExercise": true
+  },
+  "missing": [],
+  "outOfOrder": [],
+  "verdict": "PASS"
+}

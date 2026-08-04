@@ -1,0 +1,361 @@
+{
+  "manuscript": "deliverables/context-engineering-ai-v3.1/context-engineering-para-times-de-desenvolvimento-v3.1.md",
+  "rule": "Markdown artifacts require exactly one H1, at least one H2 and at least one list or sequence; marked anti-patterns are exempt.",
+  "totalBlocks": 22,
+  "passed": 22,
+  "failed": 0,
+  "results": [
+    {
+      "block": 1,
+      "startLine": 113,
+      "endLine": 149,
+      "antiPattern": true,
+      "counts": {
+        "h1": 0,
+        "h2": 0,
+        "h3": 0,
+        "bullets": 0,
+        "numbered": 0,
+        "checks": 0
+      },
+      "status": "PASS",
+      "violations": []
+    },
+    {
+      "block": 2,
+      "startLine": 612,
+      "endLine": 623,
+      "antiPattern": true,
+      "counts": {
+        "h1": 0,
+        "h2": 0,
+        "h3": 0,
+        "bullets": 0,
+        "numbered": 0,
+        "checks": 0
+      },
+      "status": "PASS",
+      "violations": []
+    },
+    {
+      "block": 3,
+      "startLine": 642,
+      "endLine": 677,
+      "antiPattern": false,
+      "counts": {
+        "h1": 1,
+        "h2": 5,
+        "h3": 0,
+        "bullets": 8,
+        "numbered": 0,
+        "checks": 0
+      },
+      "status": "PASS",
+      "violations": []
+    },
+    {
+      "block": 4,
+      "startLine": 693,
+      "endLine": 736,
+      "antiPattern": false,
+      "counts": {
+        "h1": 1,
+        "h2": 4,
+        "h3": 0,
+        "bullets": 8,
+        "numbered": 8,
+        "checks": 0
+      },
+      "status": "PASS",
+      "violations": []
+    },
+    {
+      "block": 5,
+      "startLine": 759,
+      "endLine": 789,
+      "antiPattern": false,
+      "counts": {
+        "h1": 1,
+        "h2": 3,
+        "h3": 0,
+        "bullets": 3,
+        "numbered": 4,
+        "checks": 0
+      },
+      "status": "PASS",
+      "violations": []
+    },
+    {
+      "block": 6,
+      "startLine": 812,
+      "endLine": 839,
+      "antiPattern": false,
+      "counts": {
+        "h1": 1,
+        "h2": 3,
+        "h3": 0,
+        "bullets": 5,
+        "numbered": 0,
+        "checks": 0
+      },
+      "status": "PASS",
+      "violations": []
+    },
+    {
+      "block": 7,
+      "startLine": 905,
+      "endLine": 923,
+      "antiPattern": false,
+      "counts": {
+        "h1": 1,
+        "h2": 1,
+        "h3": 0,
+        "bullets": 1,
+        "numbered": 0,
+        "checks": 0
+      },
+      "status": "PASS",
+      "violations": []
+    },
+    {
+      "block": 8,
+      "startLine": 927,
+      "endLine": 948,
+      "antiPattern": false,
+      "counts": {
+        "h1": 1,
+        "h2": 1,
+        "h3": 0,
+        "bullets": 2,
+        "numbered": 0,
+        "checks": 0
+      },
+      "status": "PASS",
+      "violations": []
+    },
+    {
+      "block": 9,
+      "startLine": 952,
+      "endLine": 972,
+      "antiPattern": false,
+      "counts": {
+        "h1": 1,
+        "h2": 1,
+        "h3": 0,
+        "bullets": 1,
+        "numbered": 0,
+        "checks": 0
+      },
+      "status": "PASS",
+      "violations": []
+    },
+    {
+      "block": 10,
+      "startLine": 991,
+      "endLine": 1010,
+      "antiPattern": false,
+      "counts": {
+        "h1": 1,
+        "h2": 1,
+        "h3": 0,
+        "bullets": 1,
+        "numbered": 0,
+        "checks": 0
+      },
+      "status": "PASS",
+      "violations": []
+    },
+    {
+      "block": 11,
+      "startLine": 1033,
+      "endLine": 1113,
+      "antiPattern": false,
+      "counts": {
+        "h1": 1,
+        "h2": 12,
+        "h3": 0,
+        "bullets": 23,
+        "numbered": 4,
+        "checks": 6
+      },
+      "status": "PASS",
+      "violations": []
+    },
+    {
+      "block": 12,
+      "startLine": 1125,
+      "endLine": 1155,
+      "antiPattern": false,
+      "counts": {
+        "h1": 1,
+        "h2": 4,
+        "h3": 0,
+        "bullets": 6,
+        "numbered": 0,
+        "checks": 0
+      },
+      "status": "PASS",
+      "violations": []
+    },
+    {
+      "block": 13,
+      "startLine": 1357,
+      "endLine": 1391,
+      "antiPattern": false,
+      "counts": {
+        "h1": 1,
+        "h2": 4,
+        "h3": 0,
+        "bullets": 12,
+        "numbered": 7,
+        "checks": 0
+      },
+      "status": "PASS",
+      "violations": []
+    },
+    {
+      "block": 14,
+      "startLine": 1535,
+      "endLine": 1545,
+      "antiPattern": false,
+      "counts": {
+        "h1": 1,
+        "h2": 1,
+        "h3": 0,
+        "bullets": 5,
+        "numbered": 0,
+        "checks": 5
+      },
+      "status": "PASS",
+      "violations": []
+    },
+    {
+      "block": 15,
+      "startLine": 1839,
+      "endLine": 1861,
+      "antiPattern": false,
+      "counts": {
+        "h1": 1,
+        "h2": 3,
+        "h3": 0,
+        "bullets": 5,
+        "numbered": 4,
+        "checks": 3
+      },
+      "status": "PASS",
+      "violations": []
+    },
+    {
+      "block": 16,
+      "startLine": 1895,
+      "endLine": 1921,
+      "antiPattern": false,
+      "counts": {
+        "h1": 1,
+        "h2": 4,
+        "h3": 0,
+        "bullets": 2,
+        "numbered": 0,
+        "checks": 0
+      },
+      "status": "PASS",
+      "violations": []
+    },
+    {
+      "block": 17,
+      "startLine": 2107,
+      "endLine": 2149,
+      "antiPattern": false,
+      "counts": {
+        "h1": 1,
+        "h2": 5,
+        "h3": 0,
+        "bullets": 14,
+        "numbered": 0,
+        "checks": 0
+      },
+      "status": "PASS",
+      "violations": []
+    },
+    {
+      "block": 18,
+      "startLine": 2153,
+      "endLine": 2222,
+      "antiPattern": false,
+      "counts": {
+        "h1": 1,
+        "h2": 7,
+        "h3": 2,
+        "bullets": 23,
+        "numbered": 6,
+        "checks": 4
+      },
+      "status": "PASS",
+      "violations": []
+    },
+    {
+      "block": 19,
+      "startLine": 2271,
+      "endLine": 2298,
+      "antiPattern": false,
+      "counts": {
+        "h1": 1,
+        "h2": 5,
+        "h3": 0,
+        "bullets": 5,
+        "numbered": 0,
+        "checks": 0
+      },
+      "status": "PASS",
+      "violations": []
+    },
+    {
+      "block": 20,
+      "startLine": 2302,
+      "endLine": 2351,
+      "antiPattern": false,
+      "counts": {
+        "h1": 1,
+        "h2": 8,
+        "h3": 0,
+        "bullets": 10,
+        "numbered": 3,
+        "checks": 1
+      },
+      "status": "PASS",
+      "violations": []
+    },
+    {
+      "block": 21,
+      "startLine": 2357,
+      "endLine": 2412,
+      "antiPattern": false,
+      "counts": {
+        "h1": 1,
+        "h2": 10,
+        "h3": 0,
+        "bullets": 9,
+        "numbered": 2,
+        "checks": 0
+      },
+      "status": "PASS",
+      "violations": []
+    },
+    {
+      "block": 22,
+      "startLine": 2416,
+      "endLine": 2455,
+      "antiPattern": false,
+      "counts": {
+        "h1": 1,
+        "h2": 6,
+        "h3": 0,
+        "bullets": 7,
+        "numbered": 0,
+        "checks": 0
+      },
+      "status": "PASS",
+      "violations": []
+    }
+  ]
+}

@@ -8,10 +8,10 @@ O acervo separa **fontes editáveis**, **artefatos de distribuição**, **aprese
 
 | Material | Formato | Finalidade |
 |---|---|---|
-| [Context Engineering para Times de Desenvolvimento](docs/ebooks/context-engineering-para-times-de-desenvolvimento-v3.md) | Markdown | Fonte canônica e editável do e-book. |
-| [E-book — PDF](downloads/ebooks/context-engineering-para-times-de-desenvolvimento-v3.pdf) | PDF | Leitura e compartilhamento offline. |
-| [Apresentação V3](presentations/context-engineering-para-times-de-desenvolvimento-v3-apresentacao.pptx) | PPTX | Apresentação do conteúdo para workshops e reuniões. |
-| [Auditoria editorial e técnica V3](docs/audits/auditoria-editorial-e-tecnica-v3.md) | Markdown | Registro de critérios, riscos, decisões e evidências de revisão. |
+| [Context Engineering para Times de Desenvolvimento V3.1](docs/ebooks/context-engineering-para-times-de-desenvolvimento-v3.1.md) | Markdown | Fonte canônica e editável do e-book. |
+| [E-book V3.1 — PDF](downloads/ebooks/context-engineering-para-times-de-desenvolvimento-v3.1.pdf) | PDF | Leitura e compartilhamento offline. |
+| [Apresentação V3.1](presentations/context-engineering-para-times-de-desenvolvimento-v3.1-apresentacao.pptx) | PPTX | Apresentação do conteúdo para workshops e reuniões. |
+| [Auditoria de leitura e sequência lógica V3.1](docs/audits/auditoria-leitor-iniciante-v3.1.md) | Markdown | Registro da revisão técnica, critérios e evidências de validação. |
 
 ## Estrutura do repositório
 
@@ -23,6 +23,7 @@ O acervo separa **fontes editáveis**, **artefatos de distribuição**, **aprese
 ├── downloads/
 │   └── ebooks/              # PDFs prontos para leitura e distribuição
 ├── presentations/           # Materiais de apresentação editáveis (PPTX)
+├── archive/                 # Versões substituídas, preservadas para rastreabilidade
 ├── LICENSE                  # Termos de licenciamento do acervo
 └── README.md                # Ponto de entrada e índice do repositório
 ```
@@ -54,7 +55,7 @@ Utilize nomes em minúsculas, com hífens e versão no sufixo:
 <assunto>-v<versão>.<extensão>
 ```
 
-Exemplo: `context-engineering-para-times-de-desenvolvimento-v3.md`.
+Exemplo: `context-engineering-para-times-de-desenvolvimento-v3.1.md`.
 
 O mesmo identificador de versão deve aparecer na fonte e nos artefatos derivados correspondentes. Quando uma versão deixar de ser a recomendada, mantenha-a somente se houver necessidade de rastreabilidade; nesse caso, mova-a para uma futura área `archive/` em vez de deixá-la nos diretórios de conteúdo atual.
 
