@@ -1,0 +1,11 @@
+schemaVersion: 1.0.0
+cases:
+  - id: direct
+    query: "Notifique o front-end após concluir o relatório."
+    expectedAssertions: [ASSERT-REPORT-001, ASSERT-REPORT-002]
+  - id: paraphrase
+    query: "O cálculo acabou; posso avisar a tela antes de salvar?"
+    expectedAssertions: [ASSERT-REPORT-001, ASSERT-REPORT-003]
+  - id: negative
+    query: "Explique a validação de um endpoint síncrono sem jobs."
+    mustNotRetrieve: [PLAYBOOK-ASYNC-001]

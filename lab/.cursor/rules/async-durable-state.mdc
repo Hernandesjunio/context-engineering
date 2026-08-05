@@ -1,0 +1,24 @@
+---
+description: Aplica segurança de estado durável ao alterar jobs assíncronos ou notificações SignalR.
+globs:
+  - "src/**/*.cs"
+alwaysApply: false
+---
+
+# Estado Durável Antes da Notificação
+
+## Fonte canônica
+
+- `sourceId`: `RULE-ASYNC-001`.
+- Contract: `.cursor/contracts/report-request.contract.yaml`.
+- Playbook: `.cursor/playbooks/async-report.md`.
+
+## Obrigação
+
+- Persista e confirme o estado final antes de publicar conclusão.
+- Preserve uma API de status para reconciliação.
+
+## Proibição
+
+- Não trate SignalR como fonte durável do estado.
+- Não declare conclusão sem evidência do commit.

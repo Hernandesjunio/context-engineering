@@ -1,0 +1,13 @@
+{
+  "editorialAudit": {
+    "antiPatternFormat": "Validado - manual mecânico e arquivo backend usam blocos markdown com comentário ANTI-PATTERN",
+    "playbooksRootLevel": "Validado - .cursor/playbooks/ está no primeiro nível do contexto",
+    "noExcessiveSubsections": "Validado - references, scripts e assets permanecem bullets ou árvores, não títulos vazios",
+    "frontmatterExplained": "Validado - Parte III explica identidade, descoberta, consumidor e limites",
+    "evidenceRecordPromptFound": "Validado - primeiras palavras: Avaliar se a execução fornecida",
+    "cursorSingleSource": "Validado - não existe árvore ai-context no corpus V4",
+    "evalFieldOrigin": "Validado - autor do eval, fontes aprovadas e Eval Runner estão nomeados",
+    "asyncLoopClosed": "Validado - corpus, captura, Eval Spec e Evidence Record aparecem no estudo de caso"
+  },
+  "verdict": "PASS"
+}

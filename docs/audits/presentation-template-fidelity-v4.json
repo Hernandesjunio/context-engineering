@@ -1,0 +1,13 @@
+{
+  "status": "pass",
+  "checkedAt": "2026-08-05T13:41:50.890Z",
+  "workspace": "/workspace/scratch/f3e1b906666a/work/v4/ppt-template-inspect",
+  "finalPptx": "/workspace/scratch/f3e1b906666a/work/v4/package/context-engineering-v4/presentation/context-engineering-para-times-de-desenvolvimento-v4-apresentacao.pptx",
+  "starterPptx": "/workspace/scratch/f3e1b906666a/work/v4/ppt-template-inspect/template-starter.pptx",
+  "mapPath": "/workspace/scratch/f3e1b906666a/work/v4/ppt-template-inspect/template-frame-map.json",
+  "starterLayoutDir": "/workspace/scratch/f3e1b906666a/work/v4/ppt-template-inspect/template-starter-layout",
+  "finalLayoutDir": "/workspace/scratch/f3e1b906666a/work/v4/ppt-final-layout",
+  "editDir": "/workspace/scratch/f3e1b906666a/work/v4/ppt-template-inspect",
+  "issueCount": 0,
+  "issues": []
+}
