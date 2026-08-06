@@ -1,0 +1,12 @@
+{
+  "status": "PASS",
+  "path": "ebook/context-engineering-para-times-de-desenvolvimento-v5-beta2.md",
+  "sha256": "5521c41fa1738007b5431bcf734565bb29cf4cc903eb099cc1a7d0d6a7d2f4c1",
+  "signalsAreHeuristics": true,
+  "headings": 113,
+  "headingJumps": [],
+  "imageReferences": 8,
+  "missingImages": [],
+  "unbalancedCodeFence": false,
+  "longParagraphSignals": []
+}

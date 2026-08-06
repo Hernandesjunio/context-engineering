@@ -1,0 +1,14 @@
+{
+  "correlationId": "corr-9812",
+  "agent": "backend-development",
+  "corpusVersion": "v4-lab-1.0.0",
+  "artifactsRetrieved": ["RULE-ASYNC-001", "CONTRACT-REPORT-001", "PLAYBOOK-ASYNC-001"],
+  "responseSummary": "Persistir e confirmar antes de notificar; reconciliar por statusUrl.",
+  "toolExecutions": [{"name": "completeReport", "status": "success"}],
+  "trace": ["persistFinalState", "commit", "publishSignalR"],
+  "durableStatus": "completed",
+  "notifyAfterCommit": true,
+  "statusApi": "consistent",
+  "testsPassed": 42,
+  "testsFailed": 0
+}

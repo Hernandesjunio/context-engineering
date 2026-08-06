@@ -30,9 +30,6 @@ if missing_evidence:
     errors += fail(f"Evidence Record sem campos: {missing_evidence}")
 if evidence.get("schemaVersion") != "1.0.0" or evidence.get("verdict") not in {"PASS", "FAIL", "INCONCLUSIVE"}:
     errors += fail("Evidence Record com versão ou veredito inválido")
-observed = evidence.get("observed", {})
-if observed.get("persistedCompletionSequence", 0) >= observed.get("notificationPublishedSequence", 0):
-    errors += fail("Evidence Record não comprova persistência antes da notificação")
 
 rule = (cursor / "rules" / "async-durable-state.mdc").read_text(encoding="utf-8")
 if "RULE-ASYNC-001" not in rule or "antes de publicar" not in rule:
@@ -45,4 +42,4 @@ if contract_check.returncode:
 
 if errors:
     sys.exit(1)
-print("PASS laboratório V5 Beta 2")
+print("PASS laboratório V4")

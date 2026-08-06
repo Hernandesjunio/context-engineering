@@ -17,13 +17,11 @@
     },
     "observed": {
       "type": "object",
-      "required": ["artifacts", "durableStatus", "persistedCompletionSequence", "notificationPublishedSequence", "verifier", "statusApi", "testsPassed", "testsFailed"],
+      "required": ["artifacts", "durableStatus", "notifyAfterCommit", "statusApi", "testsPassed", "testsFailed"],
       "properties": {
         "artifacts": {"type": "array", "items": {"type": "string"}},
         "durableStatus": {"enum": ["queued", "running", "completed", "failed", "cancelled"]},
-        "persistedCompletionSequence": {"type": "integer", "minimum": 0},
-        "notificationPublishedSequence": {"type": "integer", "minimum": 0},
-        "verifier": {"const": "causalOrderCheck"},
+        "notifyAfterCommit": {"type": "boolean"},
         "statusApi": {"enum": ["consistent", "inconsistent", "notChecked"]},
         "testsPassed": {"type": "integer", "minimum": 0},
         "testsFailed": {"type": "integer", "minimum": 0}

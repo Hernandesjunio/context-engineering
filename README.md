@@ -6,13 +6,17 @@ O acervo separa **fontes editáveis**, **artefatos de distribuição**, **aprese
 
 ## Conteúdo em destaque
 
+> A V5 Beta 2 é uma edição em revisão externa (`5.0.0-beta.2`), ainda não a edição final publicada.
+
 | Material | Formato | Finalidade |
 |---|---|---|
-| [Context Engineering para Times de Desenvolvimento V4](docs/ebooks/context-engineering-para-times-de-desenvolvimento-v4.md) | Markdown | Fonte canônica e editável do e-book. |
-| [E-book V4 — PDF](downloads/ebooks/context-engineering-para-times-de-desenvolvimento-v4.pdf) | PDF | Leitura e compartilhamento offline. |
-| [Apresentação V4](presentations/context-engineering-para-times-de-desenvolvimento-v4-apresentacao.pptx) | PPTX | Apresentação do conteúdo para workshops e reuniões. |
-| [Validação técnica V4](docs/audits/technical-validation-v4.md) | Markdown | Escopo de verificação, checks determinísticos, hashes de integridade e limitações conhecidas. |
-| [Laboratório executável V4](lab/README.md) | Projeto Cursor | Kit A e Kit B executáveis para praticar contexto, avaliação e evidência no Cursor. |
+| [Context Engineering para Times de Desenvolvimento V5 Beta 2](docs/ebooks/context-engineering-para-times-de-desenvolvimento-v5-beta2.md) | Markdown | Fonte canônica e editável do e-book. |
+| [E-book V5 Beta 2 — PDF](downloads/ebooks/context-engineering-para-times-de-desenvolvimento-v5-beta2.pdf) | PDF | Leitura e compartilhamento offline. |
+| [Como recompilar o e-book](docs/ebooks/build/BUILD.md) | Markdown | Instruções e scripts para reconstruir o PDF a partir do Markdown ou do LaTeX. |
+| [Apresentação V4](presentations/context-engineering-para-times-de-desenvolvimento-v4-apresentacao.pptx) | PPTX | Apresentação do conteúdo para workshops e reuniões; ainda não atualizada para a V5. |
+| [Estrutura e decisões editoriais da V5 Beta 2](docs/audits/context-engineering-v5-beta2-estrutura.md) | Markdown | Racional das mudanças estruturais em relação à versão anterior. |
+| [Relatório de validação V5 Beta 2](docs/audits/validation-report-v5-beta2.md) | Markdown | Escopo de verificação, checks determinísticos, hashes de integridade e limitações conhecidas. |
+| [Laboratório executável V5 Beta 2](lab/README.md) | Projeto Cursor | Kit A e Kit B executáveis para praticar contexto, avaliação e evidência no Cursor. |
 
 ## Estrutura do repositório
 
@@ -21,7 +25,8 @@ O acervo separa **fontes editáveis**, **artefatos de distribuição**, **aprese
 ├── docs/
 │   ├── audits/              # Auditorias, checklists e evidências de qualidade
 │   └── ebooks/              # Fontes Markdown canônicas dos e-books e seus assets de build
-│       └── assets/          # Capa, diagramas e demais recursos referenciados pelo Markdown
+│       ├── assets/          # Capa, diagramas e demais recursos referenciados pelo Markdown
+│       └── build/           # Scripts e instruções para recompilar o PDF a partir do Markdown/LaTeX
 ├── downloads/
 │   └── ebooks/              # PDFs prontos para leitura e distribuição
 ├── presentations/           # Materiais de apresentação editáveis (PPTX)
@@ -39,7 +44,8 @@ Os arquivos Markdown em `docs/` são revisáveis por diff, pesquisáveis e adequ
 
 ### Organização por tipo de artefato e ciclo de vida
 
-- `docs/ebooks/` concentra conhecimento em evolução, sua fonte canônica e os assets de build (capa, diagramas, header LaTeX, filtro Pandoc) que o Markdown referencia por caminho relativo.
+- `docs/ebooks/` concentra conhecimento em evolução, sua fonte canônica e os assets de build (capa, diagramas, estilo e filtro Pandoc) que o Markdown referencia por caminho relativo.
+- `docs/ebooks/build/` reúne os scripts (`build.ps1`/`build.sh`/`render-diagrams.*`) e o guia `BUILD.md` que reproduzem o PDF a partir do Markdown ou do `.tex`. Fica dentro de `docs/ebooks/` porque os scripts resolvem caminhos relativos ao próprio diretório do e-book (o mesmo nível do Markdown, do estilo e dos assets), e não faz sentido como categoria de topo por não ter conteúdo de leitura próprio.
 - `downloads/` contém pacotes prontos para distribuição, cujo ciclo de atualização é vinculado à respectiva fonte.
 - `presentations/` isola materiais orientados a comunicação síncrona, que possuem formato e ritmo de revisão diferentes dos e-books.
 - `docs/audits/` mantém as evidências de avaliação, validações e decisões editoriais próximas da documentação, mas sem misturá-las ao conteúdo didático.
@@ -59,7 +65,9 @@ Utilize nomes em minúsculas, com hífens e versão no sufixo:
 <assunto>-v<versão>.<extensão>
 ```
 
-Exemplo: `context-engineering-para-times-de-desenvolvimento-v4.md`.
+Exemplo: `context-engineering-para-times-de-desenvolvimento-v5-beta2.md`.
+
+Versões em revisão externa usam um sufixo de pré-lançamento (`v5-beta2`) em vez de um número inteiro. O sufixo é mantido em todos os artefatos derivados da mesma revisão (Markdown, PDF, laboratório, auditorias) até a edição final ser promovida com um número de versão inteiro.
 
 O mesmo identificador de versão deve aparecer na fonte e nos artefatos derivados correspondentes. Quando uma versão deixar de ser a recomendada, mantenha-a somente se houver necessidade de rastreabilidade; nesse caso, mova-a para uma futura área `archive/` em vez de deixá-la nos diretórios de conteúdo atual.
 

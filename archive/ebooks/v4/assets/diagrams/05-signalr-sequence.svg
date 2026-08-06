@@ -1,0 +1,11 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1200" height="720" viewBox="0 0 1200 720">
+  <rect width="1200" height="720" rx="28" fill="#F7F9FC"/>
+  <text x="60" y="65" font-family="DejaVu Sans" font-size="30" font-weight="700" fill="#17212B">Operação assíncrona: persistir antes de notificar</text>
+  <g font-family="DejaVu Sans" font-size="18" font-weight="700" text-anchor="middle" fill="#17212B">
+    <text x="110" y="120">Front-end</text><text x="330" y="120">API</text><text x="560" y="120">Worker</text><text x="790" y="120">Banco</text><text x="1030" y="120">SignalR</text>
+  </g>
+  <g stroke="#94A3B8" stroke-width="2" stroke-dasharray="8 8"><line x1="110" y1="140" x2="110" y2="650"/><line x1="330" y1="140" x2="330" y2="650"/><line x1="560" y1="140" x2="560" y2="650"/><line x1="790" y1="140" x2="790" y2="650"/><line x1="1030" y1="140" x2="1030" y2="650"/></g>
+  <g stroke="#2563EB" stroke-width="5" fill="none"><path d="M110 190H330"/><path d="M330 245H790"/><path d="M330 300H110"/><path d="M330 355H560"/><path d="M560 420H790"/><path d="M790 485H560"/><path d="M560 540H1030"/><path d="M1030 595H110"/></g>
+  <g font-family="DejaVu Sans" font-size="16" fill="#17212B"><text x="145" y="180">1. POST /reports</text><text x="430" y="235">2. criar job durável</text><text x="145" y="290">3. 202 + jobId + statusUrl</text><text x="385" y="345">4. processar</text><text x="625" y="410">5. persistir estado final</text><text x="640" y="475" fill="#16815D" font-weight="700">6. commit confirmado</text><text x="705" y="530">7. publicar conclusão</text><text x="570" y="585">8. atualizar tela</text></g>
+  <rect x="270" y="620" width="660" height="52" rx="12" fill="#EAF3FF" stroke="#2563EB" stroke-width="2"/><text x="600" y="652" text-anchor="middle" font-family="DejaVu Sans" font-size="17" font-weight="700" fill="#17212B">Reconexão ou dúvida → GET statusUrl → verdade durável</text>
+</svg>

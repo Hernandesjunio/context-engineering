@@ -1,0 +1,52 @@
+{
+  "evidenceId": "EDITORIAL-EVIDENCE-V5-BETA2",
+  "mode": "rewrite-approved",
+  "inputs": {
+    "baseline": "V5 Beta 1",
+    "manuscript": {
+      "path": "ebook/context-engineering-para-times-de-desenvolvimento-v5-beta2.md",
+      "sha256": "5521c41fa1738007b5431bcf734565bb29cf4cc903eb099cc1a7d0d6a7d2f4c1"
+    },
+    "latex": {
+      "path": "ebook/context-engineering-para-times-de-desenvolvimento-v5-beta2.tex",
+      "sha256": "358bb5bad0e4b4d9a94f93d9d3a26bb28e0ac6509c6bcf04b1c80c9c7024fce8"
+    },
+    "pdf": {
+      "path": "ebook/context-engineering-para-times-de-desenvolvimento-v5-beta2.pdf",
+      "sha256": "4601f66b4664f7c14a3ed55e1b781ef364a4b6a23b6792b681da265262f4f1e5"
+    },
+    "audience": "times de desenvolvimento iniciando em engenharia de contexto"
+  },
+  "expected": [
+    "Apresentar o capítulo 5 como uma montagem acumulativa, sem contrato didático artificial.",
+    "Eliminar a subseção vazia antes do arquivo backend caótico.",
+    "Explicar produtor, consumidor, função e verificação nos pontos que ainda exigiam inferência do leitor.",
+    "Explicitar o que comparar nos frontmatters de skill, playbook e rule.",
+    "Preservar a anatomia ampliada de skill como aprofundamento opcional na Parte VI.",
+    "Fechar o capítulo 5 ligando cada artefato à pergunta respondida e à evidência mínima."
+  ],
+  "observed": [
+    "A abertura apresenta três movimentos e a cadeia Pedido→Evidence.",
+    "A seção 5.3 agora introduz a refatoração e mapeia o conteúdo caótico para os destinos.",
+    "Agent, Playbook, Skill e Knowledge possuem pontes operacionais e testes mínimos quando aplicável.",
+    "A seção de frontmatter orienta a leitura e apresenta uma tabela comparativa.",
+    "A anatomia ampliada aparece depois do template mínimo de skill na Parte VI.",
+    "A seção final resume pergunta, responsabilidade e evidência de cada artefato."
+  ],
+  "checks": {
+    "package": "PASS",
+    "markdownStructure": "PASS",
+    "chapterFiveSequence": "PASS",
+    "technicalClaims": "PASS_WITH_SCOPING",
+    "visualPdf": "PASS",
+    "markdownToLatexBuild": "PASS",
+    "directLatexBuild": "PASS",
+    "labValidation": "PASS"
+  },
+  "verdict": "PASS_FOR_BETA_REVIEW",
+  "limitations": [
+    "A validação confirma estrutura e renderização; leitores externos ainda precisam testar compreensão e acionabilidade.",
+    "A tabela de frontmatter continua entre duas páginas, com cabeçalho repetido e sem perda de conteúdo.",
+    "Afirmações dependentes do Cursor devem ser revalidadas caso a documentação ou a versão do produto mude."
+  ]
+}
