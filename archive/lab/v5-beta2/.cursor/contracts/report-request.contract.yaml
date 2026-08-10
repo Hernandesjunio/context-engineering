@@ -1,0 +1,24 @@
+schemaVersion: 1.0.0
+id: CONTRACT-REPORT-001
+name: Solicitar Geração de Relatório
+operation: requestReport
+owner: backend-platform
+status: approved
+version: 1.0.0
+input:
+  required: [customerId, period, requestId]
+output:
+  accepted:
+    status: 202
+    required: [jobId, statusUrl]
+preconditions:
+  - customerAccessValidated
+  - idempotencyPolicyDefined
+postconditions:
+  - durableJobExists
+  - finalStateIsQueryable
+forbidden:
+  - notifyBeforeCommit
+  - finishWithoutEvidence
+observability:
+  correlationFields: [requestId, jobId, correlationId]

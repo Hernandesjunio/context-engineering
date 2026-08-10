@@ -1,4 +1,4 @@
-# Laboratório V5 Beta 2 — Context Engineering no Cursor
+# Laboratório V5 — Context Engineering no Cursor
 
 ## Objetivo
 

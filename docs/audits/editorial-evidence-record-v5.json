@@ -1,0 +1,69 @@
+{
+  "evidenceId": "EDITORIAL-V5-RELEASE-2026-08-09",
+  "mode": "rewrite-approved-and-validate-rendered",
+  "baseline": {
+    "path": "sources/context-engineering-v5-beta3-frozen.md",
+    "sha256": "578e37d6ff7aabc49dae4f20d34e9f5b83c6672df5a5de77227a40a4f5f765ba"
+  },
+  "outputs": {
+    "book": {
+      "markdownSha256": "80ab08b5588269ffc6f27f9ba3391ab426f7af636012a520988c58f7c93df804",
+      "latexSha256": "43a91431706f7587ca6336c119aedbeb55e903e57d85f236c311a696f9bfcc93",
+      "pdfSha256": "18e134f0cf9133eaa66b8abad6461fe2f03e40e9e8a305769b21027106e0ad75",
+      "pages": 66
+    },
+    "workbook": {
+      "markdownSha256": "2b91dd61cb896220f8e4d8a8266f70d8348852248040cadd4e348202bb7f702e",
+      "latexSha256": "71bc00eb3877ee1fdbc6c92bfd613deb57e60b212a18d35bdbd7754ac35e2994",
+      "pdfSha256": "540d3429503a3af510053de902c60ed65f7b5ea7dbcaca8c9731bc3ebac30629",
+      "pages": 96
+    }
+  },
+  "expected": [
+    "Tornar as rotas ESSENCIAL, APROFUNDAMENTO e HANDS-ON operacionais.",
+    "Preservar profundidade técnica e rastreabilidade ao separar livro e workbook.",
+    "Sustentar afirmações materiais por fonte primária, padrão ou convenção explicitada.",
+    "Aplicar fundo visível em blocos cercados e zebra striping sutil em tabelas.",
+    "Eliminar saltos de hierarquia, cercas e fenced divs desbalanceados.",
+    "Gerar PDFs A4 recompiláveis e inspecionar todas as páginas."
+  ],
+  "observed": [
+    "171 títulos da baseline foram inventariados antes da movimentação.",
+    "O livro passou de 136 para 66 páginas e o workbook preservou 96 páginas de prática após a quebra global dos blocos cercados.",
+    "Os dois manuscritos passaram na inspeção estrutural e no validador de fenced divs.",
+    "Os dois PDFs passaram por duas compilações XeLaTeX.",
+    "162 de 162 páginas foram renderizadas sem páginas inválidas.",
+    "Blocos Shaded e tabelas striped foram confirmados em alta resolução.",
+    "A curva de retorno da Figura 7.1 foi rebaixada em 35 px e confirmada no PDF renderizado.",
+    "Linhas longas e tokens sem espaços agora quebram dentro das margens em todos os ambientes Highlighting.",
+    "A regra de quebra foi ampliada para toda a família FancyVerb e para conteúdo não espaçado dentro dos grupos do highlighter.",
+    "271 painéis e 66.210 caracteres monoespaçados foram medidos; a menor folga direita foi 7,97 pt.",
+    "Um callout órfão e quatro fenced divs defeituosos foram encontrados visualmente/adversarialmente e corrigidos.",
+    "O laboratório Cursor-first concluiu com PASS."
+  ],
+  "checks": {
+    "baselineIntegrity": "PASS",
+    "routeInventory": "PASS",
+    "markdownHierarchy": "PASS",
+    "codeFences": "PASS",
+    "fencedDivs": "PASS",
+    "imageReferences": "PASS",
+    "bookBuild": "PASS",
+    "workbookBuild": "PASS",
+    "horizontalOverflow": "PASS_ZERO_WARNINGS",
+    "visualRender": "PASS_162_OF_162",
+    "codePanelGeometry": "PASS_271_PANELS_MIN_RIGHT_GAP_7_97_PT",
+    "labValidation": "PASS",
+    "technicalClaimLedger": "PASS_FOR_V5_RELEASE",
+    "readerTesting": "NOT_EXECUTED",
+    "taggedPdf": "NOT_IMPLEMENTED"
+  },
+  "verdict": "PASS_FOR_V5_RELEASE",
+  "limitations": [
+    "A progressão editorial não foi submetida a teste formal com leitores representativos nesta release.",
+    "Os PDFs não são tagged; acessibilidade estrutural permanece melhoria futura.",
+    "Há avisos Overfull vbox; as páginas afetadas foram inspecionadas sem clipping observado.",
+    "Alegações dependentes do Cursor precisam de revalidação quando o produto mudar.",
+    "Lineage continua INCONCLUSIVE quando o host não expõe evidência suficiente."
+  ]
+}

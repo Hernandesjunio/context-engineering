@@ -1,0 +1,116 @@
+ledgerStatus: "requires-revalidation"
+reason: "O manuscrito foi ampliado de 80 para 136 páginas; localizações, escopo e cobertura precisam de nova auditoria técnica."
+claims:
+  - id: CLAIM-001
+    location:
+      file: "ebook/context-engineering-para-times-de-desenvolvimento-v5-beta3.md"
+      section: "4.4.1 O que progressive disclosure não garante"
+      page: null
+    statement: "Disponibilidade em contexto longo não garante uso uniforme da informação, especialmente em posições intermediárias."
+    class: "llm-behavior"
+    scope:
+      audience: "times de desenvolvimento"
+      productVersion: null
+      modelVersion: null
+      task: "leitura de contexto longo"
+    support:
+      type: "primary-source"
+      reference: "Liu et al., Lost in the Middle, arXiv:2307.03172"
+    status: "requires-revalidation"
+    confidence: 0.95
+    requiredAction: "Preservar a qualificação: o comportamento depende de modelo, tarefa e protocolo."
+
+  - id: CLAIM-002
+    location:
+      file: "ebook/context-engineering-para-times-de-desenvolvimento-v5-beta3.md"
+      section: "4.2 Contexto não é apenas prompt"
+      page: null
+    statement: "Dificuldade semântica humana e custo de KV Cache são fenômenos diferentes; abstração por si só não aumenta o cache."
+    class: "inference-runtime"
+    scope:
+      audience: "desenvolvedores e arquitetos"
+      productVersion: null
+      modelVersion: null
+      task: "distinguir ergonomia de leitura e custo de inferência"
+    support:
+      type: "approved-policy"
+      reference: "Separação conceitual explicitada no manuscrito; custo de cache é relacionado a tokens, arquitetura, representação e concorrência."
+    status: "requires-revalidation"
+    confidence: 0.9
+    requiredAction: "Não converter densidade conceitual humana em percentual de cache ou latência sem medição do runtime."
+
+  - id: CLAIM-003
+    location:
+      file: "ebook/context-engineering-para-times-de-desenvolvimento-v5-beta3.md"
+      section: "5.1 O que é nativo e o que é convenção"
+      page: null
+    statement: "Rules, subagents, Agent Skills, MCP e hooks são tratados como mecanismos nativos do Cursor; playbooks, knowledge, contracts, evals e evidence são convenções deste livro."
+    class: "product"
+    scope:
+      audience: "usuários do Cursor"
+      productVersion: "documentação consultada em agosto de 2026"
+      modelVersion: null
+      task: "montagem de contexto no host de referência"
+    support:
+      type: "primary-source"
+      reference: "Documentação oficial do Cursor citada no capítulo 11."
+    status: "requires-revalidation"
+    confidence: 0.9
+    requiredAction: "Revalidar antes da edição final, pois contratos de produto podem mudar."
+
+  - id: CLAIM-004
+    location:
+      file: "ebook/context-engineering-para-times-de-desenvolvimento-v5-beta3.md"
+      section: "5.10.5 Para curiosos: anatomia ampliada de uma skill"
+      page: null
+    statement: "Na especificação Agent Skills, name e description são obrigatórios; as seções editoriais ampliadas são uma proposta do livro."
+    class: "product"
+    scope:
+      audience: "autores de skills"
+      productVersion: "especificação pública consultada em agosto de 2026"
+      modelVersion: null
+      task: "empacotamento de skill"
+    support:
+      type: "primary-source"
+      reference: "agentskills.io/specification"
+    status: "requires-revalidation"
+    confidence: 0.95
+    requiredAction: "Não apresentar a anatomia ampliada como requisito normativo da especificação."
+
+  - id: CLAIM-005
+    location:
+      file: "ebook/context-engineering-para-times-de-desenvolvimento-v5-beta3.md"
+      section: "6.2 O fluxo confiável"
+      page: null
+    statement: "202 Accepted informa aceitação para processamento, mas não comprova conclusão nem, isoladamente, a durabilidade do job."
+    class: "internal-convention"
+    scope:
+      audience: "desenvolvedores backend"
+      productVersion: null
+      modelVersion: null
+      task: "contrato HTTP assíncrono do estudo de caso"
+    support:
+      type: "approved-policy"
+      reference: "Contrato explícito do estudo de caso; semântica HTTP separada das pós-condições adicionais."
+    status: "requires-revalidation"
+    confidence: 0.95
+    requiredAction: "Manter a garantia de job durável no contract, não atribuí-la ao status HTTP."
+
+  - id: CLAIM-006
+    location:
+      file: "ebook/context-engineering-para-times-de-desenvolvimento-v5-beta3.md"
+      section: "6.2 O fluxo confiável"
+      page: null
+    statement: "No estudo de referência, o estado persistido e consultável é canônico; SignalR reduz latência percebida e não substitui reconciliação."
+    class: "illustrative-example"
+    scope:
+      audience: "desenvolvedores .NET"
+      productVersion: ".NET 8 / ASP.NET Core"
+      modelVersion: null
+      task: "notificação de operação assíncrona"
+    support:
+      type: "approved-policy"
+      reference: "Decisão arquitetural declarada e testável do exemplo, apoiada pela documentação oficial do ASP.NET Core SignalR."
+    status: "requires-revalidation"
+    confidence: 0.95
+    requiredAction: "Preservar o escopo 'neste estudo'; não universalizar para toda arquitetura em tempo real."

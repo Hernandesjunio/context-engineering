@@ -1,0 +1,29 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1200" height="720" viewBox="0 0 1200 720">
+  <rect width="1200" height="720" rx="28" fill="#F5F7FB"/>
+  <style>
+    .title{font:700 34px 'DejaVu Sans',sans-serif;fill:#17212B}.h{font:700 23px 'DejaVu Sans',sans-serif;fill:white}.t{font:400 18px 'DejaVu Sans',sans-serif;fill:#425166}.light{fill:white}.line{stroke:#9AA8B8;stroke-width:5;fill:none}.node{stroke-width:3}
+  </style>
+  <text x="54" y="60" class="title">Mapa de orientação: a jornada do livro</text>
+  <path d="M600 330 C430 330 410 178 305 178 M600 330 C770 330 790 178 895 178 M600 390 C430 390 410 545 305 545 M600 390 C770 390 790 545 895 545" class="line"/>
+  <rect x="430" y="285" width="340" height="150" rx="75" fill="#0B1B34" class="node" stroke="#0B1B34"/>
+  <text x="600" y="344" class="h" text-anchor="middle">Engenharia de Contexto</text>
+  <text x="600" y="378" class="t light" text-anchor="middle">selecionar · organizar · provar</text>
+  <text x="600" y="407" class="t light" text-anchor="middle">informação para uma tarefa</text>
+  <rect x="90" y="105" width="340" height="145" rx="22" fill="#2E66E8" class="node" stroke="#1C54CC"/>
+  <text x="260" y="155" class="h" text-anchor="middle">1 · Modelo mental</text>
+  <text x="260" y="188" class="t light" text-anchor="middle">oficina, papéis e separação</text>
+  <text x="260" y="218" class="t light" text-anchor="middle">antes do vocabulário técnico</text>
+  <rect x="770" y="105" width="340" height="145" rx="22" fill="#6A57D2" class="node" stroke="#5743C4"/>
+  <text x="940" y="155" class="h" text-anchor="middle">2 · Política de carga</text>
+  <text x="940" y="188" class="t light" text-anchor="middle">HOT, WARM, COLD e</text>
+  <text x="940" y="218" class="t light" text-anchor="middle">progressive disclosure</text>
+  <rect x="90" y="470" width="340" height="145" rx="22" fill="#1C8A68" class="node" stroke="#147558"/>
+  <text x="260" y="520" class="h" text-anchor="middle">3 · Execução</text>
+  <text x="260" y="553" class="t light" text-anchor="middle">Cursor, agentes, skills,</text>
+  <text x="260" y="583" class="t light" text-anchor="middle">playbooks e tools</text>
+  <rect x="770" y="470" width="340" height="145" rx="22" fill="#C85A00" class="node" stroke="#A84B00"/>
+  <text x="940" y="520" class="h" text-anchor="middle">4 · Evidência</text>
+  <text x="940" y="553" class="t light" text-anchor="middle">contracts, evals e registros</text>
+  <text x="940" y="583" class="t light" text-anchor="middle">esperado × observado</text>
+  <text x="600" y="684" class="t" text-anchor="middle">Este mapa orienta; cada conceito será explicado quando entrar no fluxo.</text>
+</svg>

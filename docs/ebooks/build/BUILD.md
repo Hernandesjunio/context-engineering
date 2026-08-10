@@ -1,71 +1,71 @@
-# Como recompilar o E-book
+# Recompilação da V5
 
 ## Pré-requisitos
 
-- XeLaTeX, normalmente instalado pelo MiKTeX ou TeX Live.
-- Pandoc para reconstruir o LaTeX a partir do Markdown.
-- Inkscape somente quando algum SVG for alterado.
+- Pandoc;
+- XeLaTeX/TeX Live ou MiKTeX;
+- fontes DejaVu Sans e DejaVu Sans Mono;
+- Inkscape apenas se algum SVG for alterado.
 
-## Qual fonte editar
+## Fontes canônicas
 
-Os comandos abaixo devem ser executados a partir de `docs/ebooks/` (a pasta que contém o Markdown, o `.tex` gerado e este diretório `build/`).
+Caminhos relativos a `docs/ebooks/`, exceto onde indicado:
 
-| Alteração | Arquivo recomendado | Comando |
-|---|---|---|
-| Texto, títulos, tabelas e exemplos | `*.md` | `build.ps1 -Mode markdown` |
-| Quebra de página ou ajuste LaTeX localizado | `*.tex` | `build.ps1 -Mode latex` |
-| Cores, caixas, margens e tipografia | `ebook-style.tex` | `build.ps1 -Mode markdown` |
-| Caixas e setas de um diagrama | `assets/diagrams/*.svg` | `render-diagrams.ps1`, depois build Markdown |
+| Alteração | Arquivo |
+|---|---|
+| Texto do livro | `ebook/context-engineering-para-times-de-desenvolvimento-v5.md` |
+| Texto do workbook | `workbook/workbook-context-engineering-v5.md` |
+| Estilo do livro | `ebook/ebook-style.tex` |
+| Estilo do workbook | `workbook/workbook-style.tex` |
+| Diagramas | `ebook/assets/diagrams/*.svg` |
+| Corpus executável | `lab/` (raiz do repositório) |
 
-O modo Markdown recria o arquivo `.tex`. Portanto, uma correção feita somente no LaTeX será substituída se o Markdown for recompilado posteriormente. Para uma correção permanente, prefira ajustar Markdown, estilo ou SVG e então regenerar o LaTeX.
+O script `restructure.py` reconstrói os dois manuscritos a partir da baseline Beta 3 arquivada em `archive/ebooks/v5-sources/context-engineering-v5-beta3-frozen.md` e grava o inventário em `docs/audits/route-inventory-v5.md`. Execute-o somente quando quiser reaplicar a movimentação auditável a partir da baseline histórica; edições feitas diretamente nos manuscritos gerados serão substituídas.
 
-## Windows PowerShell
+## Build
 
-Execute a partir de `docs/ebooks/`:
-
-```powershell
-# Compilar alterações feitas diretamente no LaTeX.
-.\build\build.ps1 -Mode latex
-
-# Recriar LaTeX a partir do Markdown e compilar.
-.\build\build.ps1 -Mode markdown
-
-# Recriar PNGs depois de editar SVGs.
-.\build\render-diagrams.ps1
-.\build\build.ps1 -Mode markdown
-```
-
-## Linux ou macOS
-
-Execute a partir de `docs/ebooks/`:
+Linux/macOS:
 
 ```bash
-./build/build.sh latex
-./build/build.sh markdown
-./build/render-diagrams.sh
-./build/build.sh markdown
+./build/build.sh all
+./build/build.sh book
+./build/build.sh workbook
 ```
 
-## Ajustes de paginação
+Windows:
 
-- Use `\Needspace{N\baselineskip}` antes de uma seção ou caixa que não deve ser dividida.
-- Use `\newpage` apenas quando a nova página fizer parte da estrutura editorial.
-- Não altere margens ou fonte para esconder uma quebra local; isso muda todas as páginas.
-- Depois da compilação, confira a página modificada e também a página anterior e a seguinte.
+```powershell
+.\build\build.ps1 -Mode all
+.\build\build.ps1 -Mode book
+.\build\build.ps1 -Mode workbook
+```
 
-## Ajustes dos diagramas
+Cada build executa Pandoc e duas passagens de XeLaTeX. Execute os comandos acima a partir de `docs/ebooks/`.
 
-Os SVGs são as fontes editáveis. Os PNGs são consumidos pelo Markdown e pelo LaTeX gerado.
+## Validação mínima
 
-1. Edite o SVG no Inkscape.
-2. Garanta que textos permanecem dentro das caixas.
-3. Use pontas de seta proporcionais e mantenha espaço entre texto e conectores.
-4. Execute o script de renderização dos diagramas.
-5. Recompile no modo Markdown.
+A partir de `docs/ebooks/`:
 
-## Diagnóstico de erros
+```bash
+python3 build/restructure.py
+python3 /caminho/inspect_manuscript.py ebook/context-engineering-para-times-de-desenvolvimento-v5.md
+python3 /caminho/inspect_manuscript.py workbook/workbook-context-engineering-v5.md
+```
 
-- `*.log`: log completo do XeLaTeX.
-- `*.aux`, `*.toc`, `*.out`: arquivos temporários de referências e sumário.
-- Texto cortado normalmente aparece como `Overfull \\hbox` no log.
-- Referência ou sumário desatualizado normalmente exige uma segunda compilação.
+A partir da raiz do repositório:
+
+```bash
+python3 lab/.cursor/hooks/validate_lab.py
+```
+
+Depois do build, renderize todas as páginas e inspecione:
+
+- capa, sumário e aberturas;
+- fundo e padding de blocos cercados;
+- tabelas striped e cabeçalhos repetidos;
+- blocos multipágina;
+- páginas anteriores e posteriores a qualquer alteração;
+- ausência de clipping, sobreposição ou callout órfão.
+
+Não considere um log sem erro fatal como validação visual.
+

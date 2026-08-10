@@ -1,0 +1,193 @@
+\usepackage{fontspec}
+\usepackage{xcolor}
+\usepackage{fancyhdr}
+\usepackage{titlesec}
+\usepackage{booktabs}
+\usepackage{longtable}
+\usepackage{array}
+\usepackage{colortbl}
+\usepackage{microtype}
+\usepackage{graphicx}
+\usepackage{float}
+\usepackage{placeins}
+\usepackage{enumitem}
+\usepackage{setspace}
+\usepackage{framed}
+\usepackage{fvextra}
+\usepackage{etoolbox}
+\usepackage[most]{tcolorbox}
+\setlength{\emergencystretch}{4em}
+\usepackage{tikz}
+\usepackage{pifont}
+\usepackage{needspace}
+
+\definecolor{Ink}{HTML}{17212B}
+\definecolor{Blue}{HTML}{2563EB}
+\definecolor{LightBlue}{HTML}{EAF3FF}
+\definecolor{Panel}{HTML}{F3F5F7}
+\definecolor{CodePanel}{HTML}{EEF1F4}
+\definecolor{TableStripe}{HTML}{F2F5F8}
+\definecolor{Rule}{HTML}{8996A5}
+\definecolor{Navy}{HTML}{071529}
+\definecolor{Cyan}{HTML}{22B8F0}
+\definecolor{Amber}{HTML}{E79B35}
+\definecolor{Green}{HTML}{16815D}
+\definecolor{Purple}{HTML}{6D5BD0}
+\definecolor{SoftAmber}{HTML}{FFF6E8}
+\definecolor{SoftGreen}{HTML}{EAF8F2}
+\definecolor{SoftPurple}{HTML}{F2EFFE}
+
+\setmainfont{DejaVu Sans}
+\setsansfont{DejaVu Sans}
+\setmonofont{DejaVu Sans Mono}[Scale=0.83]
+\color{Ink}
+
+\setstretch{1.06}
+\raggedbottom
+\setlength{\parskip}{0.4em}
+\setlength{\parindent}{0pt}
+\setlist{itemsep=0.18em,topsep=0.25em}
+\renewcommand{\arraystretch}{1.35}
+\setlength{\tabcolsep}{8pt}
+\setlength{\heavyrulewidth}{0.9pt}
+\setlength{\lightrulewidth}{0.55pt}
+\arrayrulecolor{Rule}
+
+\titleformat{\chapter}[display]
+  {\sffamily\bfseries\color{Ink}\raggedright}
+  {\color{Blue}\Large\chaptername\ \thechapter}
+  {0.6ex}
+  {\Huge}
+  [\vspace{0.8ex}\color{Blue}\titlerule]
+
+\titleformat{\section}
+  {\sffamily\Large\bfseries\color{Ink}\raggedright}
+  {\thesection}{0.7em}{}
+
+\titleformat{\subsection}
+  {\sffamily\large\bfseries\color{Blue}\raggedright}
+  {\thesubsection}{0.7em}{}
+
+\pagestyle{fancy}
+\fancyhf{}
+\fancyhead[L]{\small\sffamily Context Engineering}
+\fancyhead[R]{}
+\fancyfoot[C]{\small\sffamily\thepage}
+\renewcommand{\headrulewidth}{0.3pt}
+\renewcommand{\footrulewidth}{0pt}
+
+\renewenvironment{quote}
+  {\def\FrameCommand{\fboxsep=10pt\colorbox{LightBlue}}%
+   \MakeFramed{\advance\hsize-\width\FrameRestore}\itshape}
+  {\endMakeFramed}
+
+\newcommand{\calloutbadge}[2]{%
+  \tikz[baseline=-0.65ex]{\node[circle,fill=#1,text=white,minimum size=1.55em,inner sep=0pt,font=\sffamily\bfseries\scriptsize]{#2};}%
+}
+
+\newtcolorbox{warningbox}[1]{
+  enhanced,breakable,colback=SoftAmber,colframe=Amber,boxrule=0.8pt,arc=2mm,
+  left=10pt,right=10pt,top=8pt,bottom=8pt,
+  title={\calloutbadge{Amber}{!}\quad #1},fonttitle=\sffamily\bfseries,
+  colbacktitle=SoftAmber,coltitle=Ink,attach title to upper=\par\smallskip
+}
+
+\newtcolorbox{tipbox}[1]{
+  enhanced,breakable,colback=SoftGreen,colframe=Green,boxrule=0.8pt,arc=2mm,
+  left=10pt,right=10pt,top=8pt,bottom=8pt,
+  title={\calloutbadge{Green}{\ding{72}}\quad #1},fonttitle=\sffamily\bfseries,
+  colbacktitle=SoftGreen,coltitle=Ink,attach title to upper=\par\smallskip
+}
+
+\newtcolorbox{infobox}[1]{
+  enhanced,breakable,colback=LightBlue,colframe=Blue,boxrule=0.8pt,arc=2mm,
+  left=10pt,right=10pt,top=8pt,bottom=8pt,
+  title={\calloutbadge{Blue}{i}\quad #1},fonttitle=\sffamily\bfseries,
+  colbacktitle=LightBlue,coltitle=Ink,attach title to upper=\par\smallskip
+}
+
+\newtcolorbox{evidencebox}[1]{
+  enhanced,breakable,colback=SoftGreen,colframe=Green,boxrule=0.8pt,arc=2mm,
+  left=10pt,right=10pt,top=8pt,bottom=8pt,
+  title={\calloutbadge{Green}{\ding{52}}\quad #1},fonttitle=\sffamily\bfseries,
+  colbacktitle=SoftGreen,coltitle=Ink,attach title to upper=\par\smallskip
+}
+
+\newtcolorbox{examplebox}[1]{
+  enhanced,breakable,colback=Panel,colframe=Purple,boxrule=0.8pt,arc=2mm,
+  left=10pt,right=10pt,top=8pt,bottom=8pt,
+  title={\calloutbadge{Purple}{Ex}\quad #1},fonttitle=\sffamily\bfseries,
+  colbacktitle=Panel,coltitle=Ink,attach title to upper=\par\smallskip
+}
+
+\newtcolorbox{curiousbox}[1]{
+  enhanced,breakable,colback=SoftPurple,colframe=Purple,boxrule=0.8pt,arc=2mm,
+  left=10pt,right=10pt,top=8pt,bottom=8pt,
+  title={\calloutbadge{Purple}{?}\quad #1},fonttitle=\sffamily\bfseries,
+  colbacktitle=SoftPurple,coltitle=Ink,attach title to upper=\par\smallskip
+}
+
+\renewcommand{\maketitle}{%
+  \begin{titlepage}
+    \thispagestyle{empty}
+    \begin{tikzpicture}[remember picture,overlay]
+      \fill[Navy] (current page.south west) rectangle (current page.north east);
+      \node[anchor=east,inner sep=0] at (current page.east) {%
+        \includegraphics[height=\paperheight]{assets/cover-v5.png}%
+      };
+      \node[anchor=north west,text width=5.45in,align=left] at ([xshift=0.72in,yshift=-0.82in]current page.north west) {%
+        {\sffamily\bfseries\color{Cyan}\fontsize{10.5}{12.5}\selectfont V5 · EDIÇÃO FINAL · WORKBOOK HANDS-ON · CURSOR-FIRST}\par
+        \vspace{0.28in}
+        {\sffamily\bfseries\color{white}\fontsize{31}{34}\selectfont Prepare a expectativa.\\Execute o cenário.\\Preserve a evidência.}\par
+        \vspace{0.25in}
+        {\sffamily\color{white!82}\fontsize{14}{18}\selectfont Laboratórios, templates e checkpoints reproduzíveis.}
+      };
+      \node[anchor=north west,rounded corners=8pt,fill=black,fill opacity=0.66,text opacity=1,
+            inner sep=12pt,text width=3.8in,align=left] at ([xshift=0.72in,yshift=-5.55in]current page.north west) {%
+        {\ttfamily\color{Cyan}\fontsize{10.5}{13}\selectfont repository/.cursor/}\\[-1pt]
+        {\ttfamily\color{white}\fontsize{10.2}{12.5}\selectfont
+        ├── rules/ · agents/ · skills/\\
+        ├── playbooks/ · knowledge/\\
+        ├── contracts/ · evals/\\
+        └── evidence/ · hooks/}
+      };
+      \node[anchor=south west] at ([xshift=0.72in,yshift=0.55in]current page.south west) {%
+        {\sffamily\color{white!82}\fontsize{10.5}{12}\selectfont Hernandes Junio de Assis\quad ·\quad E-book técnico e didático · 2026}%
+      };
+    \end{tikzpicture}
+    \null
+  \end{titlepage}
+}
+
+% Faixas alternadas reduzem a necessidade de acompanhar uma linha imaginária
+% em tabelas densas. O contraste é deliberadamente sutil e não substitui
+% cabeçalhos, regras horizontais ou rótulos textuais.
+\AtBeginEnvironment{longtable}{\small\rowcolors{2}{TableStripe}{white}}
+\setlength{\LTpre}{0.6em}
+\setlength{\LTpost}{0.8em}
+
+\AtBeginDocument{%
+  % Aplica quebra a toda a família FancyVerb, cobrindo os blocos cercados
+  % atuais e futuros, mesmo que o Pandoc deixe de usar Highlighting.
+  \fvset{breaklines=true,breakanywhere=true,breaknonspaceingroup=true,%
+    breakautoindent=true,xrightmargin=0.5em,%
+    breaksymbolleft={},breaksymbolright={}}%
+  % Highlighting precisa preservar commandchars para o syntax highlighting.
+  \RecustomVerbatimEnvironment{Highlighting}{Verbatim}{%
+    commandchars=\\\{\},breaklines=true,breakanywhere=true,%
+    breaknonspaceingroup=true,breakautoindent=true,xrightmargin=0.5em,%
+    breaksymbolleft={},breaksymbolright={}}%
+  % O Pandoc declara Shaded como ambiente vazio. Esta redefinição torna o
+  % fundo visível e preserva quebra de página por meio de snugshade.
+  \colorlet{shadecolor}{CodePanel}%
+  \setlength{\FrameSep}{8pt}%
+  \renewenvironment{Shaded}{\begin{snugshade}}{\end{snugshade}}%
+  \hypersetup{
+    colorlinks=true,
+    linkcolor=Blue,
+    urlcolor=Blue,
+    citecolor=Blue,
+    pdfauthor={Hernandes Junio de Assis},
+    pdftitle={Workbook de Context Engineering - V5}
+  }%
+}

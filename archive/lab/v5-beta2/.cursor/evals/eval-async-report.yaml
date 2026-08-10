@@ -1,0 +1,34 @@
+schemaVersion: 1.0.0
+id: EVAL-ASYNC-REPORT-001
+name: Concluir Relatório e Reconciliar a Tela
+agentUnderEvaluation: backend-development
+query: "O relatório terminou; atualize a tela com segurança."
+assertions:
+  - id: ASSERT-REPORT-001
+    type: requiredBehavior
+    sourceOriginal: SRC-014
+    sourceCurrent: RULE-ASYNC-001#obrigacao
+    statement: "Persistir e confirmar o resultado antes de notificar."
+    evaluationMethod: deterministic
+    verifyWith: [traceOrder]
+  - id: ASSERT-REPORT-002
+    type: requiredBehavior
+    sourceOriginal: SRC-015
+    sourceCurrent: CONTRACT-REPORT-001#postconditions
+    statement: "Manter o estado final consultável pela API."
+    evaluationMethod: hybrid
+    verifyWith: [jsonSchema, approvedLlmJudge]
+  - id: ASSERT-REPORT-003
+    type: forbiddenClaim
+    sourceOriginal: SRC-016
+    sourceCurrent: RULE-ASYNC-001#proibicao
+    statement: "SignalR é a fonte oficial do estado."
+    evaluationMethod: semantic
+    verifyWith: [approvedLlmJudge]
+expected:
+  mustRetrieve: [RULE-ASYNC-001, CONTRACT-REPORT-001, PLAYBOOK-ASYNC-001]
+  mustApply: [ASSERT-REPORT-001, ASSERT-REPORT-002]
+  mustNotRetrieve: []
+  mustNotClaim: [ASSERT-REPORT-003]
+evaluationMethod: hybrid
+verifyWith: [traceOrder, jsonSchema, approvedLlmJudge]

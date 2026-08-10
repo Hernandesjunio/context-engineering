@@ -1,0 +1,5026 @@
+% Options for packages loaded elsewhere
+\PassOptionsToPackage{unicode}{hyperref}
+\PassOptionsToPackage{hyphens}{url}
+\PassOptionsToPackage{dvipsnames,svgnames,x11names}{xcolor}
+%
+\documentclass[
+  10pt,
+  a4paper,
+  oneside]{book}
+\usepackage{amsmath,amssymb}
+\usepackage{iftex}
+\ifPDFTeX
+  \usepackage[T1]{fontenc}
+  \usepackage[utf8]{inputenc}
+  \usepackage{textcomp} % provide euro and other symbols
+\else % if luatex or xetex
+  \usepackage{unicode-math} % this also loads fontspec
+  \defaultfontfeatures{Scale=MatchLowercase}
+  \defaultfontfeatures[\rmfamily]{Ligatures=TeX,Scale=1}
+\fi
+\usepackage{lmodern}
+\ifPDFTeX\else
+  % xetex/luatex font selection
+\fi
+% Use upquote if available, for straight quotes in verbatim environments
+\IfFileExists{upquote.sty}{\usepackage{upquote}}{}
+\IfFileExists{microtype.sty}{% use microtype if available
+  \usepackage[]{microtype}
+  \UseMicrotypeSet[protrusion]{basicmath} % disable protrusion for tt fonts
+}{}
+\makeatletter
+\@ifundefined{KOMAClassName}{% if non-KOMA class
+  \IfFileExists{parskip.sty}{%
+    \usepackage{parskip}
+  }{% else
+    \setlength{\parindent}{0pt}
+    \setlength{\parskip}{6pt plus 2pt minus 1pt}}
+}{% if KOMA class
+  \KOMAoptions{parskip=half}}
+\makeatother
+\usepackage{xcolor}
+\usepackage[margin=2.0cm]{geometry}
+\usepackage{color}
+\usepackage{fancyvrb}
+\newcommand{\VerbBar}{|}
+\newcommand{\VERB}{\Verb[commandchars=\\\{\}]}
+\DefineVerbatimEnvironment{Highlighting}{Verbatim}{commandchars=\\\{\}}
+% Add ',fontsize=\small' for more characters per line
+\newenvironment{Shaded}{}{}
+\newcommand{\AlertTok}[1]{\textcolor[rgb]{1.00,0.00,0.00}{\textbf{#1}}}
+\newcommand{\AnnotationTok}[1]{\textcolor[rgb]{0.38,0.63,0.69}{\textbf{\textit{#1}}}}
+\newcommand{\AttributeTok}[1]{\textcolor[rgb]{0.49,0.56,0.16}{#1}}
+\newcommand{\BaseNTok}[1]{\textcolor[rgb]{0.25,0.63,0.44}{#1}}
+\newcommand{\BuiltInTok}[1]{\textcolor[rgb]{0.00,0.50,0.00}{#1}}
+\newcommand{\CharTok}[1]{\textcolor[rgb]{0.25,0.44,0.63}{#1}}
+\newcommand{\CommentTok}[1]{\textcolor[rgb]{0.38,0.63,0.69}{\textit{#1}}}
+\newcommand{\CommentVarTok}[1]{\textcolor[rgb]{0.38,0.63,0.69}{\textbf{\textit{#1}}}}
+\newcommand{\ConstantTok}[1]{\textcolor[rgb]{0.53,0.00,0.00}{#1}}
+\newcommand{\ControlFlowTok}[1]{\textcolor[rgb]{0.00,0.44,0.13}{\textbf{#1}}}
+\newcommand{\DataTypeTok}[1]{\textcolor[rgb]{0.56,0.13,0.00}{#1}}
+\newcommand{\DecValTok}[1]{\textcolor[rgb]{0.25,0.63,0.44}{#1}}
+\newcommand{\DocumentationTok}[1]{\textcolor[rgb]{0.73,0.13,0.13}{\textit{#1}}}
+\newcommand{\ErrorTok}[1]{\textcolor[rgb]{1.00,0.00,0.00}{\textbf{#1}}}
+\newcommand{\ExtensionTok}[1]{#1}
+\newcommand{\FloatTok}[1]{\textcolor[rgb]{0.25,0.63,0.44}{#1}}
+\newcommand{\FunctionTok}[1]{\textcolor[rgb]{0.02,0.16,0.49}{#1}}
+\newcommand{\ImportTok}[1]{\textcolor[rgb]{0.00,0.50,0.00}{\textbf{#1}}}
+\newcommand{\InformationTok}[1]{\textcolor[rgb]{0.38,0.63,0.69}{\textbf{\textit{#1}}}}
+\newcommand{\KeywordTok}[1]{\textcolor[rgb]{0.00,0.44,0.13}{\textbf{#1}}}
+\newcommand{\NormalTok}[1]{#1}
+\newcommand{\OperatorTok}[1]{\textcolor[rgb]{0.40,0.40,0.40}{#1}}
+\newcommand{\OtherTok}[1]{\textcolor[rgb]{0.00,0.44,0.13}{#1}}
+\newcommand{\PreprocessorTok}[1]{\textcolor[rgb]{0.74,0.48,0.00}{#1}}
+\newcommand{\RegionMarkerTok}[1]{#1}
+\newcommand{\SpecialCharTok}[1]{\textcolor[rgb]{0.25,0.44,0.63}{#1}}
+\newcommand{\SpecialStringTok}[1]{\textcolor[rgb]{0.73,0.40,0.53}{#1}}
+\newcommand{\StringTok}[1]{\textcolor[rgb]{0.25,0.44,0.63}{#1}}
+\newcommand{\VariableTok}[1]{\textcolor[rgb]{0.10,0.09,0.49}{#1}}
+\newcommand{\VerbatimStringTok}[1]{\textcolor[rgb]{0.25,0.44,0.63}{#1}}
+\newcommand{\WarningTok}[1]{\textcolor[rgb]{0.38,0.63,0.69}{\textbf{\textit{#1}}}}
+\usepackage{longtable,booktabs,array}
+\usepackage{calc} % for calculating minipage widths
+% Correct order of tables after \paragraph or \subparagraph
+\usepackage{etoolbox}
+\makeatletter
+\patchcmd\longtable{\par}{\if@noskipsec\mbox{}\fi\par}{}{}
+\makeatother
+% Allow footnotes in longtable head/foot
+\IfFileExists{footnotehyper.sty}{\usepackage{footnotehyper}}{\usepackage{footnote}}
+\makesavenoteenv{longtable}
+\usepackage{graphicx}
+\makeatletter
+\def\maxwidth{\ifdim\Gin@nat@width>\linewidth\linewidth\else\Gin@nat@width\fi}
+\def\maxheight{\ifdim\Gin@nat@height>\textheight\textheight\else\Gin@nat@height\fi}
+\makeatother
+% Scale images if necessary, so that they will not overflow the page
+% margins by default, and it is still possible to overwrite the defaults
+% using explicit options in \includegraphics[width, height, ...]{}
+\setkeys{Gin}{width=\maxwidth,height=\maxheight,keepaspectratio}
+% Set default figure placement to htbp
+\makeatletter
+\def\fps@figure{htbp}
+\makeatother
+\setlength{\emergencystretch}{3em} % prevent overfull lines
+\providecommand{\tightlist}{%
+  \setlength{\itemsep}{0pt}\setlength{\parskip}{0pt}}
+\setcounter{secnumdepth}{5}
+\ifLuaTeX
+\usepackage[bidi=basic]{babel}
+\else
+\usepackage[bidi=default]{babel}
+\fi
+\babelprovide[main,import]{brazilian}
+% get rid of language-specific shorthands (see #6817):
+\let\LanguageShortHands\languageshorthands
+\def\languageshorthands#1{}
+\usepackage{fontspec}
+\usepackage{xcolor}
+\usepackage{fancyhdr}
+\usepackage{titlesec}
+\usepackage{booktabs}
+\usepackage{longtable}
+\usepackage{array}
+\usepackage{colortbl}
+\usepackage{microtype}
+\usepackage{graphicx}
+\usepackage{float}
+\usepackage{placeins}
+\usepackage{enumitem}
+\usepackage{setspace}
+\usepackage{framed}
+\usepackage{fvextra}
+\usepackage{etoolbox}
+\usepackage[most]{tcolorbox}
+\setlength{\emergencystretch}{4em}
+\usepackage{tikz}
+\usepackage{pifont}
+\usepackage{needspace}
+
+\definecolor{Ink}{HTML}{17212B}
+\definecolor{Blue}{HTML}{2563EB}
+\definecolor{LightBlue}{HTML}{EAF3FF}
+\definecolor{Panel}{HTML}{F3F5F7}
+\definecolor{CodePanel}{HTML}{EEF1F4}
+\definecolor{TableStripe}{HTML}{F2F5F8}
+\definecolor{Rule}{HTML}{8996A5}
+\definecolor{Navy}{HTML}{071529}
+\definecolor{Cyan}{HTML}{22B8F0}
+\definecolor{Amber}{HTML}{E79B35}
+\definecolor{Green}{HTML}{16815D}
+\definecolor{Purple}{HTML}{6D5BD0}
+\definecolor{SoftAmber}{HTML}{FFF6E8}
+\definecolor{SoftGreen}{HTML}{EAF8F2}
+\definecolor{SoftPurple}{HTML}{F2EFFE}
+
+\setmainfont{DejaVu Sans}
+\setsansfont{DejaVu Sans}
+\setmonofont{DejaVu Sans Mono}[Scale=0.83]
+\color{Ink}
+
+\setstretch{1.06}
+\raggedbottom
+\setlength{\parskip}{0.4em}
+\setlength{\parindent}{0pt}
+\setlist{itemsep=0.18em,topsep=0.25em}
+\renewcommand{\arraystretch}{1.35}
+\setlength{\tabcolsep}{8pt}
+\setlength{\heavyrulewidth}{0.9pt}
+\setlength{\lightrulewidth}{0.55pt}
+\arrayrulecolor{Rule}
+
+\titleformat{\chapter}[display]
+  {\sffamily\bfseries\color{Ink}\raggedright}
+  {\color{Blue}\Large\chaptername\ \thechapter}
+  {0.6ex}
+  {\Huge}
+  [\vspace{0.8ex}\color{Blue}\titlerule]
+
+\titleformat{\section}
+  {\sffamily\Large\bfseries\color{Ink}\raggedright}
+  {\thesection}{0.7em}{}
+
+\titleformat{\subsection}
+  {\sffamily\large\bfseries\color{Blue}\raggedright}
+  {\thesubsection}{0.7em}{}
+
+\pagestyle{fancy}
+\fancyhf{}
+\fancyhead[L]{\small\sffamily Context Engineering}
+\fancyhead[R]{}
+\fancyfoot[C]{\small\sffamily\thepage}
+\renewcommand{\headrulewidth}{0.3pt}
+\renewcommand{\footrulewidth}{0pt}
+
+\renewenvironment{quote}
+  {\def\FrameCommand{\fboxsep=10pt\colorbox{LightBlue}}%
+   \MakeFramed{\advance\hsize-\width\FrameRestore}\itshape}
+  {\endMakeFramed}
+
+\newcommand{\calloutbadge}[2]{%
+  \tikz[baseline=-0.65ex]{\node[circle,fill=#1,text=white,minimum size=1.55em,inner sep=0pt,font=\sffamily\bfseries\scriptsize]{#2};}%
+}
+
+\newtcolorbox{warningbox}[1]{
+  enhanced,breakable,colback=SoftAmber,colframe=Amber,boxrule=0.8pt,arc=2mm,
+  left=10pt,right=10pt,top=8pt,bottom=8pt,
+  title={\calloutbadge{Amber}{!}\quad #1},fonttitle=\sffamily\bfseries,
+  colbacktitle=SoftAmber,coltitle=Ink,attach title to upper=\par\smallskip
+}
+
+\newtcolorbox{tipbox}[1]{
+  enhanced,breakable,colback=SoftGreen,colframe=Green,boxrule=0.8pt,arc=2mm,
+  left=10pt,right=10pt,top=8pt,bottom=8pt,
+  title={\calloutbadge{Green}{\ding{72}}\quad #1},fonttitle=\sffamily\bfseries,
+  colbacktitle=SoftGreen,coltitle=Ink,attach title to upper=\par\smallskip
+}
+
+\newtcolorbox{infobox}[1]{
+  enhanced,breakable,colback=LightBlue,colframe=Blue,boxrule=0.8pt,arc=2mm,
+  left=10pt,right=10pt,top=8pt,bottom=8pt,
+  title={\calloutbadge{Blue}{i}\quad #1},fonttitle=\sffamily\bfseries,
+  colbacktitle=LightBlue,coltitle=Ink,attach title to upper=\par\smallskip
+}
+
+\newtcolorbox{evidencebox}[1]{
+  enhanced,breakable,colback=SoftGreen,colframe=Green,boxrule=0.8pt,arc=2mm,
+  left=10pt,right=10pt,top=8pt,bottom=8pt,
+  title={\calloutbadge{Green}{\ding{52}}\quad #1},fonttitle=\sffamily\bfseries,
+  colbacktitle=SoftGreen,coltitle=Ink,attach title to upper=\par\smallskip
+}
+
+\newtcolorbox{examplebox}[1]{
+  enhanced,breakable,colback=Panel,colframe=Purple,boxrule=0.8pt,arc=2mm,
+  left=10pt,right=10pt,top=8pt,bottom=8pt,
+  title={\calloutbadge{Purple}{Ex}\quad #1},fonttitle=\sffamily\bfseries,
+  colbacktitle=Panel,coltitle=Ink,attach title to upper=\par\smallskip
+}
+
+\newtcolorbox{curiousbox}[1]{
+  enhanced,breakable,colback=SoftPurple,colframe=Purple,boxrule=0.8pt,arc=2mm,
+  left=10pt,right=10pt,top=8pt,bottom=8pt,
+  title={\calloutbadge{Purple}{?}\quad #1},fonttitle=\sffamily\bfseries,
+  colbacktitle=SoftPurple,coltitle=Ink,attach title to upper=\par\smallskip
+}
+
+\renewcommand{\maketitle}{%
+  \begin{titlepage}
+    \thispagestyle{empty}
+    \begin{tikzpicture}[remember picture,overlay]
+      \fill[Navy] (current page.south west) rectangle (current page.north east);
+      \node[anchor=east,inner sep=0] at (current page.east) {%
+        \includegraphics[height=\paperheight]{assets/cover-v5.png}%
+      };
+      \node[anchor=north west,text width=5.45in,align=left] at ([xshift=0.72in,yshift=-0.82in]current page.north west) {%
+        {\sffamily\bfseries\color{Cyan}\fontsize{12}{14}\selectfont V5 · EDIÇÃO FINAL · LIVRO PRINCIPAL · CURSOR-FIRST}\par
+        \vspace{0.28in}
+        {\sffamily\bfseries\color{white}\fontsize{31}{34}\selectfont Organize o contexto.\\Preserve a atenção.\\Prove a execução.}\par
+        \vspace{0.25in}
+        {\sffamily\color{white!82}\fontsize{14}{18}\selectfont Da oficina ao harness: curadoria prática, interoperável e auditável.}
+      };
+      \node[anchor=north west,rounded corners=8pt,fill=black,fill opacity=0.66,text opacity=1,
+            inner sep=12pt,text width=3.8in,align=left] at ([xshift=0.72in,yshift=-5.55in]current page.north west) {%
+        {\ttfamily\color{Cyan}\fontsize{10.5}{13}\selectfont repository/.cursor/}\\[-1pt]
+        {\ttfamily\color{white}\fontsize{10.2}{12.5}\selectfont
+        ├── rules/ · agents/ · skills/\\
+        ├── playbooks/ · knowledge/\\
+        ├── contracts/ · evals/\\
+        └── evidence/ · hooks/}
+      };
+      \node[anchor=south west] at ([xshift=0.72in,yshift=0.55in]current page.south west) {%
+        {\sffamily\color{white!82}\fontsize{10.5}{12}\selectfont Hernandes Junio de Assis\quad ·\quad E-book técnico e didático · 2026}%
+      };
+    \end{tikzpicture}
+    \null
+  \end{titlepage}
+}
+
+% Faixas alternadas reduzem a necessidade de acompanhar uma linha imaginária
+% em tabelas densas. O contraste é deliberadamente sutil e não substitui
+% cabeçalhos, regras horizontais ou rótulos textuais.
+\AtBeginEnvironment{longtable}{\small\rowcolors{2}{TableStripe}{white}}
+\setlength{\LTpre}{0.6em}
+\setlength{\LTpost}{0.8em}
+
+\AtBeginDocument{%
+  % Aplica quebra a toda a família FancyVerb, cobrindo os blocos cercados
+  % atuais e futuros, mesmo que o Pandoc deixe de usar Highlighting.
+  \fvset{breaklines=true,breakanywhere=true,breaknonspaceingroup=true,%
+    breakautoindent=true,xrightmargin=0.5em,%
+    breaksymbolleft={},breaksymbolright={}}%
+  % Highlighting precisa preservar commandchars para o syntax highlighting.
+  \RecustomVerbatimEnvironment{Highlighting}{Verbatim}{%
+    commandchars=\\\{\},breaklines=true,breakanywhere=true,%
+    breaknonspaceingroup=true,breakautoindent=true,xrightmargin=0.5em,%
+    breaksymbolleft={},breaksymbolright={}}%
+  % O Pandoc declara Shaded como ambiente vazio. Esta redefinição torna o
+  % fundo visível e preserva quebra de página por meio de snugshade.
+  \colorlet{shadecolor}{CodePanel}%
+  \setlength{\FrameSep}{8pt}%
+  \renewenvironment{Shaded}{\begin{snugshade}}{\end{snugshade}}%
+  \hypersetup{
+    colorlinks=true,
+    linkcolor=Blue,
+    urlcolor=Blue,
+    citecolor=Blue,
+    pdfauthor={Hernandes Junio de Assis},
+    pdftitle={Context Engineering para Times de Desenvolvimento - V5}
+  }%
+}
+\ifLuaTeX
+  \usepackage{selnolig}  % disable illegal ligatures
+\fi
+\IfFileExists{bookmark.sty}{\usepackage{bookmark}}{\usepackage{hyperref}}
+\IfFileExists{xurl.sty}{\usepackage{xurl}}{} % add URL line breaks if available
+\urlstyle{same}
+\hypersetup{
+  pdftitle={Context Engineering para Times de Desenvolvimento},
+  pdfauthor={Hernandes Junio de Assis},
+  pdflang={pt-BR},
+  colorlinks=true,
+  linkcolor={blue},
+  filecolor={Maroon},
+  citecolor={Blue},
+  urlcolor={blue},
+  pdfcreator={LaTeX via pandoc}}
+
+\title{Context Engineering para Times de Desenvolvimento}
+\usepackage{etoolbox}
+\makeatletter
+\providecommand{\subtitle}[1]{% add subtitle to \maketitle
+  \apptocmd{\@title}{\par {\large #1 \par}}{}{}
+}
+\makeatother
+\subtitle{Rota essencial e aprofundamentos --- V5}
+\author{Hernandes Junio de Assis}
+\date{2026}
+
+\begin{document}
+\frontmatter
+\maketitle
+
+{
+\hypersetup{linkcolor=}
+\setcounter{tocdepth}{3}
+\tableofcontents
+}
+\mainmatter
+\begin{infobox}{Propósito da edição}
+
+Esta edição separa compreensão e execução em dois artefatos
+complementares. O livro principal preserva a progressão conceitual e as
+decisões; o workbook reúne prompts, schemas, templates, laboratórios e
+evidências reproduzíveis.
+
+\end{infobox}
+
+\hypertarget{cruxe9ditos-de-revisuxe3o}{%
+\section*{Créditos de revisão}\label{cruxe9ditos-de-revisuxe3o}}
+\addcontentsline{toc}{section}{Créditos de revisão}
+
+\begin{itemize}
+\tightlist
+\item
+  \textbf{Autor e revisor:} Hernandes Junio de Assis.
+\item
+  \textbf{Revisor convidado:} Julio Henrique dos Santos.
+\item
+  \textbf{Apoio complementar:} revisões assistidas por IA em múltiplas
+  versões, sempre submetidas à decisão humana.
+\end{itemize}
+
+\begin{warningbox}{Exemplo mecânico fictício}
+
+O motor, os procedimentos, as medições e as especificações deste livro
+são exclusivamente didáticos. Não utilize o conteúdo para manutenção
+mecânica real.
+
+\end{warningbox}
+
+\begin{warningbox}{Limites de sistemas com IA}
+
+Modelos de linguagem possuem comportamento probabilístico. Organização
+de contexto, skills, regras, contratos e avaliações reduzem riscos, mas
+não garantem resultados perfeitos.
+
+\end{warningbox}
+
+\newpage
+
+\hypertarget{como-ler-este-e-book}{%
+\chapter{Como ler este E-book}\label{como-ler-este-e-book}}
+
+O livro foi desenhado para desenvolvedores que conhecem software, mas
+estão entrando no universo de agentes, context engineering e sistemas
+orientados por LLM.
+
+\hypertarget{um-mapa-antes-da-jornada}{%
+\section{Um mapa antes da jornada}\label{um-mapa-antes-da-jornada}}
+
+O mapa abaixo apresenta quatro movimentos sem exigir que você conheça
+previamente os artefatos. Os nomes são destinos; cada conceito será
+definido antes de ser usado para tomar uma decisão.
+
+\begin{figure}
+\centering
+\includegraphics[width=0.94\textwidth,height=\textheight]{assets/diagrams/01-mapa-orientacao.png}
+\caption{Mapa de orientação da jornada.}
+\end{figure}
+
+\textbf{Leia o mapa como uma sequência de aprendizagem.} Os quatro
+movimentos representados na figura serão percorridos nesta ordem:
+
+\begin{enumerate}
+\def\labelenumi{\arabic{enumi}.}
+\tightlist
+\item
+  construir um modelo mental com uma oficina fictícia;
+\item
+  organizar políticas para carregar o detalhe aplicável;
+\item
+  observar como um host monta contexto e executa recursos;
+\item
+  comparar expectativa com execução e preservar a evidência.
+\end{enumerate}
+
+O conceito no centro do mapa não representa uma ferramenta específica.
+\textbf{Engenharia de contexto} é o trabalho de selecionar, organizar e
+manter informações que aumentam a chance de tomar decisões adequadas,
+executar a tarefa e verificar o resultado.
+
+\hypertarget{truxeas-rotas-de-leitura}{%
+\section{Três rotas de leitura}\label{truxeas-rotas-de-leitura}}
+
+Existem três rotas complementares:
+
+\textbf{Rota essencial.} Leia o fluxo principal desde a oficina,
+passando pela transição para backend, até o exemplo assíncrono
+semi-completo, limitado ao que é necessário para compreender os
+conceitos apresentados.
+
+\textbf{Rota de aprofundamento.} Leia também as caixas ``Para curiosos''
+e ``Deep Dive'', que ampliam a discussão sobre classificação híbrida,
+governança, conflitos, avaliação entre modelos e orçamento de contexto.
+
+\textbf{Rota hands-on.} Use o workbook que acompanha esta edição. Nele
+estão os artefatos completos, prompts, schemas, execuções e
+laboratórios; no livro principal permanecem conceitos, decisões e
+microexemplos.
+
+Os marcadores possuem funções estáveis:
+
+\begin{longtable}[]{@{}ll@{}}
+\toprule\noalign{}
+Marcador & Função \\
+\midrule\noalign{}
+\endhead
+\bottomrule\noalign{}
+\endlastfoot
+Exemplo & Demonstra uma aplicação reduzida. \\
+Cuidado & Expõe risco ou interpretação incorreta. \\
+Dica & Resume uma decisão prática. \\
+Evidência & Mostra como provar uma conclusão. \\
+Para curiosos & Aprofundamento opcional. \\
+\end{longtable}
+
+O fluxo principal contém o necessário para compreender e aplicar o
+método. Conteúdo normativo, stop conditions e critérios de evidência
+nunca são escondidos em aprofundamentos opcionais.
+
+\hypertarget{introduuxe7uxe3o---o-problema-nuxe3o-uxe9-falta-de-documentauxe7uxe3o}{%
+\chapter{Introdução - o problema não é falta de
+documentação}\label{introduuxe7uxe3o---o-problema-nuxe3o-uxe9-falta-de-documentauxe7uxe3o}}
+
+Times de desenvolvimento acumulam instruções em
+\textbf{\texttt{README}}, arquivos de \textbf{agentes}, \textbf{wikis},
+\textbf{comentários}, \textbf{tickets}, \textbf{ADRs},
+\textbf{contratos}, \textbf{exemplos} e \textbf{prompts}. Quando um
+agente de IA recebe uma tarefa, essa informação precisa ser descoberta,
+selecionada, carregada, interpretada e aplicada.
+
+Adicionar mais conteúdo não resolve automaticamente o problema. Um
+documento pode ser completo e ainda falhar porque:
+
+\begin{itemize}
+\tightlist
+\item
+  mistura obrigação com explicação;
+\item
+  esconde regras em exemplos;
+\item
+  não informa quando um procedimento deve ser ativado;
+\item
+  possui fontes divergentes;
+\item
+  carrega detalhes irrelevantes em todas as tarefas;
+\item
+  não permite provar qual informação foi utilizada;
+\item
+  não possui testes de recuperabilidade;
+\end{itemize}
+
+\textbf{Context engineering} é o trabalho de selecionar, organizar e
+manter o conjunto de informações necessário para aumentar a chance de
+uma tarefa ser executada corretamente. O objetivo não é produzir o menor
+prompt possível, mas fornecer o contexto mínimo suficiente para decidir,
+executar e verificar.
+
+\begin{tipbox}{Minimal não significa curto}
+
+Um agente com poucas linhas pode ser vago. Um agente um pouco maior pode
+ser mais eficiente se concentrar responsabilidade, invariantes,
+roteamento, critérios de parada e evidência final.
+
+\end{tipbox}
+
+Esta edição começa longe do backend de propósito. Antes de olhar pastas,
+schemas ou APIs, vamos observar uma oficina em que todo conhecimento foi
+colocado no mesmo manual.
+
+\begin{figure}
+\centering
+\includegraphics[width=0.95\textwidth,height=\textheight]{assets/diagrams/02-caos-separacao.png}
+\caption{Do manual caótico ao sistema consultável.}
+\end{figure}
+
+A figura antecipa o percurso que começa a seguir: partir do manual
+único, compreender por que ele se torna difícil de consultar e, a partir
+desse problema, organizar o conhecimento em partes com responsabilidades
+mais claras.
+
+\newpage
+
+\hypertarget{parte-i---a-oficina-desorganizada}{%
+\chapter{Parte I - A oficina
+desorganizada}\label{parte-i---a-oficina-desorganizada}}
+
+\hypertarget{o-manual-que-parecia-completo}{%
+\section{O manual que parecia
+completo}\label{o-manual-que-parecia-completo}}
+
+Uma oficina decidiu registrar em um único documento tudo que seus
+mecânicos precisavam saber sobre montagem e diagnóstico de motores.
+
+O manual continha:
+
+\begin{itemize}
+\tightlist
+\item
+  a responsabilidade do mecânico;
+\item
+  explicações sobre peças;
+\item
+  procedimentos de desmontagem e montagem;
+\item
+  regras de segurança;
+\item
+  valores de referência;
+\item
+  histórias de serviços antigos;
+\item
+  formulários de inspeção;
+\item
+  testes finais;
+\item
+  dicas transmitidas por profissionais experientes.
+\end{itemize}
+
+Em uma primeira leitura, a solução parecia excelente. Tudo estava no
+mesmo lugar e ninguém precisava procurar em várias fontes.
+
+O problema surgiu durante um serviço urgente. O mecânico precisava
+descobrir rapidamente:
+
+\begin{enumerate}
+\def\labelenumi{\arabic{enumi}.}
+\tightlist
+\item
+  qual motor estava diante dele;
+\item
+  qual instrução era obrigatória;
+\item
+  qual procedimento se aplicava àquele modelo;
+\item
+  quando deveria interromper;
+\item
+  como comprovar que o serviço havia terminado corretamente.
+\end{enumerate}
+
+\begin{tipbox}{O problema não era falta de informação}
+
+O manual continha o conhecimento necessário. A dificuldade estava em
+identificar, entre tudo que estava disponível, o que realmente deveria
+orientar aquela tarefa.
+
+\end{tipbox}
+
+As informações estavam misturadas. Uma observação histórica aparecia ao
+lado de uma regra de segurança, uma dica informal tinha o mesmo destaque
+de uma especificação aprovada e um procedimento de outro modelo parecia
+semelhante o suficiente para induzir uma decisão incorreta.
+
+O documento fictício abaixo é deliberadamente ruim. Leia como se você
+precisasse executar um serviço urgente e observe quantas
+responsabilidades precisa separar mentalmente.
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\CommentTok{\textless{}!{-}{-} ANTI{-}PATTERN: responsabilidades misturadas no mesmo arquivo {-}{-}\textgreater{}}
+
+\NormalTok{Você é um mecânico sênior responsável por montar e diagnosticar motores.}
+
+\NormalTok{O cabeçote fecha a parte superior do motor e ajuda a formar a câmara}
+\NormalTok{de combustão. Nunca invente valores de torque e não continue se o}
+\NormalTok{modelo exato do motor não estiver identificado.}
+
+\NormalTok{Para instalar o cabeçote, limpe as superfícies, verifique a planicidade,}
+\NormalTok{confirme a junta correta, consulte a sequência de aperto, aplique a}
+\NormalTok{especificação correspondente e registre o resultado.}
+
+\NormalTok{Para verificar a planicidade, posicione a régua de precisão nos sentidos}
+\NormalTok{longitudinal, transversal e diagonal. Utilize o instrumento apropriado}
+\NormalTok{e compare o maior desvio com a fonte aprovada.}
+
+\NormalTok{O motor fictício Aurora X1 utiliza a tabela TQ{-}AUR{-}X1. Outros motores}
+\NormalTok{podem utilizar materiais, parafusos e sequências diferentes. Nunca}
+\NormalTok{reutilize um parafuso identificado como de uso único.}
+
+\NormalTok{Se o motor apresentar baixa compressão depois da montagem, verifique}
+\NormalTok{vedação, válvulas, junta, sincronismo e condições do cilindro.}
+
+\NormalTok{Use o formulário de montagem para registrar o motor, as peças, o}
+\NormalTok{instrumento utilizado, a sequência e o responsável pela inspeção.}
+
+\NormalTok{Os primeiros cabeçotes eram frequentemente construídos com materiais}
+\NormalTok{diferentes dos utilizados em motores modernos. Mudanças de material}
+\NormalTok{podem alterar expansão térmica e métodos de inspeção.}
+
+\NormalTok{Depois da montagem, execute os testes de vedação e compressão. Não}
+\NormalTok{considere o serviço concluído apenas porque o motor ligou.}
+
+\NormalTok{Se o resultado estiver fora da especificação, não tente compensar}
+\NormalTok{aumentando o torque. Interrompa e execute o diagnóstico.}
+\end{Highlighting}
+\end{Shaded}
+
+Todas as frases podem ser úteis, mas não possuem a mesma função.
+
+\begin{longtable}[]{@{}
+  >{\raggedright\arraybackslash}p{(\columnwidth - 2\tabcolsep) * \real{0.5000}}
+  >{\raggedright\arraybackslash}p{(\columnwidth - 2\tabcolsep) * \real{0.5000}}@{}}
+\toprule\noalign{}
+\begin{minipage}[b]{\linewidth}\raggedright
+Trecho
+\end{minipage} & \begin{minipage}[b]{\linewidth}\raggedright
+Função percebida
+\end{minipage} \\
+\midrule\noalign{}
+\endhead
+\bottomrule\noalign{}
+\endlastfoot
+``Você é um mecânico sênior\ldots{}'' & Define papel. \\
+``O cabeçote fecha\ldots{}'' & Explica o domínio. \\
+``Nunca invente valores\ldots{}'' & Impõe uma regra. \\
+``Para instalar o cabeçote\ldots{}'' & Coordena um procedimento. \\
+``Para verificar a planicidade\ldots{}'' & Descreve capacidade
+especializada. \\
+``Os primeiros cabeçotes\ldots{}'' & Registra contexto histórico. \\
+``Use o formulário\ldots{}'' & Indica recurso de saída. \\
+``Não considere concluído\ldots{}'' & Define teste e critério de
+conclusão. \\
+\end{longtable}
+
+O primeiro aprendizado é simples: \textbf{proximidade textual não
+significa responsabilidade igual}.
+
+\hypertarget{o-custo-do-manual-monoluxedtico}{%
+\section{O custo do manual
+monolítico}\label{o-custo-do-manual-monoluxedtico}}
+
+O manual único cria quatro dificuldades:
+
+\begin{itemize}
+\tightlist
+\item
+  \textbf{Decisão:} o mecânico precisa ler explicações extensas antes de
+  encontrar o próximo passo.
+\item
+  \textbf{Autoridade:} uma história antiga pode parecer tão obrigatória
+  quanto uma regra atual.
+\item
+  \textbf{Aplicabilidade:} um procedimento correto para determinado
+  motor pode ser perigoso em outro.
+\item
+  \textbf{Evidência:} mesmo quando o serviço funciona, outra pessoa pode
+  não conseguir reconstruir qual fonte, medição ou decisão foi
+  utilizada.
+\end{itemize}
+
+Essas dificuldades têm uma origem comum: reunir o conhecimento em um
+único lugar não garante que ele esteja organizado de forma útil para uma
+tarefa concreta.
+
+\begin{warningbox}{Conteúdo completo pode continuar inutilizável}
+
+O problema não é apenas a ausência de conhecimento, mas a dificuldade de
+localizar a informação correta, reconhecer sua autoridade e aplicá-la na
+situação adequada.
+
+\end{warningbox}
+
+\hypertarget{o-cartuxe3o-operacional-do-chefe-da-oficina}{%
+\section{O cartão operacional do chefe da
+oficina}\label{o-cartuxe3o-operacional-do-chefe-da-oficina}}
+
+``Cartão operacional'' não é um termo universal de oficinas. Neste
+exemplo, ele representa uma ficha curta que o chefe consulta para
+coordenar qualquer serviço. No cenário técnico, seu equivalente é o
+\textbf{Agent Card}: o conteúdo HOT que concentra missão, invariantes,
+roteamento, condições de parada e evidência mínima.
+
+O primeiro refactor não cria várias pastas, mas separa aquilo que o
+mecânico precisa ter disponível em praticamente todos os serviços.
+
+O cartão operacional contém:
+
+\begin{itemize}
+\tightlist
+\item
+  \textbf{responsabilidade:} coordenar montagem e diagnóstico;
+\item
+  \textbf{identificação:} confirmar motor e componente antes de agir;
+\item
+  \textbf{segurança:} não inventar especificações;
+\item
+  \textbf{encaminhamento:} usar a ordem de serviço correspondente;
+\item
+  \textbf{especialização:} chamar quem possui uma habilidade específica;
+\item
+  \textbf{parada:} interromper quando fonte, ferramenta ou condição
+  estiver ausente;
+\item
+  \textbf{conclusão:} finalizar somente depois de testes e registros.
+\end{itemize}
+
+\begin{infobox}{Por que o cartão permanece curto}
+
+O cartão concentra o que precisa estar disponível de forma recorrente,
+mas não substitui procedimentos, conhecimento especializado ou
+referências consultadas apenas quando aplicáveis.
+
+\end{infobox}
+
+\hypertarget{o-que-nuxe3o-deve-entrar-no-cartuxe3o}{%
+\subsection{O que não deve entrar no
+cartão}\label{o-que-nuxe3o-deve-entrar-no-cartuxe3o}}
+
+Não pertencem ao cartão operacional:
+
+\begin{itemize}
+\tightlist
+\item
+  catálogo completo de motores;
+\item
+  todas as sequências de montagem;
+\item
+  histórico de incidentes;
+\item
+  formulários de todas as inspeções;
+\item
+  explicações extensas sobre materiais;
+\item
+  medições específicas de um componente.
+\end{itemize}
+
+Se todos esses detalhes forem incorporados ao cartão operacional, o
+refactor apenas recriará o manual monolítico com outro nome.
+
+\hypertarget{a-ordem-de-serviuxe7o}{%
+\section{A ordem de serviço}\label{a-ordem-de-serviuxe7o}}
+
+O cartão informa que um procedimento precisa ser escolhido, enquanto a
+ordem de serviço coordena uma atividade específica. Para instalar um
+cabeçote, por exemplo, ela poderia organizar o trabalho desta forma:
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\FunctionTok{\# Instalação de cabeçote}
+
+\FunctionTok{\#\# Pré{-}condições}
+
+\SpecialStringTok{{-} }\NormalTok{motor identificado;}
+\SpecialStringTok{{-} }\NormalTok{peça compatível;}
+\SpecialStringTok{{-} }\NormalTok{manual aplicável disponível;}
+\SpecialStringTok{{-} }\NormalTok{instrumentos verificados;}
+\SpecialStringTok{{-} }\NormalTok{superfície preparada.}
+
+\FunctionTok{\#\# Procedimento}
+
+\SpecialStringTok{1. }\NormalTok{Inspecionar as superfícies.}
+\SpecialStringTok{2. }\NormalTok{Medir a planicidade.}
+\SpecialStringTok{3. }\NormalTok{Validar junta e parafusos.}
+\SpecialStringTok{4. }\NormalTok{Consultar sequência e valores aplicáveis.}
+\SpecialStringTok{5. }\NormalTok{Executar a instalação.}
+\SpecialStringTok{6. }\NormalTok{Registrar medições e componentes.}
+\SpecialStringTok{7. }\NormalTok{Realizar os testes finais.}
+
+\FunctionTok{\#\# Condições de parada}
+
+\SpecialStringTok{{-} }\NormalTok{especificação ausente;}
+\SpecialStringTok{{-} }\NormalTok{medição fora da tolerância;}
+\SpecialStringTok{{-} }\NormalTok{componente incompatível;}
+\SpecialStringTok{{-} }\NormalTok{instrumento sem verificação;}
+\SpecialStringTok{{-} }\NormalTok{evidência insuficiente.}
+\end{Highlighting}
+\end{Shaded}
+
+A ordem de serviço não precisa explicar profundamente a função de cada
+componente; seu papel é coordenar pessoas, fontes, instrumentos e
+verificações necessários para atingir um resultado.
+
+\hypertarget{a-capacidade-especializada}{%
+\section{A capacidade especializada}\label{a-capacidade-especializada}}
+
+Durante a instalação, algumas atividades exigem conhecimento,
+instrumento e método próprios. \textbf{Medir planicidade} é uma delas e
+pode ser necessário em diferentes serviços, como diagnóstico, montagem,
+retífica ou inspeção.
+
+Uma capacidade especializada possui:
+
+\begin{itemize}
+\tightlist
+\item
+  sinal claro de aplicabilidade;
+\item
+  escopo delimitado;
+\item
+  método conhecido;
+\item
+  entradas necessárias;
+\item
+  resultado verificável;
+\item
+  critérios de falha;
+\item
+  registro do que foi executado.
+\end{itemize}
+
+Nem todo procedimento, porém, constitui uma capacidade independente.
+\textbf{Instalar o cabeçote} coordena várias ações, fontes e
+verificações para atingir um objetivo, enquanto \textbf{medir
+planicidade} representa uma capacidade delimitada e reutilizável que
+pode participar de diferentes ordens de serviço.
+
+\hypertarget{o-manual-consultivo}{%
+\section{O manual consultivo}\label{o-manual-consultivo}}
+
+O manual deixa de concentrar responsabilidades diferentes e passa a
+reunir o conhecimento necessário para compreender componentes, materiais
+e situações de uso, sem assumir o papel de coordenar o serviço ou impor
+regras por si só.
+
+Ele pode explicar:
+
+\begin{itemize}
+\tightlist
+\item
+  função dos componentes;
+\item
+  diferenças entre materiais;
+\item
+  tipos de falha;
+\item
+  instrumentos de medição;
+\item
+  sinais de desgaste;
+\item
+  compatibilidade entre peças;
+\item
+  histórico de determinado modelo.
+\end{itemize}
+
+Esse conteúdo apoia a decisão, mas não substitui a ordem de serviço nem
+deve ocultar uma obrigação crítica em um parágrafo explicativo.
+
+Regras e explicações precisam permanecer distinguíveis porque produzem
+efeitos diferentes: quando uma regra muda, sua fonte e autoridade devem
+continuar reconhecíveis; quando muda uma explicação consultiva, isso não
+implica necessariamente uma mudança de obrigação. Separar essas
+responsabilidades reduz o risco de tratar conhecimento ilustrativo como
+regra obrigatória.
+
+\hypertarget{o-teste-e-o-laudo}{%
+\section{O teste e o laudo}\label{o-teste-e-o-laudo}}
+
+Uma oficina organizada não considera o trabalho concluído apenas porque
+o motor ligou.
+
+O teste verifica se o resultado atende aos critérios esperados, enquanto
+o laudo registra:
+
+\begin{itemize}
+\tightlist
+\item
+  identificação do motor;
+\item
+  ordem de serviço utilizada;
+\item
+  fontes consultadas;
+\item
+  instrumentos e medições;
+\item
+  peças aplicadas;
+\item
+  testes executados;
+\item
+  resultado;
+\item
+  exceções e riscos residuais.
+\end{itemize}
+
+Encontrar a instrução correta não prova que ela foi aplicada, assim como
+executar o procedimento não demonstra, por si só, que o resultado atende
+aos critérios esperados.
+
+A sequência passa por cinco momentos: escolher a ordem correta,
+consultar o manual aplicável, executar a capacidade necessária, realizar
+os testes e registrar o laudo.
+
+\begin{evidencebox}{O laudo preserva a evidência da execução}
+
+O registro deve permitir que outra pessoa compreenda o que foi feito,
+quais fontes foram utilizadas, quais testes foram executados, quais
+resultados foram obtidos e por que o serviço foi considerado concluído.
+
+\end{evidencebox}
+
+\hypertarget{exemplo-guiado-uma-jornada-completa-pela-oficina}{%
+\section{Exemplo guiado --- uma jornada completa pela
+oficina}\label{exemplo-guiado-uma-jornada-completa-pela-oficina}}
+
+O cenário a seguir reúne os elementos apresentados até aqui em um único
+serviço fictício. A ideia não é memorizar cada etapa, mas observar como
+\textbf{cartão operacional, ordem de serviço, manual, capacidades
+especializadas, testes e laudo} entram em momentos diferentes da
+execução.
+
+\begin{quote}
+\textbf{Cenário:} um veículo chega com perda de potência depois de um
+reparo recente. O cliente relata aquecimento e consumo de líquido de
+arrefecimento, mas a oficina ainda não sabe se a causa está no cabeçote,
+na vedação, na circulação ou em outro componente.
+\end{quote}
+
+\hypertarget{recepuxe7uxe3o-e-identificauxe7uxe3o}{%
+\subsection{1. Recepção e
+identificação}\label{recepuxe7uxe3o-e-identificauxe7uxe3o}}
+
+A primeira atividade não é desmontar. A oficina começa registrando:
+
+\begin{itemize}
+\tightlist
+\item
+  identificação do veículo e do motor;
+\item
+  serviço anterior conhecido;
+\item
+  sintomas relatados;
+\item
+  momento em que a falha aparece;
+\item
+  alertas observados;
+\item
+  autorização inicial.
+\end{itemize}
+
+\textbf{Ponto de decisão:} se a identificação do motor estiver
+incompleta, o cartão operacional determina a interrupção da seleção do
+procedimento. Uma ordem aparentemente semelhante não deve ser escolhida
+apenas por conveniência.
+
+\begin{center}\rule{0.5\linewidth}{0.5pt}\end{center}
+
+\hypertarget{escolha-da-ordem-de-serviuxe7o}{%
+\subsection{2. Escolha da ordem de
+serviço}\label{escolha-da-ordem-de-serviuxe7o}}
+
+O chefe seleciona uma ordem de \textbf{diagnóstico inicial}, não uma
+ordem de instalação, porque o sintoma ainda não demonstra qual é a
+causa.
+
+A ordem escolhida orienta:
+
+\begin{enumerate}
+\def\labelenumi{\arabic{enumi}.}
+\tightlist
+\item
+  confirmar os sintomas;
+\item
+  executar inspeções não invasivas;
+\item
+  registrar medições iniciais;
+\item
+  comparar resultados com a fonte aplicável;
+\item
+  decidir se existe fundamento para desmontagem;
+\item
+  solicitar autorização adicional quando necessária.
+\end{enumerate}
+
+\begin{warningbox}{Atalho perigoso}
+
+Uma oficina desorganizada poderia pular diretamente para ``trocar a
+junta''. A oficina organizada mantém separadas hipótese, teste e
+conclusão.
+
+\end{warningbox}
+
+\hypertarget{consulta-ao-manual}{%
+\subsection{3. Consulta ao manual}\label{consulta-ao-manual}}
+
+Com a ordem definida, o mecânico consulta apenas as seções relacionadas
+ao motor identificado e aos testes previstos. O manual ajuda a
+interpretar as medições, reconhecer padrões de falha e compreender as
+limitações de cada teste.
+
+Uma medição isolada pode admitir diferentes interpretações: \textbf{o
+manual sustenta a leitura, enquanto a ordem de serviço determina quando
+essa informação participa da decisão.}
+
+\begin{center}\rule{0.5\linewidth}{0.5pt}\end{center}
+
+\hypertarget{uso-de-capacidades-especializadas}{%
+\subsection{4. Uso de capacidades
+especializadas}\label{uso-de-capacidades-especializadas}}
+
+A ordem exige duas capacidades que não estão disponíveis com o mesmo
+profissional:
+
+\begin{itemize}
+\tightlist
+\item
+  teste do sistema de arrefecimento;
+\item
+  medição de vedação dos cilindros.
+\end{itemize}
+
+Cada especialista recebe as entradas necessárias, executa um método
+conhecido e devolve um resultado verificável. O chefe não precisa copiar
+todo o método para dentro da ordem de serviço.
+
+\textbf{Até aqui, cada elemento preservou sua responsabilidade:}
+
+\texttt{cartão\ →\ orienta} · \texttt{ordem\ →\ coordena} ·
+\texttt{manual\ →\ explica} · \texttt{capacidade\ →\ executa}
+
+\begin{center}\rule{0.5\linewidth}{0.5pt}\end{center}
+
+\hypertarget{decisuxe3o-intermediuxe1ria}{%
+\subsection{5. Decisão
+intermediária}\label{decisuxe3o-intermediuxe1ria}}
+
+Os resultados apontam para perda de vedação, mas existe uma
+inconsistência entre duas medições. A condição de parada impede que a
+desmontagem prossiga automaticamente.
+
+A oficina então:
+
+\begin{itemize}
+\tightlist
+\item
+  repete a medição com instrumento verificado;
+\item
+  registra o valor anterior e o novo;
+\item
+  consulta a nota aplicável ao modelo;
+\item
+  confirma a hipótese somente depois da convergência.
+\end{itemize}
+
+\begin{tipbox}{Parar também é uma decisão}
+
+Interromper o fluxo não representa fracasso quando o fundamento ainda é
+insuficiente. A condição de parada evita que uma hipótese seja tratada
+prematuramente como conclusão.
+
+\end{tipbox}
+
+\hypertarget{execuuxe7uxe3o-e-conclusuxe3o}{%
+\subsection{6. Execução e
+conclusão}\label{execuuxe7uxe3o-e-conclusuxe3o}}
+
+Depois da autorização, outra ordem coordena desmontagem, inspeção,
+preparação, montagem e testes finais. As capacidades especializadas são
+utilizadas nos momentos correspondentes.
+
+O veículo não é liberado apenas porque o motor voltou a funcionar. A
+oficina verifica os critérios definidos e produz um laudo com medições,
+componentes, fontes consultadas e resultado.
+
+\begin{evidencebox}{O ciclo precisa ser reconstruível}
+
+Ao final, outra pessoa deve conseguir compreender o objetivo, as
+decisões tomadas, as fontes utilizadas, os testes executados e o motivo
+pelo qual o serviço foi considerado concluído.
+
+\end{evidencebox}
+
+\hypertarget{o-mesmo-serviuxe7o-em-uma-oficina-desorganizada}{%
+\section{O mesmo serviço em uma oficina
+desorganizada}\label{o-mesmo-serviuxe7o-em-uma-oficina-desorganizada}}
+
+Agora imagine o mesmo serviço sem a separação de responsabilidades
+construída no exemplo anterior.
+
+O primeiro mecânico encontra um relato antigo sobre um motor semelhante
+e conclui que a junta é a causa mais provável. O segundo lembra de uma
+recomendação informal e sugere outro teste, enquanto o chefe possui uma
+atualização mais recente que permaneceu em uma folha separada.
+
+O especialista executa uma medição correta, mas não registra a condição
+do instrumento. Ao final, o motor funciona, porém ninguém consegue
+reconstruir por que determinada sequência foi escolhida, quais
+informações sustentaram a decisão ou se todos os critérios necessários
+foram realmente verificados.
+
+O problema não está na falta de experiência das pessoas envolvidas. Cada
+uma possui uma parte útil do conhecimento, mas a oficina não consegue
+combinar essas informações com autoridade, aplicabilidade e evidência
+suficientes para responder com segurança:
+
+\begin{itemize}
+\tightlist
+\item
+  qual informação possui força obrigatória;
+\item
+  qual informação é apenas histórica ou consultiva;
+\item
+  qual procedimento se aplica à situação;
+\item
+  qual especialista deve participar;
+\item
+  qual resultado permite avançar;
+\item
+  qual registro demonstra a conclusão.
+\end{itemize}
+
+O serviço pode até terminar com um resultado aparentemente correto, mas
+o processo permanece difícil de verificar, explicar e repetir.
+
+\hypertarget{cinco-falhas-que-a-separauxe7uxe3o-precisa-evitar}{%
+\section{Cinco falhas que a separação precisa
+evitar}\label{cinco-falhas-que-a-separauxe7uxe3o-precisa-evitar}}
+
+Separar responsabilidades não resolve o problema se os novos elementos
+continuarem ambíguos, sobrepostos ou sem evidência. Cinco falhas ajudam
+a reconhecer quando isso está acontecendo.
+
+\begin{enumerate}
+\def\labelenumi{\arabic{enumi}.}
+\item
+  \textbf{Instrução órfã}\\
+  Uma folha diz ``verifique a vedação'', mas não informa em qual
+  serviço, para qual motor ou com qual resultado esperado.\\
+  \textbf{Correção:} conecte a instrução a uma ordem, à fonte aplicável
+  e ao registro esperado.
+\item
+  \textbf{Ordem que tenta ensinar tudo}\\
+  A ordem copia capítulos inteiros do manual e descreve todos os
+  instrumentos, misturando coordenação com conhecimento consultivo.\\
+  \textbf{Correção:} mantenha na ordem apenas o necessário para
+  coordenar o serviço e consulte o detalhe quando a etapa exigir.
+\item
+  \textbf{Especialista sem limite}\\
+  O profissional domina uma medição, mas passa a decidir sozinho se o
+  veículo pode ser liberado.\\
+  \textbf{Correção:} delimite a capacidade e devolva o resultado à
+  coordenação responsável pela decisão.
+\item
+  \textbf{Dica tratada como obrigação}\\
+  Uma solução utilizada no passado passa a ser aplicada como regra
+  geral, sem verificar se continua válida para aquele serviço.\\
+  \textbf{Correção:} confirme origem, aplicabilidade e autoridade antes
+  de transformar experiência em determinação.
+\item
+  \textbf{Laudo sem lastro}\\
+  O documento declara ``aprovado'' sem relacionar a conclusão aos
+  testes, medições e critérios utilizados.\\
+  \textbf{Correção:} registre evidências que permitam reconstruir e
+  conferir o resultado.
+\end{enumerate}
+
+\hypertarget{como-saber-se-a-oficina-estuxe1-realmente-organizada}{%
+\section{Como saber se a oficina está realmente
+organizada}\label{como-saber-se-a-oficina-estuxe1-realmente-organizada}}
+
+Um conjunto de armários bem etiquetados não basta. A organização só
+demonstra seu valor quando melhora a forma como o trabalho é decidido,
+executado e verificado.
+
+Perguntas práticas ajudam a observar esse efeito:
+
+\begin{itemize}
+\tightlist
+\item
+  O mecânico identifica rapidamente a ordem aplicável?
+\item
+  Uma busca por um sintoma conduz à fonte correta?
+\item
+  Ordens inadequadas permanecem fora da seleção?
+\item
+  O profissional reconhece quando deve parar?
+\item
+  Capacidades especializadas devolvem resultados verificáveis?
+\item
+  O teste final distingue ``motor ligou'' de ``serviço aprovado''?
+\item
+  O laudo permite que outra pessoa reconstrua a execução?
+\end{itemize}
+
+\begin{evidencebox}{Organização deve mudar o trabalho observado}
+
+Se os armários ficaram mais organizados, mas as pessoas continuam
+escolhendo instruções inadequadas, ignorando condições de parada ou
+produzindo conclusões sem evidência, a oficina apenas reorganizou o
+caos.
+
+\end{evidencebox}
+
+\hypertarget{como-evoluir-o-acervo-sem-voltar-ao-caos}{%
+\section{Como evoluir o acervo sem voltar ao
+caos}\label{como-evoluir-o-acervo-sem-voltar-ao-caos}}
+
+Cada novo conteúdo precisa responder a uma pergunta principal antes de
+ser incorporado ao acervo.
+
+\begin{longtable}[]{@{}
+  >{\raggedright\arraybackslash}p{(\columnwidth - 2\tabcolsep) * \real{0.5000}}
+  >{\raggedright\arraybackslash}p{(\columnwidth - 2\tabcolsep) * \real{0.5000}}@{}}
+\toprule\noalign{}
+\begin{minipage}[b]{\linewidth}\raggedright
+Pergunta
+\end{minipage} & \begin{minipage}[b]{\linewidth}\raggedright
+Destino mais provável
+\end{minipage} \\
+\midrule\noalign{}
+\endhead
+\bottomrule\noalign{}
+\endlastfoot
+Muda uma decisão permanente do responsável? & Cartão do chefe. \\
+Coordena uma sequência para atingir um objetivo? & Ordem de serviço. \\
+Ensina uma atividade delimitada e reutilizável? & Capacidade
+especializada. \\
+Explica o domínio ou sustenta uma análise? & Manual consultivo. \\
+Define como verificar ou registrar um resultado? & Teste e laudo. \\
+\end{longtable}
+
+\begin{tipbox}{Sinal de responsabilidades misturadas}
+
+Quando uma informação parece pertencer a vários lugares ao mesmo tempo,
+ela pode estar reunindo responsabilidades diferentes e deve ser
+examinada antes de ser duplicada.
+
+\end{tipbox}
+
+Além de classificar o conteúdo novo, a oficina precisa revisar
+periodicamente aquilo que já existe e procurar sinais de degradação:
+
+\begin{itemize}
+\tightlist
+\item
+  ordens sem responsável;
+\item
+  capacidades que deixaram de ser utilizadas;
+\item
+  manuais sem fonte reconhecível;
+\item
+  versões concorrentes da mesma informação;
+\item
+  registros que não sustentam a conclusão;
+\item
+  conteúdo duplicado;
+\item
+  instruções que não informam quando se aplicam.
+\end{itemize}
+
+\hypertarget{o-modelo-mental-completo-da-oficina}{%
+\section{O modelo mental completo da
+oficina}\label{o-modelo-mental-completo-da-oficina}}
+
+Antes de deixar a metáfora, podemos reunir as cinco responsabilidades
+construídas até aqui:
+
+\begin{longtable}[]{@{}
+  >{\raggedright\arraybackslash}p{(\columnwidth - 2\tabcolsep) * \real{0.5000}}
+  >{\raggedright\arraybackslash}p{(\columnwidth - 2\tabcolsep) * \real{0.5000}}@{}}
+\toprule\noalign{}
+\begin{minipage}[b]{\linewidth}\raggedright
+Elemento
+\end{minipage} & \begin{minipage}[b]{\linewidth}\raggedright
+Responsabilidade
+\end{minipage} \\
+\midrule\noalign{}
+\endhead
+\bottomrule\noalign{}
+\endlastfoot
+Cartão do chefe & Papel, decisões permanentes, encaminhamento e
+condições de parada. \\
+Ordem de serviço & Coordenação de uma sequência para atingir um
+objetivo. \\
+Capacidade especializada & Execução de uma atividade delimitada,
+reutilizável e verificável. \\
+Manual consultivo & Conhecimento utilizado para compreender o domínio e
+apoiar decisões. \\
+Teste e laudo & Verificação dos critérios e registro do resultado. \\
+\end{longtable}
+
+Até aqui, não foi necessário discutir repositórios, APIs, schemas ou
+modelos de linguagem. A oficina serviu para construir uma estrutura de
+responsabilidades que o leitor possa reconhecer antes de encontrar seus
+equivalentes técnicos.
+
+\hypertarget{os-limites-da-metuxe1fora}{%
+\section{Os limites da metáfora}\label{os-limites-da-metuxe1fora}}
+
+A oficina ajuda a enxergar essas responsabilidades, mas não representa
+toda a complexidade de um sistema de software com IA.
+
+No cenário técnico:
+
+\begin{itemize}
+\tightlist
+\item
+  um agente pode depender de um modelo com comportamento probabilístico;
+\item
+  a descoberta de informações pode envolver busca lexical ou semântica;
+\item
+  uma capacidade pode executar código ou chamar uma API;
+\item
+  uma mesma tarefa pode atravessar vários serviços e fontes;
+\item
+  parte da execução pode terminar apenas depois de segundos ou minutos;
+\item
+  eventos e falhas podem precisar de correlação automática;
+\item
+  acesso, privacidade, latência e custo também precisam ser controlados.
+\end{itemize}
+
+\begin{infobox}{Busca lexical e busca semântica}
+
+\textbf{Busca lexical} procura correspondências entre os termos
+consultados e os termos presentes no conteúdo. Se a consulta contém
+``falha de autenticação'', documentos com essas palavras tendem a
+receber maior relevância.
+
+\textbf{Busca semântica} procura conteúdos relacionados pelo
+significado, mesmo quando as mesmas palavras não aparecem. Uma consulta
+por ``falha de login'', por exemplo, pode recuperar conteúdo sobre
+``erro de autenticação'' se os conceitos forem considerados
+semanticamente próximos.
+
+As duas abordagens podem ser combinadas: sistemas de recuperação
+frequentemente usam sinais lexicais e semânticos para melhorar a
+qualidade dos resultados.
+
+\end{infobox}
+
+A metáfora construiu o modelo mental; a próxima parte dará nomes
+técnicos às responsabilidades, mostrará como elas podem ser organizadas
+e acrescentará os mecanismos necessários para operá-las em um sistema
+real.
+
+\newpage
+
+\hypertarget{parte-ii---a-ponte-para-engenharia-de-contexto}{%
+\chapter{Parte II - A ponte para engenharia de
+contexto}\label{parte-ii---a-ponte-para-engenharia-de-contexto}}
+
+A oficina construiu primeiro um modelo de responsabilidades sem depender
+do vocabulário técnico. A partir daqui, essas mesmas funções serão
+traduzidas para estruturas usadas em sistemas com agentes, preservando a
+lógica aprendida sem assumir uma equivalência literal entre a metáfora e
+a implementação.
+
+\hypertarget{da-oficina-para-o-reposituxf3rio}{%
+\section{Da oficina para o
+repositório}\label{da-oficina-para-o-reposituxf3rio}}
+
+Agora os cinco elementos recebem nomes técnicos.
+
+\begin{longtable}[]{@{}
+  >{\raggedright\arraybackslash}p{(\columnwidth - 4\tabcolsep) * \real{0.3333}}
+  >{\raggedright\arraybackslash}p{(\columnwidth - 4\tabcolsep) * \real{0.3333}}
+  >{\raggedright\arraybackslash}p{(\columnwidth - 4\tabcolsep) * \real{0.3333}}@{}}
+\toprule\noalign{}
+\begin{minipage}[b]{\linewidth}\raggedright
+Oficina
+\end{minipage} & \begin{minipage}[b]{\linewidth}\raggedright
+Engenharia de contexto
+\end{minipage} & \begin{minipage}[b]{\linewidth}\raggedright
+Responsabilidade
+\end{minipage} \\
+\midrule\noalign{}
+\endhead
+\bottomrule\noalign{}
+\endlastfoot
+Cartão do chefe & Agent & Define papel, invariantes, roteamento, parada
+e conclusão. \\
+Ordem de serviço & Playbook & Coordena etapas para atingir um
+objetivo. \\
+Capacidade especializada & Skill & Encapsula uma capacidade reutilizável
+com sinais claros de aplicabilidade. \\
+Manual consultivo & Knowledge & Apoia compreensão e decisão com
+conhecimento consultivo. \\
+Teste e laudo & Eval e Evidence & Compara o esperado com o observado e
+preserva o registro da execução. \\
+\end{longtable}
+
+O mapeamento não afirma que uma oficina funciona como software. Ele
+preserva relações que agora receberão implementação técnica:
+coordenação, capacidade, conhecimento, verificação e evidência.
+
+\hypertarget{contexto-nuxe3o-uxe9-apenas-prompt}{%
+\section{Contexto não é apenas
+prompt}\label{contexto-nuxe3o-uxe9-apenas-prompt}}
+
+Em um sistema com agentes, contexto inclui tudo que o modelo pode
+utilizar durante uma decisão:
+
+\begin{itemize}
+\tightlist
+\item
+  instruções do sistema;
+\item
+  conversa;
+\item
+  descrição de skills e tools;
+\item
+  arquivos recuperados;
+\item
+  resultados de APIs;
+\item
+  memória;
+\item
+  plano atual;
+\item
+  estado da execução;
+\item
+  mensagens de erro;
+\item
+  evidências já produzidas.
+\end{itemize}
+
+\textbf{Context engineering} é a disciplina de selecionar, organizar e
+manter esse conjunto de informações para aumentar a chance de decisões,
+execuções e verificações adequadas.\footnote{A noção de contexto como
+  recurso limitado e selecionado é consistente com práticas
+  contemporâneas de context engineering para agentes.}
+
+O objetivo é maximizar utilidade, não simplesmente diminuir texto.
+Conteúdo irrelevante aumenta ruído, enquanto conteúdo necessário ausente
+deixa decisões sem fundamento.
+
+\Needspace{15\baselineskip}
+
+Ao organizar contexto, duas cargas precisam ser observadas porque
+representam problemas diferentes.
+
+\begin{infobox}{Duas cargas, dois problemas diferentes}
+
+\textbf{Carga para o leitor} é o esforço necessário para compreender e
+relacionar as informações apresentadas.
+
+\textbf{Carga para o runtime} é a quantidade de contexto que o sistema
+precisa carregar e processar durante uma execução, como tokens,
+descrições de tools, arquivos recuperados e resultados intermediários.
+
+\end{infobox}
+
+Reduzir uma carga não reduz automaticamente a outra. Um conteúdo pode
+ser fácil de compreender e ainda enviar contexto demais ao modelo; da
+mesma forma, uma explicação conceitualmente difícil pode ocupar poucos
+tokens.
+
+Por isso, engenharia de contexto precisa equilibrar as duas dimensões:
+\textbf{facilitar a compreensão sem carregar na execução mais informação
+do que a tarefa necessita.}
+
+\hypertarget{quando-carregar-hot-warm-e-cold}{%
+\section{Quando carregar: HOT, WARM e
+COLD}\label{quando-carregar-hot-warm-e-cold}}
+
+Na oficina, alguns elementos permaneciam disponíveis em praticamente
+todo serviço, enquanto outros eram consultados apenas quando a situação
+indicava sua aplicabilidade. \textbf{HOT, WARM e COLD} dão nome a essa
+política de carregamento: classificam \textbf{quando um conteúdo tende a
+entrar no contexto}, não sua importância, autoridade ou qualidade.
+
+\hypertarget{hot}{%
+\subsection{HOT}\label{hot}}
+
+\textbf{Definição:} conteúdo disponível desde o início ou necessário em
+uma parcela ampla das decisões daquele agente.
+
+\textbf{Problema resolvido:} evita que o agente precise redescobrir
+missão, limites e caminhos de navegação a cada tarefa.
+
+Exemplos:
+
+\begin{itemize}
+\tightlist
+\item
+  \textbf{Missão:} delimita o resultado que o agente coordena.
+\item
+  \textbf{Invariante crítica:} estabelece uma condição que deve
+  permanecer verdadeira nas execuções relevantes, como ``não afirmar
+  conclusão sem evidência''.
+\item
+  \textbf{Mapa de capacidades:} informa, de forma resumida, quais skills
+  e playbooks existem e quais sinais indicam sua aplicabilidade.
+\item
+  \textbf{Condição de parada:} informa quando solicitar dados,
+  autorização ou ajuda.
+\item
+  \textbf{Definition of Done:} descreve o resultado mínimo verificável.
+\end{itemize}
+
+\textbf{Critério de decisão:} se retirar o conteúdo fizer o agente
+perder orientação em uma parcela ampla das tarefas, ele é candidato a
+HOT. A classificação deve ser confirmada por testes; importância isolada
+não basta.
+
+\textbf{Contraexemplo:} o manual completo de uma integração pode ser
+importante, mas não precisa permanecer carregado durante uma tarefa que
+apenas renomeia uma classe.
+
+\hypertarget{warm}{%
+\subsection{WARM}\label{warm}}
+
+\textbf{Definição:} conteúdo recuperado sob demanda quando a tarefa
+apresenta um sinal observável de aplicabilidade.
+
+\textbf{Problema resolvido:} mantém o contexto inicial enxuto sem
+obrigar o agente a trabalhar sem a instrução especializada necessária.
+
+Exemplos:
+
+\begin{itemize}
+\tightlist
+\item
+  playbook de operação assíncrona, recuperado quando o processamento
+  continua depois da resposta HTTP;
+\item
+  skill de validação OpenAPI, aplicável quando um contrato é criado ou
+  alterado;
+\item
+  documentação de SignalR, recuperada quando a tarefa envolve
+  atualização em tempo real;
+\item
+  catálogo de falhas, consultado quando o erro observado pertence àquele
+  componente.
+\end{itemize}
+
+\textbf{Critério de decisão:} o conteúdo possui sinais claros de
+aplicabilidade, entradas conhecidas e custo razoável de recuperação.
+
+\textbf{Erro comum:} classificar um arquivo como WARM sem declarar como
+reconhecer sua aplicabilidade. Nesse caso, ``recuperar quando
+necessário'' passa a depender de adivinhação.
+
+\hypertarget{cold}{%
+\subsection{COLD}\label{cold}}
+
+\textbf{Definição:} conteúdo recuperado principalmente em exceções,
+investigações, auditorias ou aprofundamentos.
+
+\textbf{Problema resolvido:} preserva conhecimento valioso sem competir
+continuamente com a tarefa comum.
+
+Exemplos:
+
+\begin{itemize}
+\tightlist
+\item
+  \textbf{ADR} (\emph{Architecture Decision Record}) substituída,
+  recuperada para compreender uma decisão histórica;
+\item
+  \textbf{Post-mortem} --- análise realizada após um incidente para
+  registrar causas e aprendizados;
+\item
+  \textbf{Comparação} extensa entre alternativas;
+\item
+  \textbf{Evidence Record} arquivado para auditoria ou regressão.
+\end{itemize}
+
+\textbf{Critério de decisão:} baixa frequência de uso, alto nível de
+detalhe ou aplicação restrita a situações específicas.
+
+\textbf{Contraexemplo:} uma norma regulatória pode ser consultada
+raramente e continuar obrigatória quando aplicável. Ser COLD não
+significa ser opcional.
+
+\hypertarget{temperatura-nuxe3o-define-autoridade}{%
+\subsection{Temperatura não define
+autoridade}\label{temperatura-nuxe3o-define-autoridade}}
+
+HOT, WARM e COLD respondem principalmente \textbf{quando carregar
+determinado conteúdo para determinado consumidor}. Outra dimensão
+responde \textbf{quanto esse conteúdo obriga quando aplicável}.
+
+Neste livro, \textbf{NORMATIVE} identifica conteúdo que deve ser
+obedecido dentro de sua aplicabilidade declarada. Por isso, temperatura
+e autoridade precisam permanecer independentes.
+
+\begin{infobox}{COLD também pode ser NORMATIVE}
+
+Uma regra de recuperação de desastre pode ser consultada apenas uma vez
+por ano e ainda precisar ser obedecida quando aplicável. Nesse caso, ela
+pode ser \textbf{COLD e NORMATIVE} ao mesmo tempo.
+
+\end{infobox}
+
+A temperatura também depende do consumidor. Um catálogo de falhas pode
+ser WARM para um agente de diagnóstico e COLD para outro que apenas
+corrige documentação. Por isso, HOT/WARM/COLD não é uma propriedade
+permanente do arquivo: a classificação precisa ser revista quando o
+padrão de uso mudar.
+
+\hypertarget{progressive-disclosure}{%
+\section{Progressive disclosure}\label{progressive-disclosure}}
+
+Separar o conteúdo em arquivos resolve parte do problema, mas cria
+outro: se o agente recebe todo o acervo, aumenta o ruído; se recebe
+apenas uma orientação genérica, pode não descobrir o detalhe necessário
+para executar a tarefa.
+
+\textbf{Progressive disclosure} organiza essa descoberta em etapas. O
+agente começa com informação suficiente para reconhecer a aplicabilidade
+de um recurso e recupera detalhes adicionais somente quando a tarefa
+exige.
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{orientação inicial}
+\NormalTok{        ↓}
+\NormalTok{sinal de aplicabilidade}
+\NormalTok{        ↓}
+\NormalTok{recurso correspondente}
+\NormalTok{        ↓}
+\NormalTok{detalhe necessário}
+\NormalTok{        ↓}
+\NormalTok{execução e evidência}
+\end{Highlighting}
+\end{Shaded}
+
+Exemplo:
+
+\begin{enumerate}
+\def\labelenumi{\arabic{enumi}.}
+\tightlist
+\item
+  o Agent Card informa que existe um playbook para operações longas;
+\item
+  a tarefa indica que o relatório pode levar minutos;
+\item
+  o agente recupera o playbook assíncrono;
+\item
+  o playbook aponta para a Rule e o Contract aplicáveis;
+\item
+  a Skill valida o contrato;
+\item
+  a execução registra fontes e resultados.
+\end{enumerate}
+
+Se a tarefa for síncrona, o playbook assíncrono não precisa ser
+recuperado. Se a aplicabilidade estiver ambígua, o agente deve pedir a
+informação necessária ou interromper conforme sua condição de parada.
+
+Esse mecanismo complementa HOT/WARM/COLD: a temperatura ajuda a decidir
+\textbf{quando um conteúdo tende a ser carregado}, enquanto progressive
+disclosure organiza \textbf{como chegar ao próximo nível de detalhe sem
+carregar o acervo inteiro desde o início}.
+
+Na especificação Agent Skills, esse princípio aparece em três níveis: os
+metadados \texttt{name} e \texttt{description} ficam disponíveis
+inicialmente, o conteúdo completo do \texttt{SKILL.md} é carregado
+quando a skill é ativada e recursos adicionais são acessados conforme a
+necessidade.\footnote{A anatomia \texttt{SKILL.md}, \texttt{scripts/},
+  \texttt{references/} e \texttt{assets/}, os campos obrigatórios
+  \texttt{name} e \texttt{description} e as restrições de nomenclatura
+  seguem a especificação pública Agent Skills; neste E-book, a mesma
+  anatomia também é usada como convenção organizacional para pacotes que
+  não são skills.}
+
+HOT/WARM/COLD não faz parte da especificação Agent Skills. Neste livro,
+a taxonomia é utilizada como modelo didático para raciocinar sobre
+políticas de carregamento.
+
+\hypertarget{o-que-progressive-disclosure-nuxe3o-garante}{%
+\subsection{O que progressive disclosure não
+garante}\label{o-que-progressive-disclosure-nuxe3o-garante}}
+
+Separar arquivos pode reduzir o volume de contexto quando evita
+\textbf{overfetch} --- recuperar mais conteúdo do que a tarefa necessita
+--- e duplicação. Esse benefício, porém, não é automático: mais
+fragmentação também pode aumentar leituras, latência, falhas de
+recuperação e retrabalho.
+
+Por isso, a eficiência deve ser avaliada pela tarefa completa,
+considerando não apenas o modelo, mas também recuperação, tools,
+infraestrutura e trabalho adicional necessário para chegar a um
+resultado válido.
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{Custo da tarefa válida}
+\NormalTok{    = modelo}
+\NormalTok{    + recuperação}
+\NormalTok{    + tools}
+\NormalTok{    + infraestrutura}
+\NormalTok{    + retrabalho}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{warningbox}{Segregação não garante economia}
+
+Dividir o conteúdo só produz ganho quando o recurso correto é encontrado
+e o detalhe recuperado é suficiente para concluir a tarefa sem leituras
+desnecessárias.
+
+\end{warningbox}
+
+Outro limite está no próprio contexto enviado ao modelo. Estudos sobre
+\textbf{\emph{long context}} observaram degradação em alguns cenários
+quando informações relevantes apareciam em posições intermediárias do
+contexto.\footnote{Pesquisas sobre contexto longo mostram que
+  disponibilidade no prompt não garante uso uniforme da informação,
+  especialmente em posições intermediárias.} Isso justifica testar
+tamanho, posição da informação relevante e nível de ruído, mas não
+estabelece um limite universal para contextos longos.
+
+O comportamento depende do modelo, da tarefa e do protocolo de
+avaliação. Portanto, \textbf{progressive disclosure deve ser tratado
+como uma estratégia a ser medida, não como garantia de menor custo ou
+melhor resposta}.
+
+\hypertarget{a-uxe1rvore-muxednima}{%
+\section{A árvore mínima}\label{a-uxe1rvore-muxednima}}
+
+Depois da ponte conceitual, a estrutura inicial pode permanecer pequena.
+Como esta edição usa o Cursor como host de referência, a organização
+abaixo mantém os artefatos relacionados ao agente dentro de uma
+fronteira comum, sem pressupor que todos sejam mecanismos nativos do
+host.
+
+\textbf{Uma forma mínima de materializar essa organização em um
+repositório é a seguinte:}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{repository/}
+\NormalTok{├── .cursor/}
+\NormalTok{│   ├── README.md}
+\NormalTok{│   ├── rules/}
+\NormalTok{│   ├── agents/}
+\NormalTok{│   ├── skills/}
+\NormalTok{│   │   ├── validate{-}api{-}contract/}
+\NormalTok{│   │   │   ├── SKILL.md}
+\NormalTok{│   │   │   └── contracts/}
+\NormalTok{│   │   │       └── report{-}request.contract.yaml}
+\NormalTok{│   │   └── another{-}skill/}
+\NormalTok{│   │       └── SKILL.md}
+\NormalTok{│   ├── playbooks/}
+\NormalTok{│   ├── knowledge/}
+\NormalTok{│   ├── contracts/}
+\NormalTok{│   ├── evals/}
+\NormalTok{│   │   └── fixtures/}
+\NormalTok{│   ├── evidence/}
+\NormalTok{│   ├── hook{-}scripts/}
+\NormalTok{│   ├── hooks.json}
+\NormalTok{│   └── mcp.json}
+\NormalTok{├── docs/}
+\NormalTok{├── src/}
+\NormalTok{├── tests/}
+\NormalTok{└── README.md}
+\end{Highlighting}
+\end{Shaded}
+
+A árvore deve ser lida em \textbf{duas dimensões independentes}:
+primeiro, pelo mecanismo que faz cada elemento participar da execução;
+depois, pelo escopo de responsabilidade de cada artefato.
+
+\textbf{Mecanismo de execução.} \texttt{rules/}, \texttt{agents/},
+\texttt{skills/}, \texttt{hooks.json} e \texttt{mcp.json} participam de
+funcionalidades reconhecidas pelo Cursor, cada um conforme seu próprio
+mecanismo de descoberta ou configuração.
+
+Já \texttt{README.md}, \texttt{playbooks/}, \texttt{knowledge/},
+\texttt{contracts/}, \texttt{evals/}, \texttt{evidence/} e
+\texttt{hook-scripts/} representam convenções de organização utilizadas
+neste livro. Esses elementos não ganham comportamento apenas por
+existirem dentro de \texttt{.cursor/}; precisam ser ligados a uma Rule,
+Agent, Skill, script, harness ou outro mecanismo capaz de descobri-los,
+recuperá-los ou executá-los.
+
+O caso dos hooks torna essa diferença visível: \texttt{hooks.json}
+configura o mecanismo reconhecido pelo Cursor, enquanto
+\texttt{hook-scripts/} é a convenção adotada neste livro para organizar
+os scripts chamados por essa configuração.
+
+\textbf{Ownership e escopo.} Nem todo artefato de um mesmo tipo precisa
+ocupar uma pasta global. Quando um recurso pertence exclusivamente a uma
+capacidade, mantê-lo próximo dessa capacidade torna sua responsabilidade
+explícita e reduz dependências desnecessárias da estrutura externa.
+
+Por isso, o Contract utilizado apenas pela skill
+\texttt{validate-api-contract} permanece dentro do diretório da própria
+skill:
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{validate{-}api{-}contract/}
+\NormalTok{├── SKILL.md}
+\NormalTok{└── contracts/}
+\NormalTok{    └── report{-}request.contract.yaml}
+\end{Highlighting}
+\end{Shaded}
+
+A especificação Agent Skills permite que uma skill contenha arquivos e
+diretórios adicionais além do \texttt{SKILL.md}, possibilitando que
+recursos necessários àquela capacidade sejam mantidos e recuperados a
+partir de seu próprio pacote.\footnote{A anatomia \texttt{SKILL.md},
+  \texttt{scripts/}, \texttt{references/} e \texttt{assets/}, os campos
+  obrigatórios \texttt{name} e \texttt{description} e as restrições de
+  nomenclatura seguem a especificação pública Agent Skills; neste
+  E-book, a mesma anatomia também é usada como convenção organizacional
+  para pacotes que não são skills.}
+
+Nesse caso, o \texttt{SKILL.md} pode referenciar o Contract por um
+caminho relativo, preservando a relação entre a capacidade e o recurso
+que ela utiliza.
+
+A pasta \texttt{.cursor/contracts/}, por outro lado, é reservada
+\textbf{nesta organização} para Contracts que possuam múltiplos
+consumidores reais, como diferentes skills, agents ou fluxos. Esses
+artefatos deixam de pertencer exclusivamente a uma capacidade e passam a
+funcionar como fontes canônicas compartilhadas.
+
+Portanto, a localização comunica também uma decisão de escopo:
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{recurso exclusivo de uma capacidade}
+\NormalTok{→ permanece junto ao proprietário}
+
+\NormalTok{recurso realmente compartilhado}
+\NormalTok{→ pode subir para uma fonte canônica comum}
+\end{Highlighting}
+\end{Shaded}
+
+Essa organização é uma decisão arquitetural deste livro, não uma
+exigência da especificação Agent Skills.
+
+A localização comum dentro de \texttt{.cursor/} reduz fricção de
+navegação e facilita a manutenção, mas não altera a natureza de cada
+elemento: \textbf{estar na mesma árvore não significa possuir o mesmo
+mecanismo de execução, o mesmo ownership ou o mesmo ciclo de
+carregamento}.
+
+\begin{warningbox}{Fonte canônica não significa contexto permanente}
+
+Manter uma única fonte reduz duplicação e divergência, mas não significa
+carregar todo o seu conteúdo em cada execução. Cada artefato deve entrar
+no contexto apenas quando necessário.
+
+\end{warningbox}
+
+\newpage
+
+\hypertarget{parte-iii---contexto-executuxe1vel-no-cursor}{%
+\chapter{Parte III - Contexto executável no
+Cursor}\label{parte-iii---contexto-executuxe1vel-no-cursor}}
+
+Esta parte responde à pergunta que permanecia entre \textbf{organizar
+arquivos} e \textbf{obter comportamento}:
+
+\begin{quote}
+\textbf{Quem interpreta cada artefato e por qual mecanismo ele participa
+da execução?}
+\end{quote}
+
+O Cursor é o host de referência desta edição. A organização conceitual
+construída até aqui continua útil em outros ambientes, mas sua
+implementação depende de mecanismos equivalentes de descoberta,
+carregamento, execução e registro.
+
+\begin{infobox}{O que muda nesta parte}
+
+Até aqui, o foco esteve principalmente em \textbf{como organizar o
+contexto}.
+
+A partir deste ponto, o foco passa a ser \textbf{como esse contexto
+participa de uma execução real}.
+
+\end{infobox}
+
+\hypertarget{o-que-uxe9-nativo-e-o-que-uxe9-convenuxe7uxe3o}{%
+\section{O que é nativo e o que é
+convenção}\label{o-que-uxe9-nativo-e-o-que-uxe9-convenuxe7uxe3o}}
+
+Nem todo arquivo presente no repositório participa da execução pelo
+mesmo mecanismo. Para deixar essa diferença explícita, o livro utiliza
+três marcadores que indicam \textbf{de onde vem o mecanismo que dá
+efeito ao artefato}.
+
+\hypertarget{truxeas-marcadores}{%
+\subsection{Três marcadores}\label{truxeas-marcadores}}
+
+\begin{longtable}[]{@{}
+  >{\raggedright\arraybackslash}p{(\columnwidth - 4\tabcolsep) * \real{0.3333}}
+  >{\raggedright\arraybackslash}p{(\columnwidth - 4\tabcolsep) * \real{0.3333}}
+  >{\raggedright\arraybackslash}p{(\columnwidth - 4\tabcolsep) * \real{0.3333}}@{}}
+\toprule\noalign{}
+\begin{minipage}[b]{\linewidth}\raggedright
+Marcador
+\end{minipage} & \begin{minipage}[b]{\linewidth}\raggedright
+O que significa
+\end{minipage} & \begin{minipage}[b]{\linewidth}\raggedright
+Exemplos
+\end{minipage} \\
+\midrule\noalign{}
+\endhead
+\bottomrule\noalign{}
+\endlastfoot
+\texttt{CURSOR\ NATIVE} & O Cursor reconhece e interpreta o mecanismo. &
+Project Rules, subagents, Agent Skills, Hooks e MCP. \\
+\texttt{OPEN\ SPEC} & O formato é definido por uma especificação aberta.
+& \texttt{SKILL.md} conforme Agent Skills. \\
+\texttt{BOOK\ ONTOLOGY} & A estrutura é uma convenção deste livro e
+precisa ser conectada explicitamente à execução. & Playbooks, Knowledge,
+Contracts, Evals e Evidence. \\
+\end{longtable}
+
+Os marcadores representam dimensões diferentes e podem se sobrepor.
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{Agent Skill}
+\NormalTok{├── OPEN SPEC}
+\NormalTok{│   └── formato SKILL.md}
+\NormalTok{└── CURSOR NATIVE}
+\NormalTok{    └── descoberta e uso pelo Cursor}
+
+\NormalTok{Playbook}
+\NormalTok{└── BOOK ONTOLOGY}
+\NormalTok{    └── precisa de um consumidor explícito}
+\end{Highlighting}
+\end{Shaded}
+
+Portanto, o marcador não responde apenas \textbf{``que tipo de arquivo é
+este?''}. Ele ajuda a responder:
+
+\begin{quote}
+\textbf{Quem conhece esse artefato e por qual mecanismo ele entra na
+execução?}
+\end{quote}
+
+Os caminhos e mecanismos nativos utilizados neste capítulo seguem a
+documentação vigente do Cursor para Rules, Subagents, Agent Skills, MCP
+e Hooks.\footnote{O Cursor reconhece mecanismos próprios para instruções
+  persistentes, subagents, Agent Skills, tools MCP e hooks. Playbooks,
+  knowledge, contracts, evals e evidence são convenções desta edição e
+  precisam de roteamento explícito.}
+
+\hypertarget{host-e-runtime}{%
+\subsection{Host e runtime}\label{host-e-runtime}}
+
+Dois termos ajudam a interpretar essa relação:
+
+\begin{longtable}[]{@{}
+  >{\raggedright\arraybackslash}p{(\columnwidth - 2\tabcolsep) * \real{0.5000}}
+  >{\raggedright\arraybackslash}p{(\columnwidth - 2\tabcolsep) * \real{0.5000}}@{}}
+\toprule\noalign{}
+\begin{minipage}[b]{\linewidth}\raggedright
+Termo
+\end{minipage} & \begin{minipage}[b]{\linewidth}\raggedright
+Papel
+\end{minipage} \\
+\midrule\noalign{}
+\endhead
+\bottomrule\noalign{}
+\endlastfoot
+\textbf{Host} & Aplicação em que o agente opera, como o Cursor. \\
+\textbf{Runtime} & Mecanismos que sustentam a execução: montagem de
+contexto, modelo, tools, estado e controles. \\
+\end{longtable}
+
+Um artefato pode existir no repositório sem que o runtime o carregue,
+recupere ou utilize.
+
+Essa distinção leva a uma regra importante:
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{arquivo existe}
+\NormalTok{≠}
+\NormalTok{arquivo participou da execução}
+\end{Highlighting}
+\end{Shaded}
+
+E mesmo participação não demonstra, sozinha, aplicação correta:
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{artefato encontrado}
+\NormalTok{        ↓}
+\NormalTok{artefato consumido}
+\NormalTok{        ↓}
+\NormalTok{comportamento observado}
+\NormalTok{        ↓}
+\NormalTok{verificação}
+\end{Highlighting}
+\end{Shaded}
+
+\hypertarget{da-transiuxe7uxe3o-uxe0-eviduxeancia}{%
+\subsection{Da transição à
+evidência}\label{da-transiuxe7uxe3o-uxe0-eviduxeancia}}
+
+Para cada ligação apresentada neste capítulo, procure três elementos:
+
+\begin{enumerate}
+\def\labelenumi{\arabic{enumi}.}
+\tightlist
+\item
+  \textbf{transição:} o que deveria acontecer;
+\item
+  \textbf{consumidor:} quem realiza ou interpreta essa passagem;
+\item
+  \textbf{evidência:} o que permite verificar que ela ocorreu.
+\end{enumerate}
+
+A tabela aplica esse critério às principais transições do exemplo:
+
+\begin{longtable}[]{@{}
+  >{\raggedright\arraybackslash}p{(\columnwidth - 4\tabcolsep) * \real{0.3333}}
+  >{\raggedright\arraybackslash}p{(\columnwidth - 4\tabcolsep) * \real{0.3333}}
+  >{\raggedright\arraybackslash}p{(\columnwidth - 4\tabcolsep) * \real{0.3333}}@{}}
+\toprule\noalign{}
+\begin{minipage}[b]{\linewidth}\raggedright
+Transição
+\end{minipage} & \begin{minipage}[b]{\linewidth}\raggedright
+Consumidor
+\end{minipage} & \begin{minipage}[b]{\linewidth}\raggedright
+Sinal observável
+\end{minipage} \\
+\midrule\noalign{}
+\endhead
+\bottomrule\noalign{}
+\endlastfoot
+Pedido → Project Rule & Cursor & Rule aplicável e evidência disponível
+de utilização de seu conteúdo. \\
+Pedido → subagent & Agent pai ou operador & Delegação registrada,
+subagent utilizado e resultado devolvido. \\
+Pedido → Skill & Cursor Agent & Skill descoberta ou invocada e
+\texttt{SKILL.md} utilizado. \\
+Skill → Playbook/Knowledge & Instrução que referencia o recurso &
+Caminho recuperado e conteúdo utilizado. \\
+Agent → tool externa & Cliente MCP do host & Tool, entrada, saída,
+status e correlação observáveis. \\
+Evento → guardrail & Mecanismo de Hooks do Cursor & Evento, comando
+executado, decisão e status retornado. \\
+\end{longtable}
+
+A leitura esperada não é:
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{arquivo presente}
+\NormalTok{→ mecanismo funcionando}
+\end{Highlighting}
+\end{Shaded}
+
+Mas:
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{artefato}
+\NormalTok{→ consumidor}
+\NormalTok{→ participação observável}
+\NormalTok{→ efeito verificável}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{tipbox}{Regra prática}
+
+\textbf{Existência não prova participação. Participação não prova
+aplicação correta.}
+
+Sempre que possível, verifique separadamente:
+
+\begin{itemize}
+\tightlist
+\item
+  o artefato estava disponível;
+\item
+  o mecanismo realmente o utilizou;
+\item
+  o resultado respeitou o comportamento esperado.
+\end{itemize}
+
+\end{tipbox}
+
+\hypertarget{da-tarefa-uxe0-eviduxeancia-em-quatro-movimentos}{%
+\section{Da tarefa à evidência em quatro
+movimentos}\label{da-tarefa-uxe0-eviduxeancia-em-quatro-movimentos}}
+
+O catálogo completo de artefatos é útil, mas não precisa ser aprendido
+de uma vez. Na rota essencial, acompanhe quatro movimentos que preservam
+a relação entre intenção, execução e prova:
+
+\begin{enumerate}
+\def\labelenumi{\arabic{enumi}.}
+\tightlist
+\item
+  \textbf{Decidir:} o Agent identifica a missão, as invariantes e a
+  condição de parada.
+\item
+  \textbf{Recuperar:} o Playbook coordena o fluxo e a Skill traz a
+  capacidade aplicável; Knowledge oferece fundamentação quando
+  necessário.
+\item
+  \textbf{Restringir:} Rule e Contract tornam obrigações e condições
+  observáveis; Assertions registram expectativas derivadas dessas
+  fontes.
+\item
+  \textbf{Verificar:} a Eval executa um cenário previamente definido e o
+  Evidence Record preserva o esperado, o observado, os verificadores, o
+  veredito e as limitações.
+\end{enumerate}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{pedido}
+\NormalTok{→ decisão e roteamento}
+\NormalTok{→ contexto aplicável}
+\NormalTok{→ execução sob restrições}
+\NormalTok{→ comparação com expectativas}
+\NormalTok{→ evidência e decisão}
+\end{Highlighting}
+\end{Shaded}
+
+\Needspace{8\baselineskip}
+
+\begin{tipbox}{Rota essencial}
+
+Este capítulo explica os papéis e acompanha um microfluxo completo.
+Arquivos copiáveis, prompts, schemas e execuções ficam no workbook.
+
+\end{tipbox}
+
+\hypertarget{o-catuxe1logo-essencial-de-artefatos}{%
+\section{O catálogo essencial de
+artefatos}\label{o-catuxe1logo-essencial-de-artefatos}}
+
+\begin{longtable}[]{@{}
+  >{\raggedright\arraybackslash}p{(\columnwidth - 6\tabcolsep) * \real{0.2500}}
+  >{\raggedright\arraybackslash}p{(\columnwidth - 6\tabcolsep) * \real{0.2500}}
+  >{\raggedright\arraybackslash}p{(\columnwidth - 6\tabcolsep) * \real{0.2500}}
+  >{\raggedright\arraybackslash}p{(\columnwidth - 6\tabcolsep) * \real{0.2500}}@{}}
+\toprule\noalign{}
+\begin{minipage}[b]{\linewidth}\raggedright
+Artefato
+\end{minipage} & \begin{minipage}[b]{\linewidth}\raggedright
+Pergunta que responde
+\end{minipage} & \begin{minipage}[b]{\linewidth}\raggedright
+Conteúdo mínimo
+\end{minipage} & \begin{minipage}[b]{\linewidth}\raggedright
+Erro que evita
+\end{minipage} \\
+\midrule\noalign{}
+\endhead
+\bottomrule\noalign{}
+\endlastfoot
+Agent & Quem decide e quando deve parar? & Missão, invariantes,
+roteamento, stop conditions e evidência mínima. & Um agente genérico
+tentando executar qualquer responsabilidade. \\
+Playbook & Como coordenar uma jornada recorrente? & Pré-condições,
+passos, decisões, fallbacks e saídas. & Procedimento longo misturado à
+identidade do Agent. \\
+Skill & Qual capacidade especializada deve ser ativada? & Gatilhos,
+entradas, fluxo, guardrails, recursos e Definition of Done. & Copiar
+instruções especializadas para todo contexto. \\
+Knowledge & Qual fundamento apoia a decisão? & Conceitos, limites,
+fontes e exemplos consultivos. & Tratar explicação como obrigação
+operacional. \\
+Rule & O que é obrigatório, proibido ou exige fallback? & Escopo,
+obrigação, proibição, fallback e evidência. & Regra crítica escondida em
+prosa ou exemplo. \\
+Contract & Que condições observáveis conectam componentes? & Entradas,
+saídas, pré-condições, pós-condições e efeitos proibidos. & Interfaces
+aparentemente compatíveis, mas semanticamente divergentes. \\
+Assertion & Qual expectativa estável será verificada? & Fonte, escopo,
+expected e mecanismo de prova. & Inventar o critério depois de observar
+o resultado. \\
+Eval & Em qual cenário e com quais verificadores comparar? & Massa,
+execução, checks e regra de veredito. & Confundir uma demonstração
+convincente com avaliação reproduzível. \\
+Evidence Record & O que ocorreu e o que ainda não foi provado? &
+Expected, observed, checks, verdict, lineage e limitações. & Transformar
+evidência em narrativa persuasiva. \\
+\end{longtable}
+
+Temperatura, autoridade e tipo continuam separados. Um Contract pode ser
+COLD e NORMATIVE; uma explicação HOT pode ser apenas ADVISORY.
+\textbf{HOT/WARM/COLD responde quando carregar, não quanto o conteúdo
+obriga.}
+
+\hypertarget{do-backend-cauxf3tico-uxe0-separauxe7uxe3o}{%
+\subsection{Do backend caótico à
+separação}\label{do-backend-cauxf3tico-uxe0-separauxe7uxe3o}}
+
+O anti-pattern abaixo mistura identidade, procedimento, política,
+explicação e teste. O problema não é apenas o tamanho: nenhuma parte
+possui ownership, ativação ou mecanismo de prova claro.
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\CommentTok{\textless{}!{-}{-} ANTI{-}PATTERN {-}{-}\textgreater{}}
+\FunctionTok{\# Backend Agent}
+
+\NormalTok{Sempre implemente APIs, mensageria, persistência e SignalR.}
+\NormalTok{Use 202, salve o job, publique eventos, aplique retry e gere testes.}
+\NormalTok{SignalR funciona assim: }\CommentTok{[}\OtherTok{... explicação longa ...}\CommentTok{]}
+\NormalTok{Se o teste passar, considere concluído.}
+\end{Highlighting}
+\end{Shaded}
+
+A separação mínima transforma esse bloco em relações verificáveis:
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{Agent → roteia a tarefa e preserva invariantes}
+\NormalTok{Playbook → coordena a operação assíncrona}
+\NormalTok{Skill → valida o contrato de API}
+\NormalTok{Knowledge → explica limites do SignalR}
+\NormalTok{Rule → exige a política aprovada no estudo}
+\NormalTok{Contract → descreve estados e transições observáveis}
+\NormalTok{Eval → executa cenários definidos antes da resposta}
+\NormalTok{Evidence → registra resultado e limitações}
+\end{Highlighting}
+\end{Shaded}
+
+\hypertarget{frontmatter-contrato-do-consumidor-antes-da-ontologia-do-livro}{%
+\section{Frontmatter: contrato do consumidor antes da ontologia do
+livro}\label{frontmatter-contrato-do-consumidor-antes-da-ontologia-do-livro}}
+
+Frontmatter melhora identidade, catálogo e interoperabilidade quando um
+consumidor reconhece seus campos. Ele \textbf{não garante},
+isoladamente, descoberta, roteamento ou cache.
+
+Uma Agent Skill interoperável começa pelo contrato da especificação
+aberta:
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\CommentTok{{-}{-}{-}}
+\AnnotationTok{name:}\CommentTok{ validate{-}api{-}contract}
+\AnnotationTok{description:}\CommentTok{ Valida contratos HTTP assíncronos quando a tarefa altera aceitação, consulta de status ou transições de job.}
+\CommentTok{{-}{-}{-}}
+
+\FunctionTok{\# Validar contrato de API}
+
+\FunctionTok{\#\# Quando usar}
+
+\NormalTok{Use quando uma alteração puder mudar status, headers, estados ou efeitos observáveis.}
+\end{Highlighting}
+\end{Shaded}
+
+Campos adicionais só devem ser usados quando o host, um catálogo ou
+outro componente do projeto realmente os interpretar. A mesma cautela
+vale para Rules e Playbooks: metadados de governança podem ser úteis sem
+possuir efeito nativo no Cursor.
+
+\begin{warningbox}{Existência não prova participação}
+
+Um arquivo presente no repositório pode não ter entrado no contexto.
+Mesmo quando participou, isso não demonstra aplicação correta. Quando o
+host não expuser lineage suficiente, registre \texttt{INCONCLUSIVE} em
+vez de deduzir o caminho a partir de uma resposta correta.
+
+\end{warningbox}
+
+\hypertarget{microfluxo-contract-assertion-eval-evidence}{%
+\section{Microfluxo: Contract → Assertion → Eval →
+Evidence}\label{microfluxo-contract-assertion-eval-evidence}}
+
+Considere o recorte didático de uma API que aceita um relatório
+assíncrono. O status HTTP \texttt{202\ Accepted} informa que a
+requisição foi aceita para processamento; ele não comprova conclusão e,
+isoladamente, não prova a durabilidade do job.\footnote{RFC 9110, seção
+  15.3.3, define \texttt{202\ Accepted} como aceitação para
+  processamento ainda não concluído e recomenda indicar um monitor de
+  status quando aplicável.}
+
+O Contract adiciona as condições específicas da arquitetura de
+referência:
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\FunctionTok{operation}\KeywordTok{:}\AttributeTok{ POST /reports}
+\FunctionTok{preconditions}\KeywordTok{:}
+\AttributeTok{  }\KeywordTok{{-}}\AttributeTok{ request\_is\_authorized}
+\FunctionTok{postconditions}\KeywordTok{:}
+\AttributeTok{  }\KeywordTok{{-}}\AttributeTok{ response\_status\_is\_202}
+\AttributeTok{  }\KeywordTok{{-}}\AttributeTok{ job\_is\_queryable\_by\_returned\_location}
+\FunctionTok{forbiddenEffects}\KeywordTok{:}
+\AttributeTok{  }\KeywordTok{{-}}\AttributeTok{ report\_marked\_completed\_before\_processing}
+\end{Highlighting}
+\end{Shaded}
+
+A Assertion é derivada antes da execução:
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\FunctionTok{assertionId}\KeywordTok{:}\AttributeTok{ ASYNC{-}ACCEPT{-}001}
+\FunctionTok{source}\KeywordTok{:}\AttributeTok{ report{-}request.contract.yaml}
+\FunctionTok{expected}\KeywordTok{:}
+\AttributeTok{  }\FunctionTok{status}\KeywordTok{:}\AttributeTok{ }\DecValTok{202}
+\AttributeTok{  }\FunctionTok{locationHeader}\KeywordTok{:}\AttributeTok{ required}
+\AttributeTok{  }\FunctionTok{initialState}\KeywordTok{:}\AttributeTok{ accepted}
+\end{Highlighting}
+\end{Shaded}
+
+A Eval fornece a entrada, executa o cenário e combina verificadores
+compatíveis com cada critério. Igualdade, schema, status e transições
+devem preferir verificadores determinísticos. Critérios semânticos podem
+exigir rubrica e julgamento probabilístico versionado.
+
+O Evidence Record não repete a intenção; ele registra o que foi
+observado:
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\FunctionTok{\{}
+  \DataTypeTok{"evidenceId"}\FunctionTok{:} \StringTok{"EV{-}ASYNC{-}001"}\FunctionTok{,}
+  \DataTypeTok{"assertionId"}\FunctionTok{:} \StringTok{"ASYNC{-}ACCEPT{-}001"}\FunctionTok{,}
+  \DataTypeTok{"expected"}\FunctionTok{:} \FunctionTok{\{}\DataTypeTok{"status"}\FunctionTok{:} \DecValTok{202}\FunctionTok{,} \DataTypeTok{"locationHeader"}\FunctionTok{:} \StringTok{"required"}\FunctionTok{\},}
+  \DataTypeTok{"observed"}\FunctionTok{:} \FunctionTok{\{}\DataTypeTok{"status"}\FunctionTok{:} \DecValTok{202}\FunctionTok{,} \DataTypeTok{"locationHeader"}\FunctionTok{:} \StringTok{"/reports/jobs/42"}\FunctionTok{\},}
+  \DataTypeTok{"checks"}\FunctionTok{:} \OtherTok{[}
+    \FunctionTok{\{}\DataTypeTok{"id"}\FunctionTok{:} \StringTok{"status"}\FunctionTok{,} \DataTypeTok{"mechanism"}\FunctionTok{:} \StringTok{"exact"}\FunctionTok{,} \DataTypeTok{"result"}\FunctionTok{:} \StringTok{"PASS"}\FunctionTok{\}}\OtherTok{,}
+    \FunctionTok{\{}\DataTypeTok{"id"}\FunctionTok{:} \StringTok{"location"}\FunctionTok{,} \DataTypeTok{"mechanism"}\FunctionTok{:} \StringTok{"schema"}\FunctionTok{,} \DataTypeTok{"result"}\FunctionTok{:} \StringTok{"PASS"}\FunctionTok{\}}
+  \OtherTok{]}\FunctionTok{,}
+  \DataTypeTok{"verdict"}\FunctionTok{:} \StringTok{"PASS"}\FunctionTok{,}
+  \DataTypeTok{"limitations"}\FunctionTok{:} \OtherTok{[}\StringTok{"O lineage de arquivos consultados não foi exposto pelo host."}\OtherTok{]}
+\FunctionTok{\}}
+\end{Highlighting}
+\end{Shaded}
+
+O \texttt{PASS} demonstra somente o escopo verificado. Ele não prova que
+todos os artefatos foram recuperados, que outros modelos agirão do mesmo
+modo ou que a arquitetura é adequada para qualquer domínio.
+
+\begin{examplebox}{Checkpoint técnico}
+
+Sem abrir o workbook, tente responder: de qual fonte nasceu a Assertion,
+quem executou a Eval e qual limitação impede transformar o resultado
+funcional em prova de lineage? Se uma dessas relações não estiver clara,
+releia o microfluxo antes de continuar.
+
+\end{examplebox}
+
+\hypertarget{recuperauxe7uxe3o-aplicauxe7uxe3o-e-resultado-suxe3o-camadas-diferentes}{%
+\section{Recuperação, aplicação e resultado são camadas
+diferentes}\label{recuperauxe7uxe3o-aplicauxe7uxe3o-e-resultado-suxe3o-camadas-diferentes}}
+
+Uma avaliação útil separa ao menos três perguntas:
+
+\begin{enumerate}
+\def\labelenumi{\arabic{enumi}.}
+\tightlist
+\item
+  \textbf{Recuperação ou roteamento:} o conteúdo aplicável foi
+  disponibilizado?
+\item
+  \textbf{Aplicação:} as obrigações e restrições recuperadas
+  influenciaram corretamente a execução?
+\item
+  \textbf{Resultado:} a saída satisfaz as condições observáveis do
+  Contract e das Assertions?
+\end{enumerate}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{resultado correto + lineage ausente}
+\NormalTok{→ resultado funcional PASS}
+\NormalTok{→ recuperação INCONCLUSIVE}
+
+\NormalTok{artefato recuperado + regra violada}
+\NormalTok{→ recuperação PASS}
+\NormalTok{→ aplicação FAIL}
+\end{Highlighting}
+\end{Shaded}
+
+Essa separação evita dois falsos positivos comuns: considerar uma
+resposta correta como prova de recuperação e considerar a simples
+presença de palavras como prova de aplicação.
+
+\begin{curiousbox}{APROFUNDAMENTO — verificadores determinísticos e semânticos}
+
+Use verificadores determinísticos para propriedades que podem ser
+calculadas sem interpretação: schema, igualdade, presença obrigatória,
+ordem, estado e status. Reserve LLM-as-a-Judge para critérios realmente
+semânticos; versione modelo, prompt e rubrica, preserve amostras e
+mantenha revisão humana compatível com o risco. O avaliador
+probabilístico não se torna verdade objetiva por receber o nome de
+judge.
+
+\end{curiousbox}
+
+\hypertarget{da-compreensuxe3o-para-a-execuuxe7uxe3o}{%
+\section{Da compreensão para a
+execução}\label{da-compreensuxe3o-para-a-execuuxe7uxe3o}}
+
+O workbook contém o experimento completo no Cursor, os testes mínimos de
+cada artefato, o Eval Spec integral, o prompt do Auditor de Contexto, o
+estudo assíncrono, templates e Evidence Records preenchidos. O
+laboratório \texttt{lab/} permanece como corpus executável e fonte
+canônica dos arquivos completos.
+
+Antes de ir ao workbook, preserve esta cadeia:
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{fonte aprovada}
+\NormalTok{→ expectativa derivada}
+\NormalTok{→ cenário definido}
+\NormalTok{→ execução observada}
+\NormalTok{→ verificadores}
+\NormalTok{→ veredito com limitações}
+\end{Highlighting}
+\end{Shaded}
+
+\hypertarget{parte-iv---estudo-de-caso-operauxe7uxe3o-assuxedncrona}{%
+\chapter{Parte IV - Estudo de caso: operação
+assíncrona}\label{parte-iv---estudo-de-caso-operauxe7uxe3o-assuxedncrona}}
+
+A Parte III apresentou Agent, Playbook, Skill, Knowledge, Rule,
+Contract, Eval e Evidence Record separadamente para deixar claras suas
+responsabilidades. Agora vamos observar \textbf{como essas peças
+cooperam quando uma única tarefa exige várias delas ao mesmo tempo}.
+
+A geração assíncrona de relatório será usada como cenário de integração.
+O objetivo não é ensinar arquitetura assíncrona em profundidade, mas
+acompanhar como os artefatos de Context Engineering participam de um
+mesmo fluxo, desde o pedido inicial até a avaliação e o registro da
+evidência.
+
+Este capítulo reúne, portanto, os conceitos anteriores em um exemplo
+\textbf{semi-completo}. Ele cobre apenas as partes necessárias para
+demonstrar essa cooperação sem transformar o estudo de caso em uma
+arquitetura integral de produção.
+
+\begin{longtable}[]{@{}
+  >{\raggedright\arraybackslash}p{(\columnwidth - 2\tabcolsep) * \real{0.5000}}
+  >{\raggedright\arraybackslash}p{(\columnwidth - 2\tabcolsep) * \real{0.5000}}@{}}
+\toprule\noalign{}
+\begin{minipage}[b]{\linewidth}\raggedright
+Incluído no exemplo
+\end{minipage} & \begin{minipage}[b]{\linewidth}\raggedright
+Omitido deliberadamente
+\end{minipage} \\
+\midrule\noalign{}
+\endhead
+\bottomrule\noalign{}
+\endlastfoot
+Contract HTTP e idempotência básica & Autenticação e autorização
+detalhadas \\
+Job, estados e persistência & Dimensionamento e topologia de
+infraestrutura \\
+SignalR e reconciliação por API & Deploy, disaster recovery e
+retenção \\
+Edge cases, testes e Evidence Records & Políticas corporativas completas
+de segurança e privacidade \\
+\end{longtable}
+
+O recorte acompanha uma única tarefa do início ao fim:
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{requisito}
+\NormalTok{→ aceitação da solicitação}
+\NormalTok{→ criação e processamento do job}
+\NormalTok{→ persistência da conclusão}
+\NormalTok{→ notificação e reconciliação}
+\NormalTok{→ avaliação}
+\NormalTok{→ Evidence Record}
+\end{Highlighting}
+\end{Shaded}
+
+Ao longo desse caminho, o foco será observar \textbf{qual artefato
+participa de cada decisão, por que ele se torna aplicável e qual
+evidência permite verificar seu efeito}.
+
+\begin{infobox}{Por que o exemplo é semi-completo}
+
+As camadas omitidas continuam importantes. Elas foram retiradas para que
+o leitor consiga observar com clareza a integração entre os artefatos de
+Context Engineering sem transformar o capítulo em uma especificação
+completa de backend distribuído.
+
+\end{infobox}
+
+\hypertarget{o-requisito}{%
+\section{O requisito}\label{o-requisito}}
+
+Uma API inicia a geração de um relatório consolidado. O processamento
+pode durar minutos. O front-end precisa acompanhar o processamento e
+atualizar a tela quando o relatório ficar pronto, mesmo que a conexão em
+tempo real seja temporariamente perdida.
+
+O desafio pode ser resumido em três necessidades:
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{aceitar o trabalho}
+\NormalTok{        ↓}
+\NormalTok{processar de forma durável}
+\NormalTok{        ↓}
+\NormalTok{permitir atualização e recuperação do estado}
+\end{Highlighting}
+\end{Shaded}
+
+Esse único requisito mobiliza responsabilidades diferentes dos artefatos
+apresentados anteriormente:
+
+\begin{longtable}[]{@{}
+  >{\raggedright\arraybackslash}p{(\columnwidth - 2\tabcolsep) * \real{0.5000}}
+  >{\raggedright\arraybackslash}p{(\columnwidth - 2\tabcolsep) * \real{0.5000}}@{}}
+\toprule\noalign{}
+\begin{minipage}[b]{\linewidth}\raggedright
+Responsabilidade
+\end{minipage} & \begin{minipage}[b]{\linewidth}\raggedright
+Artefato ou mecanismo principal
+\end{minipage} \\
+\midrule\noalign{}
+\endhead
+\bottomrule\noalign{}
+\endlastfoot
+Definir aceitação, estado consultável e comportamento observável da API
+& Contract \\
+Coordenar a sequência da operação assíncrona & Playbook \\
+Executar validações especializadas do contrato & Skill \\
+Preservar obrigações como persistir antes de notificar & Rule \\
+Interpretar o papel e os limites do SignalR & Knowledge \\
+Atualizar o cliente conectado & Canal SignalR \\
+Permitir recuperação após desconexão & Estado durável + consulta por
+API \\
+Verificar expectativas e preservar o resultado & Eval + Evidence
+Record \\
+\end{longtable}
+
+\begin{infobox}{Uma tarefa, responsabilidades diferentes}
+
+A tabela não afirma que todos esses elementos utilizam o mesmo mecanismo
+nem que precisam ser carregados ao mesmo tempo.
+
+Ela mostra como \textbf{uma única tarefa atravessa responsabilidades
+diferentes}, cada uma assumida pelo artefato ou mecanismo mais adequado.
+
+\end{infobox}
+
+\hypertarget{contrato-de-aceitauxe7uxe3o}{%
+\section{Contrato de aceitação}\label{contrato-de-aceitauxe7uxe3o}}
+
+O Contract apresentado anteriormente separou condições de
+\textbf{aceitação} e \textbf{conclusão}. Neste estudo de caso, vamos
+observar esses dois momentos separadamente para entender o que precisa
+ser verificável em cada etapa da mesma operação.
+
+O primeiro recorte governa o início do fluxo: o cliente envia a
+solicitação e a API confirma que o trabalho foi aceito para
+processamento. \texttt{202\ Accepted} não significa que o relatório
+ficou pronto.
+
+Neste estudo, a aceitação só é considerada válida quando já existe um
+job durável e uma referência que permita acompanhar seu estado
+posteriormente.
+
+Esse recorte protege três decisões:
+
+\begin{itemize}
+\tightlist
+\item
+  repetir a mesma solicitação não deve criar trabalho lógico duplicado;
+\item
+  a API não deve responder \texttt{202} antes de existir um job
+  recuperável;
+\item
+  o cliente deve receber uma referência que permita consultar o
+  processamento depois da resposta inicial.
+\end{itemize}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{POST /reports}
+\NormalTok{Idempotency{-}Key: 2ca9...}
+
+\NormalTok{HTTP/1.1 202 Accepted}
+\NormalTok{Location: /reports/jobs/01J...}
+\NormalTok{X{-}Correlation{-}Id: corr{-}9812}
+
+\NormalTok{\{}
+\NormalTok{  "jobId": "01J...",}
+\NormalTok{  "status": "queued",}
+\NormalTok{  "statusUrl": "/reports/jobs/01J..."}
+\NormalTok{\}}
+\end{Highlighting}
+\end{Shaded}
+
+\hypertarget{condiuxe7uxf5es-verificuxe1veis-da-aceitauxe7uxe3o}{%
+\subsection{Condições verificáveis da
+aceitação}\label{condiuxe7uxf5es-verificuxe1veis-da-aceitauxe7uxe3o}}
+
+\begin{itemize}
+\tightlist
+\item
+  a entrada é validada antes da criação do job;
+\item
+  repetir a solicitação com o mesmo identificador idempotente não cria
+  trabalho lógico duplicado;
+\item
+  a resposta \texttt{202} contém \texttt{jobId} e \texttt{statusUrl};
+\item
+  o job existe em armazenamento durável antes da resposta;
+\item
+  \texttt{correlationId} permite relacionar a aceitação às etapas
+  posteriores da mesma execução.
+\end{itemize}
+
+Essas condições podem originar Assertions específicas. O Contract define
+\textbf{o que deve ser verdade}; a Eval determinará posteriormente
+\textbf{como cada condição será verificada}.
+
+\hypertarget{contrato-de-progresso-e-conclusuxe3o}{%
+\section{Contrato de progresso e
+conclusão}\label{contrato-de-progresso-e-conclusuxe3o}}
+
+O segundo recorte acompanha o que acontece depois da aceitação. Ele
+define as condições necessárias para que o processamento evolua até um
+estado final e para que o front-end consiga combinar atualização em
+tempo real com reconciliação pelo estado persistido.
+
+O evento SignalR reduz a latência percebida, mas não comprova sozinho
+que a operação terminou. Neste estudo, a Rule
+\texttt{.cursor/rules/persistir-antes-de-notificar.mdc} preserva a
+ordem:
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{persistir estado final}
+\NormalTok{        ↓}
+\NormalTok{confirmar transação}
+\NormalTok{        ↓}
+\NormalTok{publicar notificação}
+\end{Highlighting}
+\end{Shaded}
+
+Depois disso, o cliente pode utilizar a notificação para atualizar
+rapidamente a interface ou consultar \texttt{statusUrl} para reconciliar
+o estado.
+
+Um evento de conclusão pode assumir esta forma:
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\FunctionTok{\{}
+  \DataTypeTok{"eventType"}\FunctionTok{:} \StringTok{"report.completed"}\FunctionTok{,}
+  \DataTypeTok{"jobId"}\FunctionTok{:} \StringTok{"01J..."}\FunctionTok{,}
+  \DataTypeTok{"version"}\FunctionTok{:} \DecValTok{7}\FunctionTok{,}
+  \DataTypeTok{"occurredAt"}\FunctionTok{:} \StringTok{"2026{-}08{-}02T14:30:00Z"}\FunctionTok{,}
+  \DataTypeTok{"status"}\FunctionTok{:} \StringTok{"completed"}\FunctionTok{,}
+  \DataTypeTok{"resultUrl"}\FunctionTok{:} \StringTok{"/reports/jobs/01J.../result"}
+\FunctionTok{\}}
+\end{Highlighting}
+\end{Shaded}
+
+O campo \texttt{version} representa, neste exemplo, uma versão crescente
+do estado do job. Ele permite ao consumidor reconhecer eventos atrasados
+e evitar que uma atualização antiga sobrescreva um estado mais recente.
+
+\hypertarget{condiuxe7uxf5es-verificuxe1veis-da-conclusuxe3o}{%
+\subsection{Condições verificáveis da
+conclusão}\label{condiuxe7uxf5es-verificuxe1veis-da-conclusuxe3o}}
+
+Para considerar a conclusão confiável, o Contract precisa tornar
+observáveis as seguintes propriedades:
+
+\begin{itemize}
+\tightlist
+\item
+  o estado \texttt{completed} é persistido antes da publicação do
+  evento;
+\item
+  a confirmação da persistência ocorre antes da notificação de
+  conclusão;
+\item
+  o evento possui versão crescente ou outro mecanismo capaz de
+  identificar atualizações obsoletas;
+\item
+  eventos duplicados não produzem efeitos lógicos duplicados no
+  front-end;
+\item
+  uma atualização atrasada não faz a interface regredir para um estado
+  anterior;
+\item
+  falha na entrega da notificação não reverte o resultado já persistido;
+\item
+  a consulta por \texttt{statusUrl} retorna o estado durável
+  correspondente ao job;
+\item
+  \texttt{jobId} e \texttt{correlationId} permitem relacionar
+  processamento, persistência, notificação e consulta.
+\end{itemize}
+
+Essas condições ainda não constituem Evidence. Elas definem \textbf{o
+que esperamos observar} e podem ser decompostas em Assertions
+verificadas por mecanismos determinísticos ou semânticos, conforme a
+natureza de cada critério.
+
+\hypertarget{estados-e-transiuxe7uxf5es}{%
+\section{Estados e transições}\label{estados-e-transiuxe7uxf5es}}
+
+O Contract também precisa deixar explícitos os estados relevantes e as
+transições permitidas. Sem essa definição, termos como \texttt{queued},
+\texttt{running}, \texttt{completed} ou \texttt{failed} podem ser
+interpretados de maneiras diferentes por API, worker, front-end e
+testes.
+
+Neste estudo, o fluxo simplificado é:
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{queued}
+\NormalTok{  ├──→ running}
+\NormalTok{  │      ├──→ completed}
+\NormalTok{  │      ├──→ failed}
+\NormalTok{  │      └──→ cancelled}
+\NormalTok{  └──→ cancelled}
+\end{Highlighting}
+\end{Shaded}
+
+\texttt{completed}, \texttt{failed} e \texttt{cancelled} são estados
+finais neste modelo.
+
+Algumas invariantes protegem essas transições:
+
+\begin{itemize}
+\tightlist
+\item
+  uma operação em estado final não retorna silenciosamente para
+  \texttt{running};
+\item
+  cancelamento concorrente possui resultado definido;
+\item
+  retry da mesma execução não cria um segundo trabalho logicamente
+  distinto;
+\item
+  eventos duplicados não duplicam efeitos no consumidor;
+\item
+  eventos com versão anterior ao estado já conhecido não fazem a
+  interface regredir;
+\item
+  timeout ou falha transitória de infraestrutura não deve ser
+  automaticamente classificado como falha do domínio.
+\end{itemize}
+
+Essas invariantes conectam o modelo de estados aos artefatos já
+apresentados:
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{Contract}
+\NormalTok{→ define estados e condições observáveis}
+
+\NormalTok{Rule}
+\NormalTok{→ preserva obrigações e proibições}
+
+\NormalTok{Playbook}
+\NormalTok{→ coordena a sequência operacional}
+
+\NormalTok{Assertions}
+\NormalTok{→ nomeiam propriedades que serão verificadas}
+
+\NormalTok{Eval}
+\NormalTok{→ aplica os verificadores}
+
+\NormalTok{Evidence Record}
+\NormalTok{→ preserva os resultados observados}
+\end{Highlighting}
+\end{Shaded}
+
+O objetivo não é transformar o Contract em implementação. Ele deve
+fornecer informação suficiente para que API, worker, front-end e
+avaliação compartilhem \textbf{o mesmo significado para aceitação,
+progresso, conclusão e recuperação}.
+
+\hypertarget{edge-cases-obrigatuxf3rios-neste-recorte}{%
+\section{Edge cases obrigatórios neste
+recorte}\label{edge-cases-obrigatuxf3rios-neste-recorte}}
+
+O fluxo principal mostra o caminho esperado, mas uma operação assíncrona
+confiável também precisa definir o comportamento nos desvios
+previsíveis. Neste estudo, os edge cases abaixo exercitam principalmente
+idempotência, durabilidade, ordenação, reconciliação e concorrência:
+
+\begin{longtable}[]{@{}
+  >{\raggedright\arraybackslash}p{(\columnwidth - 2\tabcolsep) * \real{0.5000}}
+  >{\raggedright\arraybackslash}p{(\columnwidth - 2\tabcolsep) * \real{0.5000}}@{}}
+\toprule\noalign{}
+\begin{minipage}[b]{\linewidth}\raggedright
+Caso
+\end{minipage} & \begin{minipage}[b]{\linewidth}\raggedright
+Resultado esperado
+\end{minipage} \\
+\midrule\noalign{}
+\endhead
+\bottomrule\noalign{}
+\endlastfoot
+Cliente repete o \texttt{POST} com a mesma chave de idempotência & A
+mesma operação lógica é preservada; nenhum trabalho duplicado é
+criado. \\
+Worker cai durante o processamento & O job volta a ser elegível para
+processamento ou termina em falha controlada, conforme a política
+definida. \\
+Commit conclui e SignalR falha & O estado final permanece consultável; a
+falha da notificação não reverte a conclusão persistida. \\
+Evento chega duas vezes & O front-end mantém uma única representação
+lógica do estado. \\
+Evento antigo chega depois de um mais recente & A versão mais nova
+prevalece e a interface não regride. \\
+Usuário reconecta & A tela consulta \texttt{statusUrl} e reconcilia o
+estado atual. \\
+Cancelamento disputa com conclusão & A política de transição determina
+um único estado final válido. \\
+\end{longtable}
+
+Autenticação e autorização detalhadas permanecem fora do recorte deste
+estudo. Em uma arquitetura de produção, consultas a jobs de outros
+usuários, vazamento de existência de recursos e políticas de acesso
+também precisam de cenários específicos.
+
+Esses casos não são apenas exemplos de teste. Cada um deve poder ser
+relacionado a uma condição do Contract, Rule, Assertion ou política
+aplicável antes de participar de uma Eval.
+
+\hypertarget{massa-progressiva-de-testes}{%
+\section{Massa progressiva de
+testes}\label{massa-progressiva-de-testes}}
+
+Em vez de começar diretamente por cenários ponta a ponta, organize a
+massa em camadas que aumentam progressivamente o número de componentes
+envolvidos:
+
+\begin{itemize}
+\tightlist
+\item
+  \textbf{Camada 1 --- Contract:} payload mínimo válido, campos
+  obrigatórios ausentes, formato inválido e chave de idempotência
+  repetida;
+\item
+  \textbf{Camada 2 --- máquina de estados:} transições válidas e
+  proibidas, retry após falha transitória, cancelamento concorrente e
+  versão fora de ordem;
+\item
+  \textbf{Camada 3 --- integração:} fila, persistência ou hub
+  indisponível, evento duplicado e reinício do worker;
+\item
+  \textbf{Camada 4 --- ponta a ponta:} cliente conectado recebe
+  conclusão, cliente desconectado recupera o estado pela API, múltiplas
+  instâncias da interface convergem e a telemetria correlaciona
+  solicitação, job, commit e publicação.
+\end{itemize}
+
+A progressão ajuda a localizar falhas. Se uma condição já falha no
+Contract ou na máquina de estados, um teste ponta a ponta pode confirmar
+o problema, mas tende a fornecer uma origem menos precisa.
+
+\hypertarget{captura-operacional-observada}{%
+\section{Captura operacional
+observada}\label{captura-operacional-observada}}
+
+Depois da execução, o Eval Runner precisa preservar os fatos que serão
+comparados com as Assertions. O YAML abaixo representa uma
+\textbf{captura operacional bruta} desse momento.
+
+Ele ainda não é um Evidence Record: contém o observado, mas não realiza
+a comparação com expectativas versionadas nem produz um veredito.
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\FunctionTok{operation}\KeywordTok{:}\AttributeTok{ report{-}generation{-}async}
+\FunctionTok{jobId}\KeywordTok{:}\AttributeTok{ 01J...}
+\FunctionTok{correlationId}\KeywordTok{:}\AttributeTok{ corr{-}9812}
+\FunctionTok{contract}\KeywordTok{:}\AttributeTok{ CONTRACT{-}REPORT{-}001}
+
+\FunctionTok{stateTransitions}\KeywordTok{:}
+\AttributeTok{  }\KeywordTok{{-}}\AttributeTok{ queued}
+\AttributeTok{  }\KeywordTok{{-}}\AttributeTok{ running}
+\AttributeTok{  }\KeywordTok{{-}}\AttributeTok{ completed}
+
+\FunctionTok{durableState}\KeywordTok{:}
+\AttributeTok{  }\FunctionTok{status}\KeywordTok{:}\AttributeTok{ completed}
+\AttributeTok{  }\FunctionTok{version}\KeywordTok{:}\AttributeTok{ }\DecValTok{7}
+\AttributeTok{  }\FunctionTok{persistedSequence}\KeywordTok{:}\AttributeTok{ }\DecValTok{451}
+
+\FunctionTok{notification}\KeywordTok{:}
+\AttributeTok{  }\FunctionTok{channel}\KeywordTok{:}\AttributeTok{ signalr}
+\AttributeTok{  }\FunctionTok{outcome}\KeywordTok{:}\AttributeTok{ delivered}
+\AttributeTok{  }\FunctionTok{publishedSequence}\KeywordTok{:}\AttributeTok{ }\DecValTok{452}
+
+\FunctionTok{fallbackCheck}\KeywordTok{:}
+\AttributeTok{  }\FunctionTok{statusUrl}\KeywordTok{:}\AttributeTok{ /reports/jobs/01J.../status}
+\AttributeTok{  }\FunctionTok{statusApi}\KeywordTok{:}\AttributeTok{ consistent}
+
+\FunctionTok{tests}\KeywordTok{:}
+\AttributeTok{  }\KeywordTok{{-}}\AttributeTok{ }\FunctionTok{id}\KeywordTok{:}\AttributeTok{ TEST{-}E2E{-}REPORT{-}007}
+\AttributeTok{    }\FunctionTok{result}\KeywordTok{:}\AttributeTok{ PASS}
+\end{Highlighting}
+\end{Shaded}
+
+A captura permite observar, por exemplo:
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{persistedSequence: 451}
+\NormalTok{        ↓}
+\NormalTok{publishedSequence: 452}
+\end{Highlighting}
+\end{Shaded}
+
+Esses valores podem ser utilizados por \texttt{causalOrderCheck} para
+verificar a Assertion que exige persistência e confirmação antes da
+notificação.
+
+O registro não precisa conter raciocínio interno do modelo. Ele preserva
+somente fatos observáveis necessários para avaliação e auditoria.
+
+\hypertarget{fechando-o-ciclo-do-caso}{%
+\section{Fechando o ciclo do caso}\label{fechando-o-ciclo-do-caso}}
+
+Até aqui, o estudo acompanhou duas linhas que agora precisam se
+encontrar:
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{EXPECTATIVA}
+
+\NormalTok{requisito}
+\NormalTok{→ Rule / Contract}
+\NormalTok{→ Assertions}
+\NormalTok{→ Eval Spec}
+
+\NormalTok{EXECUÇÃO}
+
+\NormalTok{Agent}
+\NormalTok{→ artefatos aplicáveis}
+\NormalTok{→ sistema e tools}
+\NormalTok{→ captura operacional}
+
+\NormalTok{        ↓}
+
+\NormalTok{comparação}
+\NormalTok{→ Evidence Record}
+\end{Highlighting}
+\end{Shaded}
+
+Para manter o exemplo reproduzível, o corpus utilizado neste estudo
+segue os mesmos paths definidos nas seções anteriores:
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{.cursor/}
+\NormalTok{├── rules/}
+\NormalTok{│   └── persistir{-}antes{-}de{-}notificar.mdc}
+\NormalTok{├── agents/}
+\NormalTok{│   └── backend{-}development.md}
+\NormalTok{├── skills/}
+\NormalTok{│   └── validate{-}api{-}contract/}
+\NormalTok{│       ├── SKILL.md}
+\NormalTok{│       └── contracts/}
+\NormalTok{│           └── report{-}request.contract.yaml}
+\NormalTok{├── playbooks/}
+\NormalTok{│   └── operacao{-}assincrona.md}
+\NormalTok{├── knowledge/}
+\NormalTok{│   └── signalr{-}operacoes{-}assincronas.md}
+\NormalTok{└── evals/}
+\NormalTok{    └── eval{-}async{-}report.yaml}
+\end{Highlighting}
+\end{Shaded}
+
+Essa estrutura também preserva o ownership definido anteriormente: o
+Contract utilizado exclusivamente por \texttt{validate-api-contract}
+permanece dentro da própria Skill.
+
+\hypertarget{eval-spec-do-caso}{%
+\subsection{Eval Spec do caso}\label{eval-spec-do-caso}}
+
+A Eval Spec precisa existir \textbf{antes da execução}. Ela deriva das
+Assertions aprovadas e define quais artefatos são esperados no cenário,
+quais propriedades precisam ser satisfeitas e quais verificadores
+produzirão os resultados.
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\FunctionTok{schemaVersion}\KeywordTok{:}\AttributeTok{ }\FloatTok{1.0.0}
+\FunctionTok{id}\KeywordTok{:}\AttributeTok{ EVAL{-}ASYNC{-}REPORT{-}001}
+\FunctionTok{version}\KeywordTok{:}\AttributeTok{ }\FloatTok{1.0.0}
+\FunctionTok{name}\KeywordTok{:}\AttributeTok{ concluir{-}relatorio{-}reconciliar{-}tela}
+
+\FunctionTok{agentUnderEvaluation}\KeywordTok{:}
+\AttributeTok{  }\FunctionTok{name}\KeywordTok{:}\AttributeTok{ backend{-}development}
+\AttributeTok{  }\FunctionTok{path}\KeywordTok{:}\AttributeTok{ .cursor/agents/backend{-}development.md}
+
+\FunctionTok{query}\KeywordTok{: }\CharTok{\textgreater{}}
+\NormalTok{  O relatório pode terminar depois que o cliente se desconectar.}
+\NormalTok{  Proponha o contrato HTTP e o fluxo assíncrono necessários para}
+\NormalTok{  atualizar a tela com segurança e permitir que o resultado}
+\NormalTok{  continue consultável posteriormente.}
+
+\FunctionTok{expected}\KeywordTok{:}
+\AttributeTok{  }\FunctionTok{shouldUse}\KeywordTok{:}
+\AttributeTok{    }\KeywordTok{{-}}\AttributeTok{ .cursor/playbooks/operacao{-}assincrona.md}
+\AttributeTok{    }\KeywordTok{{-}}\AttributeTok{ .cursor/skills/validate{-}api{-}contract/SKILL.md}
+\AttributeTok{    }\KeywordTok{{-}}\AttributeTok{ .cursor/skills/validate{-}api{-}contract/contracts/report{-}request.contract.yaml}
+\AttributeTok{    }\KeywordTok{{-}}\AttributeTok{ .cursor/rules/persistir{-}antes{-}de{-}notificar.mdc}
+
+\AttributeTok{  }\FunctionTok{mustSatisfy}\KeywordTok{:}
+\AttributeTok{    }\KeywordTok{{-}}\AttributeTok{ ASSERT{-}REPORT{-}001}
+\AttributeTok{    }\KeywordTok{{-}}\AttributeTok{ ASSERT{-}REPORT{-}002}
+\AttributeTok{    }\KeywordTok{{-}}\AttributeTok{ ASSERT{-}REPORT{-}003}
+
+\FunctionTok{evaluationMethod}\KeywordTok{:}\AttributeTok{ hybrid}
+
+\FunctionTok{verification}\KeywordTok{:}
+\AttributeTok{  }\FunctionTok{artifactParticipation}\KeywordTok{:}
+\AttributeTok{    }\FunctionTok{verifier}\KeywordTok{:}\AttributeTok{ retrievalTrace}
+
+\AttributeTok{  }\FunctionTok{assertions}\KeywordTok{:}
+\AttributeTok{    }\FunctionTok{ASSERT{-}REPORT{-}001}\KeywordTok{:}
+\AttributeTok{      }\FunctionTok{verifier}\KeywordTok{:}\AttributeTok{ causalOrderCheck}
+
+\AttributeTok{    }\FunctionTok{ASSERT{-}REPORT{-}002}\KeywordTok{:}
+\AttributeTok{      }\FunctionTok{verifier}\KeywordTok{:}\AttributeTok{ statusApiCheck}
+
+\AttributeTok{    }\FunctionTok{ASSERT{-}REPORT{-}003}\KeywordTok{:}
+\AttributeTok{      }\FunctionTok{verifier}\KeywordTok{:}\AttributeTok{ approvedLlmJudge}
+\AttributeTok{      }\FunctionTok{rubricId}\KeywordTok{:}\AttributeTok{ RUBRIC{-}ASYNC{-}CLAIMS{-}001}
+\AttributeTok{      }\FunctionTok{rubricVersion}\KeywordTok{:}\AttributeTok{ }\FloatTok{1.0.0}
+\end{Highlighting}
+\end{Shaded}
+
+\texttt{shouldUse} registra uma expectativa de participação; não afirma
+antecipadamente que esses artefatos serão observados durante a execução.
+
+\texttt{mustSatisfy} aponta para Assertions já aprovadas. A Eval não
+redefine seu significado depois de observar a resposta.
+
+O Eval Runner executa \texttt{.cursor/agents/backend-development.md},
+captura a participação observável dos artefatos, resposta, tools,
+testes, traces e o estado operacional. Os verificadores processam esses
+dados e produzem resultados que serão consolidados pelo Evidence Record.
+
+\hypertarget{evidence-record-do-caso}{%
+\subsection{Evidence Record do caso}\label{evidence-record-do-caso}}
+
+Com esperado e observado disponíveis, o Evidence Recorder preserva a
+instância final da avaliação:
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\FunctionTok{\{}
+  \DataTypeTok{"schemaVersion"}\FunctionTok{:} \StringTok{"1.0.0"}\FunctionTok{,}
+  \DataTypeTok{"evidenceId"}\FunctionTok{:} \StringTok{"EV{-}ASYNC{-}REPORT{-}001"}\FunctionTok{,}
+  \DataTypeTok{"requestId"}\FunctionTok{:} \StringTok{"REQ{-}ASYNC{-}REPORT{-}001"}\FunctionTok{,}
+  \DataTypeTok{"correlationId"}\FunctionTok{:} \StringTok{"corr{-}9812"}\FunctionTok{,}
+  \DataTypeTok{"eval"}\FunctionTok{:} \FunctionTok{\{}
+    \DataTypeTok{"id"}\FunctionTok{:} \StringTok{"EVAL{-}ASYNC{-}REPORT{-}001"}\FunctionTok{,}
+    \DataTypeTok{"version"}\FunctionTok{:} \StringTok{"1.0.0"}
+  \FunctionTok{\},}
+  \DataTypeTok{"expected"}\FunctionTok{:} \FunctionTok{\{}
+    \DataTypeTok{"artifacts"}\FunctionTok{:} \OtherTok{[}
+      \StringTok{".cursor/playbooks/operacao{-}assincrona.md"}\OtherTok{,}
+      \StringTok{".cursor/skills/validate{-}api{-}contract/SKILL.md"}\OtherTok{,}
+      \StringTok{".cursor/skills/validate{-}api{-}contract/contracts/report{-}request.contract.yaml"}\OtherTok{,}
+      \StringTok{".cursor/rules/persistir{-}antes{-}de{-}notificar.mdc"}
+    \OtherTok{]}\FunctionTok{,}
+    \DataTypeTok{"assertions"}\FunctionTok{:} \OtherTok{[}
+      \StringTok{"ASSERT{-}REPORT{-}001"}\OtherTok{,}
+      \StringTok{"ASSERT{-}REPORT{-}002"}\OtherTok{,}
+      \StringTok{"ASSERT{-}REPORT{-}003"}
+    \OtherTok{]}
+  \FunctionTok{\},}
+  \DataTypeTok{"observed"}\FunctionTok{:} \FunctionTok{\{}
+    \DataTypeTok{"artifacts"}\FunctionTok{:} \OtherTok{[}
+      \FunctionTok{\{}
+        \DataTypeTok{"path"}\FunctionTok{:} \StringTok{".cursor/playbooks/operacao{-}assincrona.md"}\FunctionTok{,}
+        \DataTypeTok{"evidence"}\FunctionTok{:} \StringTok{"retrieval{-}trace"}\FunctionTok{,}
+        \DataTypeTok{"result"}\FunctionTok{:} \StringTok{"PASS"}
+      \FunctionTok{\}}\OtherTok{,}
+      \FunctionTok{\{}
+        \DataTypeTok{"path"}\FunctionTok{:} \StringTok{".cursor/skills/validate{-}api{-}contract/SKILL.md"}\FunctionTok{,}
+        \DataTypeTok{"evidence"}\FunctionTok{:} \StringTok{"retrieval{-}trace"}\FunctionTok{,}
+        \DataTypeTok{"result"}\FunctionTok{:} \StringTok{"PASS"}
+      \FunctionTok{\}}\OtherTok{,}
+      \FunctionTok{\{}
+        \DataTypeTok{"path"}\FunctionTok{:} \StringTok{".cursor/skills/validate{-}api{-}contract/contracts/report{-}request.contract.yaml"}\FunctionTok{,}
+        \DataTypeTok{"evidence"}\FunctionTok{:} \StringTok{"retrieval{-}trace"}\FunctionTok{,}
+        \DataTypeTok{"result"}\FunctionTok{:} \StringTok{"PASS"}
+      \FunctionTok{\}}\OtherTok{,}
+      \FunctionTok{\{}
+        \DataTypeTok{"path"}\FunctionTok{:} \StringTok{".cursor/rules/persistir{-}antes{-}de{-}notificar.mdc"}\FunctionTok{,}
+        \DataTypeTok{"evidence"}\FunctionTok{:} \StringTok{"retrieval{-}trace"}\FunctionTok{,}
+        \DataTypeTok{"result"}\FunctionTok{:} \StringTok{"PASS"}
+      \FunctionTok{\}}
+    \OtherTok{]}\FunctionTok{,}
+    \DataTypeTok{"assertions"}\FunctionTok{:} \OtherTok{[}
+      \FunctionTok{\{}
+        \DataTypeTok{"id"}\FunctionTok{:} \StringTok{"ASSERT{-}REPORT{-}001"}\FunctionTok{,}
+        \DataTypeTok{"verifier"}\FunctionTok{:} \StringTok{"causalOrderCheck"}\FunctionTok{,}
+        \DataTypeTok{"result"}\FunctionTok{:} \StringTok{"PASS"}
+      \FunctionTok{\}}\OtherTok{,}
+      \FunctionTok{\{}
+        \DataTypeTok{"id"}\FunctionTok{:} \StringTok{"ASSERT{-}REPORT{-}002"}\FunctionTok{,}
+        \DataTypeTok{"verifier"}\FunctionTok{:} \StringTok{"statusApiCheck"}\FunctionTok{,}
+        \DataTypeTok{"result"}\FunctionTok{:} \StringTok{"PASS"}
+      \FunctionTok{\}}\OtherTok{,}
+      \FunctionTok{\{}
+        \DataTypeTok{"id"}\FunctionTok{:} \StringTok{"ASSERT{-}REPORT{-}003"}\FunctionTok{,}
+        \DataTypeTok{"verifier"}\FunctionTok{:} \StringTok{"approvedLlmJudge"}\FunctionTok{,}
+        \DataTypeTok{"result"}\FunctionTok{:} \StringTok{"PASS"}
+      \FunctionTok{\}}
+    \OtherTok{]}\FunctionTok{,}
+    \DataTypeTok{"runtime"}\FunctionTok{:} \FunctionTok{\{}
+      \DataTypeTok{"durableStatus"}\FunctionTok{:} \StringTok{"completed"}\FunctionTok{,}
+      \DataTypeTok{"persistedSequence"}\FunctionTok{:} \DecValTok{451}\FunctionTok{,}
+      \DataTypeTok{"notificationPublishedSequence"}\FunctionTok{:} \DecValTok{452}\FunctionTok{,}
+      \DataTypeTok{"statusApi"}\FunctionTok{:} \StringTok{"consistent"}
+    \FunctionTok{\}}
+  \FunctionTok{\},}
+  \DataTypeTok{"verdict"}\FunctionTok{:} \FunctionTok{\{}
+    \DataTypeTok{"functional"}\FunctionTok{:} \StringTok{"PASS"}\FunctionTok{,}
+    \DataTypeTok{"lineage"}\FunctionTok{:} \StringTok{"PASS"}\FunctionTok{,}
+    \DataTypeTok{"overall"}\FunctionTok{:} \StringTok{"PASS"}
+  \FunctionTok{\},}
+  \DataTypeTok{"tests"}\FunctionTok{:} \OtherTok{[}
+    \FunctionTok{\{}
+      \DataTypeTok{"id"}\FunctionTok{:} \StringTok{"TEST{-}E2E{-}REPORT{-}007"}\FunctionTok{,}
+      \DataTypeTok{"result"}\FunctionTok{:} \StringTok{"PASS"}
+    \FunctionTok{\}}
+  \OtherTok{]}\FunctionTok{,}
+  \DataTypeTok{"residualRisks"}\FunctionTok{:} \OtherTok{[]}
+\FunctionTok{\}}
+\end{Highlighting}
+\end{Shaded}
+
+O Evidence Record não inventa fatos que não estavam disponíveis durante
+a execução. Neste exemplo, a ordem causal pode ser sustentada porque a
+captura operacional registra:
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{persistência: 451}
+\NormalTok{notificação: 452}
+\end{Highlighting}
+\end{Shaded}
+
+e a participação dos artefatos é registrada apenas porque existe
+evidência correspondente em \texttt{retrieval-trace}.
+
+O ciclo completo do estudo pode então ser reconstruído:
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{requisito}
+\NormalTok{        ↓}
+\NormalTok{Rule + Contract}
+\NormalTok{        ↓}
+\NormalTok{Assertions}
+\NormalTok{        ↓}
+\NormalTok{Eval Spec}
+\NormalTok{        ↓}
+\NormalTok{Agent + artefatos aplicáveis}
+\NormalTok{        ↓}
+\NormalTok{execução}
+\NormalTok{        ↓}
+\NormalTok{captura operacional}
+\NormalTok{        ↓}
+\NormalTok{verificadores}
+\NormalTok{        ↓}
+\NormalTok{Evidence Record}
+\end{Highlighting}
+\end{Shaded}
+
+O caso não está fechado apenas porque a resposta parece correta. Ele
+está fechado quando existe evidência suficiente para sustentar os
+critérios exigidos pela Eval.
+
+Se um comportamento funcional estiver comprovado, mas a telemetria não
+permitir confirmar a participação de determinado artefato, preserve as
+duas dimensões:
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{Resultado funcional: PASS}
+\NormalTok{Lineage do artefato: INCONCLUSIVE}
+\end{Highlighting}
+\end{Shaded}
+
+A falta de observabilidade de um elo não deve ser convertida
+automaticamente em \texttt{FAIL}. Da mesma forma, uma resposta
+funcionalmente correta não deve ser utilizada como prova retroativa de
+que aquele artefato participou da execução.
+
+\newpage
+
+\hypertarget{parte-v---governanuxe7a-e-operauxe7uxe3o-do-contexto}{%
+\chapter{Parte V - Governança e operação do
+contexto}\label{parte-v---governanuxe7a-e-operauxe7uxe3o-do-contexto}}
+
+A Parte IV mostrou como os artefatos de Context Engineering cooperam
+dentro de uma única execução. O próximo problema aparece quando essa
+organização precisa deixar de ser um exemplo isolado e passar a ser
+mantida, avaliada e ampliada por um time.
+
+Um caso funcionando ainda não constitui um padrão organizacional. Antes
+de expandir a prática, precisamos responder duas perguntas diferentes:
+
+\begin{enumerate}
+\def\labelenumi{\arabic{enumi}.}
+\tightlist
+\item
+  \textbf{Como cada artefato deve ser classificado e governado?}
+\item
+  \textbf{Que evidência demonstra que a prática está pronta para ampliar
+  seu uso?}
+\end{enumerate}
+
+Esta parte trata dessas duas dimensões. Primeiro, organiza a
+classificação dos artefatos por eixos independentes. Depois, apresenta
+gates para avançar de POC para piloto e prática compartilhada sem
+escalar uma estrutura antes que recuperação, aplicação, custo e
+manutenção estejam suficientemente observáveis.
+
+As duas dimensões não devem ser confundidas:
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{classificação}
+\NormalTok{→ descreve como o contexto está organizado}
+
+\NormalTok{gates}
+\NormalTok{→ decidem se existe evidência suficiente para ampliar seu uso}
+\end{Highlighting}
+\end{Shaded}
+
+\hypertarget{classificauxe7uxe3o-huxedbrida}{%
+\section{Classificação híbrida}\label{classificauxe7uxe3o-huxedbrida}}
+
+Até aqui, HOT/WARM/COLD respondeu principalmente a uma pergunta:
+
+\begin{quote}
+\textbf{Quando este conteúdo precisa entrar no contexto?}
+\end{quote}
+
+Essa classificação, porém, não informa sozinha como o conteúdo é
+encontrado, qual autoridade possui ou qual responsabilidade desempenha.
+Para essas perguntas, utilizamos outros eixos.
+
+Chamar esses eixos de \textbf{ortogonais} significa que o valor
+atribuído em um deles não determina automaticamente os demais.
+
+Por exemplo:
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{COLD}
+\NormalTok{≠ pouco importante}
+
+\NormalTok{HOT}
+\NormalTok{≠ necessariamente normativo}
+
+\NormalTok{Rule}
+\NormalTok{≠ necessariamente HOT}
+
+\NormalTok{Knowledge}
+\NormalTok{≠ necessariamente apenas consultivo em frequência}
+\end{Highlighting}
+\end{Shaded}
+
+Os quatro eixos principais utilizados neste livro são:
+
+\begin{longtable}[]{@{}
+  >{\raggedright\arraybackslash}p{(\columnwidth - 4\tabcolsep) * \real{0.3333}}
+  >{\raggedright\arraybackslash}p{(\columnwidth - 4\tabcolsep) * \real{0.3333}}
+  >{\raggedright\arraybackslash}p{(\columnwidth - 4\tabcolsep) * \real{0.3333}}@{}}
+\toprule\noalign{}
+\begin{minipage}[b]{\linewidth}\raggedright
+Eixo
+\end{minipage} & \begin{minipage}[b]{\linewidth}\raggedright
+Pergunta
+\end{minipage} & \begin{minipage}[b]{\linewidth}\raggedright
+Valores possíveis
+\end{minipage} \\
+\midrule\noalign{}
+\endhead
+\bottomrule\noalign{}
+\endlastfoot
+Temperatura & Quando carregar? & HOT, WARM, COLD \\
+Modo de acesso & Como chegar ao conteúdo necessário? & NAVIGATION,
+LOOKUP, DEEPDIVE \\
+Autoridade & Quanto o conteúdo obriga? & NORMATIVE, ADVISORY,
+ILLUSTRATIVE \\
+Tipo & Qual responsabilidade desempenha? & Agent, Playbook, Skill,
+Knowledge, Rule, Contract, Eval, Evidence \\
+\end{longtable}
+
+Cada eixo descreve uma propriedade diferente:
+
+\begin{itemize}
+\tightlist
+\item
+  \textbf{Temperatura} indica em que momento o conteúdo tende a ser
+  necessário;
+\item
+  \textbf{Modo de acesso} descreve como o leitor, Agent ou mecanismo de
+  recuperação chega ao nível de detalhe necessário;
+\item
+  \textbf{Autoridade} indica a força que o conteúdo possui quando
+  aplicável;
+\item
+  \textbf{Tipo} identifica a responsabilidade desempenhada pelo
+  artefato.
+\end{itemize}
+
+No eixo de acesso:
+
+\begin{itemize}
+\tightlist
+\item
+  \textbf{NAVIGATION} orienta para onde seguir, como índices, mapas e
+  referências para outros recursos;
+\item
+  \textbf{LOOKUP} permite recuperar uma informação específica sem
+  consumir um material extenso;
+\item
+  \textbf{DEEPDIVE} leva a conteúdo detalhado utilizado quando a tarefa
+  exige investigação ou aprofundamento.
+\end{itemize}
+
+Essas classificações podem coexistir sem exigir uma estrutura de pastas
+diferente para cada combinação.
+
+Por exemplo, o Knowledge utilizado no estudo de caso pode ser
+classificado como:
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\FunctionTok{id}\KeywordTok{:}\AttributeTok{ KNOWLEDGE{-}SIGNALR{-}001}
+\FunctionTok{name}\KeywordTok{:}\AttributeTok{ signalr{-}operacoes{-}assincronas}
+\FunctionTok{type}\KeywordTok{:}\AttributeTok{ knowledge}
+\FunctionTok{temperature}\KeywordTok{:}\AttributeTok{ warm}
+\FunctionTok{access}\KeywordTok{:}\AttributeTok{ lookup}
+\FunctionTok{authority}\KeywordTok{:}\AttributeTok{ advisory}
+\FunctionTok{owner}\KeywordTok{:}\AttributeTok{ backend{-}platform}
+\end{Highlighting}
+\end{Shaded}
+
+A leitura dessa combinação é:
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{type: knowledge}
+\NormalTok{→ apoia compreensão e decisão}
+
+\NormalTok{temperature: warm}
+\NormalTok{→ é recuperado quando existe sinal de aplicabilidade}
+
+\NormalTok{access: lookup}
+\NormalTok{→ normalmente é consultado de forma direcionada}
+
+\NormalTok{authority: advisory}
+\NormalTok{→ informa a decisão sem criar sozinho uma obrigação normativa}
+\end{Highlighting}
+\end{Shaded}
+
+O mesmo princípio permite combinações diferentes. Um material COLD pode
+ser NORMATIVE quando aplicável; uma Rule pode ser WARM; um conteúdo HOT
+pode ser apenas ADVISORY.
+
+\begin{warningbox}{Classificação do livro não substitui o contrato do host}
+
+Os eixos desta seção pertencem à ontologia de governança do livro. Eles
+não devem ser inseridos indiscriminadamente no frontmatter de qualquer
+artefato como se todos os hosts interpretassem os mesmos campos.
+
+Quando um formato possui contrato próprio --- como Cursor Project Rules
+ou Agent Skills --- preserve primeiro o schema reconhecido pelo
+consumidor. As classificações adicionais devem permanecer onde o formato
+permitir extensão ou em um mecanismo de catálogo definido pelo projeto.
+
+\end{warningbox}
+
+Por isso, classificação semântica e mecanismo técnico continuam sendo
+dimensões diferentes:
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{ontologia do livro}
+\NormalTok{→ descreve significado, temperatura, acesso e autoridade}
+
+\NormalTok{host ou especificação}
+\NormalTok{→ determina quais metadados possuem efeito operacional}
+\end{Highlighting}
+\end{Shaded}
+
+O modelo híbrido evita conclusões incorretas como ``todo conteúdo COLD é
+pouco importante'', ``todo conteúdo HOT é normativo'' ou ``todo artefato
+do mesmo tipo precisa ser recuperado da mesma maneira''.
+
+\begin{curiousbox}{Para curiosos — mais eixos}
+
+Grandes bases podem acrescentar domínio, sensibilidade, versão,
+proprietário, estado de aprovação ou prazo de validade. Só adicione um
+eixo quando ele sustentar uma decisão mensurável de recuperação,
+governança, segurança ou auditoria.
+
+\end{curiousbox}
+
+\hypertarget{fonte-de-autoridade-e-resoluuxe7uxe3o-de-conflitos}{%
+\section{Fonte de autoridade e resolução de
+conflitos}\label{fonte-de-autoridade-e-resoluuxe7uxe3o-de-conflitos}}
+
+Quando dois artefatos divergem, o Agent não deve escolher
+automaticamente o texto mais recente, o arquivo mais detalhado ou aquele
+que apareceu primeiro no contexto. O conflito precisa ser resolvido pela
+\textbf{autoridade da fonte, aplicabilidade e vigência}.
+
+Uma ordem inicial de autoridade pode ser:
+
+\begin{enumerate}
+\def\labelenumi{\arabic{enumi}.}
+\tightlist
+\item
+  lei, regulação e política corporativa aplicável;
+\item
+  Rule normativa aprovada;
+\item
+  Contract derivado de requisitos e Rules aprovados;
+\item
+  Playbook vigente;
+\item
+  Knowledge consultivo;
+\item
+  exemplos ilustrativos.
+\end{enumerate}
+
+Essa ordem é uma política de governança do projeto, não uma hierarquia
+universal. O ponto principal é que \textbf{o tipo do artefato não cria
+autoridade por si só}. Um Contract, por exemplo, torna condições
+verificáveis, mas não deve contradizer a Rule ou o requisito dos quais
+foi derivado.
+
+Quando dois artefatos de autoridade equivalente divergirem:
+
+\begin{itemize}
+\tightlist
+\item
+  confirme se ambos são aplicáveis ao mesmo cenário;
+\item
+  verifique versão, estado de aprovação e revisão;
+\item
+  identifique a fonte responsável por cada obrigação;
+\item
+  registre o conflito;
+\item
+  interrompa a decisão quando a divergência puder alterar materialmente
+  o resultado e não houver critério aprovado para resolvê-la.
+\end{itemize}
+
+O fluxo de resolução pode ser resumido assim:
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{conflito detectado}
+\NormalTok{        ↓}
+\NormalTok{mesmo escopo e aplicabilidade?}
+\NormalTok{        ↓}
+\NormalTok{qual fonte possui autoridade?}
+\NormalTok{        ↓}
+\NormalTok{qual versão está vigente?}
+\NormalTok{        ↓}
+\NormalTok{existe decisão determinística?}
+\NormalTok{   ├── sim → aplicar e registrar}
+\NormalTok{   └── não → interromper e escalar}
+\end{Highlighting}
+\end{Shaded}
+
+Um conflito entre Rule e Contract merece atenção especial. Como o
+Contract deve representar condições derivadas de fontes aprovadas, uma
+divergência entre os dois normalmente indica \textbf{drift ou erro de
+derivação}, e não uma escolha que o Agent deva resolver silenciosamente.
+
+\hypertarget{metadados-muxednimos}{%
+\section{Metadados mínimos}\label{metadados-muxednimos}}
+
+Depois de definir como conflitos são resolvidos, os artefatos governados
+precisam fornecer metadados suficientes para determinar identidade,
+responsabilidade, vigência, aplicabilidade e relacionamentos.
+
+Por exemplo, o Playbook do estudo pode utilizar:
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\FunctionTok{id}\KeywordTok{:}\AttributeTok{ PLAYBOOK{-}ASYNC{-}001}
+\FunctionTok{name}\KeywordTok{:}\AttributeTok{ operacao{-}assincrona}
+\FunctionTok{type}\KeywordTok{:}\AttributeTok{ playbook}
+\FunctionTok{description}\KeywordTok{:}\AttributeTok{ Coordena jobs duráveis com reconciliação por API e notificação.}
+\FunctionTok{owner}\KeywordTok{:}\AttributeTok{ backend{-}platform}
+\FunctionTok{status}\KeywordTok{:}\AttributeTok{ approved}
+\FunctionTok{version}\KeywordTok{:}\AttributeTok{ }\FloatTok{2.1.0}
+\FunctionTok{reviewed\_at}\KeywordTok{:}\AttributeTok{ 2026{-}07{-}15}
+\FunctionTok{review\_after}\KeywordTok{:}\AttributeTok{ 2026{-}10{-}15}
+\FunctionTok{applicability\_signals}\KeywordTok{:}
+\AttributeTok{  }\KeywordTok{{-}}\AttributeTok{ processamento excede o tempo síncrono esperado}
+\AttributeTok{  }\KeywordTok{{-}}\AttributeTok{ conclusão precisa permanecer reconciliável pela API}
+\FunctionTok{related}\KeywordTok{:}
+\AttributeTok{  }\KeywordTok{{-}}\AttributeTok{ .cursor/rules/persistir{-}antes{-}de{-}notificar.mdc}
+\AttributeTok{  }\KeywordTok{{-}}\AttributeTok{ .cursor/skills/validate{-}api{-}contract/contracts/report{-}request.contract.yaml}
+\end{Highlighting}
+\end{Shaded}
+
+Nesse exemplo:
+
+\begin{itemize}
+\tightlist
+\item
+  \texttt{id} fornece identidade estável para governança;
+\item
+  \texttt{name} permanece em \texttt{kebab-case};
+\item
+  \texttt{owner} identifica quem responde pela manutenção;
+\item
+  \texttt{status} e \texttt{version} permitem determinar a versão
+  vigente;
+\item
+  \texttt{reviewed\_at} e \texttt{review\_after} ajudam a identificar
+  conteúdo que precisa ser revisto;
+\item
+  \texttt{applicability\_signals} registra situações nas quais o
+  Playbook deve ser considerado;
+\item
+  \texttt{related} preserva relações com artefatos dos quais o
+  procedimento depende.
+\end{itemize}
+
+Esses campos pertencem à \textbf{BOOK ONTOLOGY}. Eles só produzem
+efeitos de descoberta, validação ou governança quando algum catálogo,
+Agent, Skill, script ou harness os interpreta.
+
+Sem proprietário, vigência, aplicabilidade e relacionamentos, uma base
+pode parecer organizada visualmente e ainda permanecer operacionalmente
+ambígua.
+
+\hypertarget{convenuxe7uxf5es-de-escrita-e-delimitadores}{%
+\section{Convenções de escrita e
+delimitadores}\label{convenuxe7uxf5es-de-escrita-e-delimitadores}}
+
+Depois de classificar e governar os artefatos, ainda resta uma dimensão
+prática: \textbf{como escrever seu conteúdo de forma consistente e
+reconhecível}.
+
+Esta seção estabelece convenções para estruturar documentos Markdown,
+representar conteúdo literal, utilizar placeholders e delimitadores
+semânticos e combinar esses elementos dentro de um artefato completo. O
+objetivo não é criar uma nova sintaxe, mas reduzir ambiguidades para
+pessoas, parsers e modelos.
+
+As convenções serão apresentadas em quatro níveis:
+
+\begin{enumerate}
+\def\labelenumi{\arabic{enumi}.}
+\tightlist
+\item
+  estrutura de títulos, listas, tabelas e checklists;
+\item
+  representação de código e conteúdo literal;
+\item
+  uso de placeholders e delimitadores semânticos;
+\item
+  combinação das convenções em um artefato completo.
+\end{enumerate}
+
+As práticas seguintes priorizam estrutura reconhecível e consistência
+semântica. Elas não constituem uma linguagem própria nem garantem
+obediência do modelo; servem para tornar artefatos mais previsíveis para
+pessoas, parsers e modelos.
+
+A documentação oficial da Anthropic recomenda instruções claras, etapas
+sequenciais quando ordem ou completude importam, exemplos bem
+delimitados e tags XML para separar tipos de conteúdo em prompts
+complexos.\footnote{A referência da Anthropic recomenda clareza, passos
+  numerados quando a ordem importa, exemplos estruturados e tags XML
+  para separar instruções, contexto e entradas. A formatação deve apoiar
+  a intenção e permanecer consistente; ela não substitui testes de
+  comportamento.} Essas práticas podem ser úteis além de um único
+modelo, mas devem ser verificadas nos modelos, hosts e clientes
+realmente utilizados pelo time.
+
+\begin{infobox}{A convenção depende do formato do artefato}
+
+Na convenção adotada neste livro, artefatos escritos em Markdown
+utilizam um único \texttt{\#} para o título principal, seções
+\texttt{\#\#}, subdivisões \texttt{\#\#\#} somente quando necessárias,
+bullets para itens independentes e numeração quando a sequência
+importar.
+
+Payloads JSON, Contracts YAML, mensagens HTTP e máquinas de estado
+utilizam a hierarquia nativa do próprio formato. Inserir marcação
+Markdown dentro dessas estruturas pode invalidar o conteúdo ou alterar
+sua interpretação pelo parser.
+
+Exemplos deliberadamente incorretos podem desrespeitar essas convenções
+quando o desvio fizer parte do aprendizado; nesses casos, permanecem
+identificados como \texttt{ANTI-PATTERN}.
+
+\end{infobox}
+
+\hypertarget{tuxedtulos-listas-tabelas-e-checklists}{%
+\subsection{Títulos, listas, tabelas e
+checklists}\label{tuxedtulos-listas-tabelas-e-checklists}}
+
+A hierarquia visual deve refletir a hierarquia semântica do conteúdo.
+Títulos representam unidades de leitura; listas representam conjuntos ou
+sequências; tabelas ajudam na comparação; checklists registram condições
+que precisam ser acompanhadas.
+
+\begin{longtable}[]{@{}
+  >{\raggedright\arraybackslash}p{(\columnwidth - 4\tabcolsep) * \real{0.3333}}
+  >{\raggedright\arraybackslash}p{(\columnwidth - 4\tabcolsep) * \real{0.3333}}
+  >{\raggedright\arraybackslash}p{(\columnwidth - 4\tabcolsep) * \real{0.3333}}@{}}
+\toprule\noalign{}
+\begin{minipage}[b]{\linewidth}\raggedright
+Elemento
+\end{minipage} & \begin{minipage}[b]{\linewidth}\raggedright
+Uso recomendado
+\end{minipage} & \begin{minipage}[b]{\linewidth}\raggedright
+Observação
+\end{minipage} \\
+\midrule\noalign{}
+\endhead
+\bottomrule\noalign{}
+\endlastfoot
+\texttt{\#\ Título} & Título principal do artefato Markdown. & Na
+convenção deste livro, use apenas um título de primeiro nível por
+arquivo. \\
+\texttt{\#\#\ Seção} & Responsabilidade ou etapa principal. & Deve
+sustentar uma unidade real de leitura. \\
+\texttt{\#\#\#\ Subdivisão} & Recorte necessário dentro de uma seção. &
+Não crie subtítulo para uma única frase sem função estrutural. \\
+\texttt{-\ item} & Itens independentes, opções ou propriedades. & A
+ordem não deve alterar o significado. \\
+\texttt{1.\ etapa} & Sequência obrigatória ou progressiva. & Use quando
+trocar a ordem puder mudar o resultado. \\
+\texttt{→\ relação} & Consequência, transição ou relação explicativa
+simples. & É uma convenção visual do livro, não um operador nativo de
+Markdown. \\
+\texttt{**rótulo**} & Destacar rótulo, termo ou decisão curta. & Negrito
+não atribui autoridade normativa. \\
+\texttt{\textasciigrave{}literal\textasciigrave{}} & Nome de arquivo,
+campo, comando ou valor curto. & Use código inline para elementos
+literais incorporados ao texto. \\
+Código cercado & Arquivo, prompt, Contract ou conteúdo literal com
+várias linhas. & Use três crases e informe a linguagem quando
+conhecida. \\
+YAML & Frontmatter, configuração e Contracts legíveis. & Preserve
+indentação e estrutura válidas para o parser utilizado. \\
+\texttt{-\ {[}\ {]}} e \texttt{-\ {[}x{]}} & Checklist pendente e
+concluído. & O marcador registra o estado declarado do item; não
+comprova execução. \\
+\texttt{\{\{variavel\}\}} & Placeholder que será substituído. & É
+convenção do projeto; deixe claro quem realiza a substituição. \\
+\texttt{\textless{}context\textgreater{}...\textless{}/context\textgreater{}}
+& Delimitar grupos semânticos em prompts estruturados. & Use nomes
+descritivos e mantenha abertura e fechamento consistentes. \\
+\texttt{\textless{}!-\/-\ comentário\ -\/-\textgreater{}} & Anotação
+editorial, técnica ou de auditoria. & Pode ficar invisível no HTML, mas
+permanece no arquivo bruto. \\
+Tabela & Comparação, catálogo ou mapeamento. & Evite excesso de colunas
+e conteúdo muito longo em cada célula. \\
+\end{longtable}
+
+\begin{tipbox}{Markdown não define autoridade}
+
+Título, negrito, tabela ou caixa visual podem melhorar a leitura, mas
+não transformam uma recomendação em conteúdo NORMATIVE.
+
+Autoridade deriva da fonte e da política de governança aplicável. Quando
+o formato permitir, catálogos ou metadados adicionais podem torná-la
+explícita, mas a aparência Markdown não cria autoridade.
+
+\end{tipbox}
+
+O exemplo abaixo combina títulos, listas, relações e checklist:
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\FunctionTok{\# Validar contrato de API}
+
+\FunctionTok{\#\# Quando usar}
+
+\SpecialStringTok{{-} }\NormalTok{Alteração de endpoint.}
+\SpecialStringTok{{-} }\NormalTok{Mudança de status code ou schema.}
+
+\FunctionTok{\#\# Fluxo obrigatório}
+
+\SpecialStringTok{1. }\NormalTok{Identificar a operação.}
+\SpecialStringTok{2. }\NormalTok{Comparar entrada, saída e erros.}
+\SpecialStringTok{3. }\NormalTok{Executar o validador.}
+\SpecialStringTok{4. }\NormalTok{Registrar a evidência.}
+
+\NormalTok{→ O relatório relaciona cada incompatibilidade ao Contract analisado.}
+
+\FunctionTok{\#\# Checklist}
+
+\SpecialStringTok{{-} }\VariableTok{[ ]}\NormalTok{ Consumidores identificados.}
+\SpecialStringTok{{-} }\VariableTok{[ ]}\NormalTok{ Compatibilidade avaliada.}
+\SpecialStringTok{{-} }\VariableTok{[x]}\NormalTok{ Schema sintaticamente válido.}
+\end{Highlighting}
+\end{Shaded}
+
+O hífen representa itens cuja posição não define uma sequência
+obrigatória. A numeração indica que existe uma ordem relevante. O
+checklist registra o estado declarado de cada item, mas somente testes,
+resultados observáveis ou Evidence Records podem sustentar a conclusão
+de que uma ação realmente ocorreu.
+
+\hypertarget{cuxf3digo-inline-e-cuxf3digo-cercado}{%
+\subsection{Código inline e código
+cercado}\label{cuxf3digo-inline-e-cuxf3digo-cercado}}
+
+Use uma crase para elementos curtos, como
+\texttt{\textasciigrave{}jobId\textasciigrave{}},
+\texttt{\textasciigrave{}SKILL.md\textasciigrave{}} ou
+\texttt{\textasciigrave{}dotnet\ test\textasciigrave{}}.
+
+Para conteúdos literais com várias linhas, use três crases na abertura e
+no fechamento e informe a linguagem quando conhecida. Isso separa
+visualmente explicação e conteúdo literal e permite que renderizadores
+apliquem realce de sintaxe.
+
+O exemplo abaixo utiliza quatro crases externas apenas para mostrar
+literalmente um bloco que utiliza três crases:
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\InformationTok{\textasciigrave{}\textasciigrave{}\textasciigrave{}yaml}
+\FunctionTok{id}\KeywordTok{:}\AttributeTok{ PLAYBOOK{-}ASYNC{-}001}
+\FunctionTok{name}\KeywordTok{:}\AttributeTok{ operacao{-}assincrona}
+\FunctionTok{type}\KeywordTok{:}\AttributeTok{ playbook}
+\InformationTok{\textasciigrave{}\textasciigrave{}\textasciigrave{}}
+\end{Highlighting}
+\end{Shaded}
+
+Linguagens frequentes:
+
+\begin{itemize}
+\tightlist
+\item
+  \texttt{markdown} para artefatos, prompts e exemplos de documentação;
+\item
+  \texttt{yaml} para frontmatter, configuração e Contracts;
+\item
+  \texttt{json} para payloads, schemas e Evidence Records;
+\item
+  \texttt{bash} ou \texttt{powershell} para comandos executáveis;
+\item
+  \texttt{csharp} para exemplos .NET;
+\item
+  \texttt{text} quando nenhum realce específico for apropriado;
+\item
+  \texttt{mermaid} somente quando o renderer utilizado suportar o
+  diagrama.
+\end{itemize}
+
+\hypertarget{chaves-placeholders-e-tags}{%
+\subsection{Chaves, placeholders e
+tags}\label{chaves-placeholders-e-tags}}
+
+Chaves simples fazem parte da sintaxe de objetos JSON, como
+\texttt{\{\ "status":\ "completed"\ \}}.
+
+Chaves duplas, como \texttt{\{\{request\_id\}\}}, não possuem
+significado universal. Neste e-book, elas representam um valor que o
+operador, template engine ou harness deverá substituir antes da
+utilização.
+
+Tags como \texttt{\textless{}context\textgreater{}},
+\texttt{\textless{}instructions\textgreater{}},
+\texttt{\textless{}input\textgreater{}} e
+\texttt{\textless{}example\textgreater{}} utilizam notação XML para
+delimitar semanticamente partes de prompts estruturados. Elas não
+precisam constituir um documento XML completo com schema, mas devem
+utilizar nomes claros e manter uma hierarquia consistente.
+
+A delimitação também precisa preservar a diferença entre
+\textbf{instrução} e \textbf{dado fornecido ao modelo}. Conteúdo externo
+ou não confiável não deve ser misturado silenciosamente com instruções
+que controlam o comportamento da execução.
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\FunctionTok{\# Prompt estruturado}
+
+\FunctionTok{\#\# Instruções}
+
+\DataTypeTok{\textless{}}\KeywordTok{instructions}\DataTypeTok{\textgreater{}}
+\NormalTok{Analise somente os documentos fornecidos.}
+\DataTypeTok{\textless{}/}\KeywordTok{instructions}\DataTypeTok{\textgreater{}}
+
+\FunctionTok{\#\# Contexto}
+
+\DataTypeTok{\textless{}}\KeywordTok{context}\DataTypeTok{\textgreater{}}
+  \DataTypeTok{\textless{}}\KeywordTok{rule}\DataTypeTok{\textgreater{}}\NormalTok{Persistir o resultado antes de notificar.}\DataTypeTok{\textless{}/}\KeywordTok{rule}\DataTypeTok{\textgreater{}}
+  \DataTypeTok{\textless{}}\KeywordTok{operation}\DataTypeTok{\textgreater{}}\NormalTok{\{\{operation\_name\}\}}\DataTypeTok{\textless{}/}\KeywordTok{operation}\DataTypeTok{\textgreater{}}
+\DataTypeTok{\textless{}/}\KeywordTok{context}\DataTypeTok{\textgreater{}}
+
+\FunctionTok{\#\# Entrada}
+
+\DataTypeTok{\textless{}}\KeywordTok{input}\DataTypeTok{\textgreater{}}
+\NormalTok{\{\{operation\_payload\}\}}
+\DataTypeTok{\textless{}/}\KeywordTok{input}\DataTypeTok{\textgreater{}}
+
+\FunctionTok{\#\# Regras de delimitação}
+
+\SpecialStringTok{{-} }\NormalTok{Mantenha instruções separadas de dados externos.}
+\SpecialStringTok{{-} }\NormalTok{Feche todas as tags abertas.}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{warningbox}{Tags não são fronteiras de segurança}
+
+Tags ajudam a estruturar o prompt, mas não tornam conteúdo externo
+confiável, não neutralizam prompt injection e não substituem autorização
+de tools ou validação de resultados.
+
+Dados externos continuam exigindo tratamento compatível com sua origem,
+nível de confiança e impacto sobre a execução.
+
+\end{warningbox}
+
+\hypertarget{exemplo-integrado-de-um-artefato}{%
+\subsection{Exemplo integrado de um
+artefato}\label{exemplo-integrado-de-um-artefato}}
+
+O exemplo abaixo reúne as convenções anteriores em um Playbook. O
+frontmatter permanece no início do arquivo; comentários editoriais
+aparecem depois dele para não interferir em parsers que esperam
+\texttt{-\/-\/-} como primeiro elemento.
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\CommentTok{{-}{-}{-}}
+\AnnotationTok{id:}\CommentTok{ PLAYBOOK{-}ASYNC{-}001}
+\AnnotationTok{name:}\CommentTok{ operacao{-}assincrona}
+\AnnotationTok{type:}\CommentTok{ playbook}
+\AnnotationTok{description:}\CommentTok{ Coordena uma operação durável com reconciliação por API e notificação.}
+\AnnotationTok{temperature:}\CommentTok{ warm}
+\AnnotationTok{applicability\_signals:}
+\CommentTok{  {-} processamento excede o tempo síncrono esperado}
+\CommentTok{  {-} conclusão precisa permanecer reconciliável pela API}
+\CommentTok{{-}{-}{-}}
+
+\CommentTok{\textless{}!{-}{-} ILLUSTRATIVE: exemplo didático {-}{-}\textgreater{}}
+
+\FunctionTok{\# Operação assíncrona}
+
+\FunctionTok{\#\# Quando usar}
+
+\SpecialStringTok{{-} }\NormalTok{A execução excede o tempo síncrono esperado.}
+\SpecialStringTok{{-} }\NormalTok{O resultado precisa permanecer reconciliável pela API.}
+
+\FunctionTok{\#\# Parâmetros}
+
+\SpecialStringTok{{-} }\InformationTok{\textasciigrave{}\{\{request\_id\}\}\textasciigrave{}}\NormalTok{: substituído pelo harness antes da execução.}
+
+\FunctionTok{\#\# Fluxo}
+
+\SpecialStringTok{1. }\NormalTok{Validar }\InformationTok{\textasciigrave{}\{\{request\_id\}\}\textasciigrave{}}\NormalTok{.}
+\SpecialStringTok{2. }\NormalTok{Criar o job durável.}
+\SpecialStringTok{3. }\NormalTok{Processar e persistir o resultado.}
+\SpecialStringTok{4. }\NormalTok{Confirmar a transação.}
+\SpecialStringTok{5. }\NormalTok{Notificar o front{-}end.}
+
+\NormalTok{→ Nesta arquitetura, SignalR reduz a latência percebida; a API preserva o estado durável consultável.}
+
+\FunctionTok{\#\# Entrada literal}
+
+\InformationTok{\textasciigrave{}\textasciigrave{}\textasciigrave{}yaml}
+\FunctionTok{requestId}\KeywordTok{:}\AttributeTok{ }\StringTok{"\{\{request\_id\}\}"}
+\FunctionTok{notify}\KeywordTok{:}\AttributeTok{ }\CharTok{true}
+\InformationTok{\textasciigrave{}\textasciigrave{}\textasciigrave{}}
+
+\FunctionTok{\#\# Checklist}
+
+\SpecialStringTok{{-} }\VariableTok{[ ]}\NormalTok{ Resultado persistido.}
+\SpecialStringTok{{-} }\VariableTok{[ ]}\NormalTok{ Transação confirmada.}
+\SpecialStringTok{{-} }\VariableTok{[ ]}\NormalTok{ Evento correlacionado pelo }\InformationTok{\textasciigrave{}jobId\textasciigrave{}}\NormalTok{.}
+\SpecialStringTok{{-} }\VariableTok{[ ]}\NormalTok{ Estado final permanece consultável.}
+\end{Highlighting}
+\end{Shaded}
+
+O exemplo obedece às mesmas convenções que a seção acabou de apresentar:
+o \texttt{name} utiliza \texttt{kebab-case}, o frontmatter permanece no
+início do arquivo, o placeholder identifica quem realiza a substituição
+e o conteúdo YAML com várias linhas está protegido por um bloco cercado.
+
+\begin{infobox}{Pontuação e consistência}
+
+Use pontuação de forma coerente com a função do texto. Instruções
+completas podem terminar com ponto; itens que completam uma mesma frase
+podem utilizar ponto e vírgula nos elementos intermediários e ponto no
+último.
+
+Não existe motivo para terminar mecanicamente toda linha com a mesma
+pontuação na expectativa de aumentar a obediência do modelo. Clareza,
+consistência semântica, exemplos, Contracts e Evals fornecem mecanismos
+mais úteis para orientar e verificar comportamento.
+
+\end{infobox}
+
+\hypertarget{oruxe7amento-de-contexto}{%
+\section{Orçamento de contexto}\label{oruxe7amento-de-contexto}}
+
+O objetivo não é usar o menor número absoluto de tokens. É fornecer
+\textbf{contexto suficiente, relevante e verificável para concluir a
+tarefa com qualidade aceitável}, evitando tanto excesso quanto ausência
+de informação necessária.
+
+Para acompanhar o consumo, primeiro separe o contexto enviado ao modelo
+da saída produzida:
+
+\[
+C_{entrada} = C_{hot} + C_{recuperado} + C_{historico} + C_{ferramentas}
+\]
+
+\[
+C_{interacao} = C_{entrada} + C_{saida}
+\]
+
+Neste modelo:
+
+\begin{itemize}
+\tightlist
+\item
+  \(C_{hot}\) representa instruções e orientações disponíveis desde o
+  início;
+\item
+  \(C_{recuperado}\) representa conteúdo carregado sob demanda;
+\item
+  \(C_{historico}\) representa mensagens ou estado conversacional
+  incluídos na requisição;
+\item
+  \(C_{ferramentas}\) representa definições de tools e resultados
+  incorporados ao contexto;
+\item
+  \(C_{saida}\) representa os tokens produzidos pelo modelo.
+\end{itemize}
+
+A decomposição é uma aproximação operacional. O custo efetivo depende do
+modelo, do provedor, de mecanismos de cache e da forma como o host monta
+cada requisição.
+
+Não avalie eficiência apenas pelo número de tokens. Acompanhe também:
+
+\begin{itemize}
+\tightlist
+\item
+  recuperação de conteúdo relevante;
+\item
+  aplicação correta das instruções e restrições recuperadas;
+\item
+  conteúdo irrelevante carregado;
+\item
+  latência até a primeira ação útil;
+\item
+  custo por tarefa concluída;
+\item
+  retrabalho após testes, evals ou avaliação humana.
+\end{itemize}
+
+\begin{warningbox}{Menos tokens não é automaticamente melhor}
+
+Remover contexto crítico pode reduzir o custo de uma chamada e, ao mesmo
+tempo, aumentar erro, repetição e retrabalho.
+
+A unidade econômica mais útil não é simplesmente \textbf{token por
+requisição}, mas o custo necessário para concluir uma tarefa dentro do
+nível de qualidade esperado.
+
+\end{warningbox}
+
+\hypertarget{ciclo-de-vida-dos-artefatos}{%
+\section{Ciclo de vida dos
+artefatos}\label{ciclo-de-vida-dos-artefatos}}
+
+O contexto também precisa ser mantido ao longo do tempo. Um artefato
+aprovado hoje pode se tornar incorreto, redundante ou incompatível com
+outros elementos depois de mudanças no sistema.
+
+Um ciclo simples é:
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{propor}
+\NormalTok{→ revisar}
+\NormalTok{→ aprovar}
+\NormalTok{→ publicar}
+\NormalTok{→ observar}
+\NormalTok{→ avaliar}
+\NormalTok{→ ajustar}
+\NormalTok{→ arquivar}
+\end{Highlighting}
+\end{Shaded}
+
+Cada mudança relevante deve responder:
+
+\begin{itemize}
+\tightlist
+\item
+  qual problema observável motivou a alteração;
+\item
+  qual fonte aprovada sustenta o comportamento esperado;
+\item
+  quais artefatos, Assertions e Evals podem ser impactados;
+\item
+  qual comportamento esperado precisa permanecer preservado;
+\item
+  quais evidências permitirão comparar antes e depois;
+\item
+  como reverter a mudança se ocorrer regressão.
+\end{itemize}
+
+A alteração do artefato não deve redefinir silenciosamente o critério
+usado para avaliá-lo. Quando uma expectativa aprovada precisar mudar,
+preserve a execução anterior, versione a nova expectativa e execute
+novamente os cenários relacionados.
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{expected anterior}
+\NormalTok{        ↓}
+\NormalTok{baseline observada}
+\NormalTok{        ↓}
+\NormalTok{alteração do artefato}
+\NormalTok{        ↓}
+\NormalTok{nova execução}
+\NormalTok{        ↓}
+\NormalTok{comparação}
+
+\NormalTok{se o expected também mudou:}
+\NormalTok{versionar expected}
+\NormalTok{→ executar novamente}
+\NormalTok{→ preservar os dois históricos}
+\end{Highlighting}
+\end{Shaded}
+
+\hypertarget{refatorauxe7uxe3o-orientada-por-recuperabilidade}{%
+\section{Refatoração orientada por
+recuperabilidade}\label{refatorauxe7uxe3o-orientada-por-recuperabilidade}}
+
+Uma reorganização pode deixar os arquivos visualmente melhores e, ao
+mesmo tempo, dificultar sua descoberta ou aplicação. Por isso, refatorar
+contexto exige comparar comportamento antes e depois da mudança.
+
+O procedimento recomendado é:
+
+\begin{enumerate}
+\def\labelenumi{\arabic{enumi}.}
+\tightlist
+\item
+  identifique os artefatos que serão alterados e suas fontes aprovadas;
+\item
+  preserve as Assertions, consultas e Evals que formarão a baseline;
+\item
+  registre conceitos, termos relacionados e sinais de aplicabilidade
+  relevantes;
+\item
+  prepare consultas positivas, ambíguas e, quando a ausência for
+  observável e importante, cenários negativos;
+\item
+  execute a baseline antes da reorganização;
+\item
+  realize a refatoração;
+\item
+  execute novamente o mesmo conjunto de cenários;
+\item
+  avalie os mecanismos de recuperação realmente existentes;
+\item
+  avalie a aplicação do conteúdo recuperado;
+\item
+  compare os resultados e ajuste somente quando houver evidência de
+  regressão ou oportunidade mensurável de melhoria.
+\end{enumerate}
+
+Não trate recuperação lexical e semântica como etapas obrigatórias em
+toda arquitetura.
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{se existe busca lexical}
+\NormalTok{→ avalie recuperação lexical}
+
+\NormalTok{se existe busca semântica}
+\NormalTok{→ avalie recuperação semântica}
+
+\NormalTok{sempre que aplicável}
+\NormalTok{→ avalie se o contexto disponível foi utilizado corretamente}
+\end{Highlighting}
+\end{Shaded}
+
+Por exemplo, um sistema baseado apenas em roteamento determinístico não
+precisa inventar uma métrica de busca semântica para cumprir esta
+metodologia. O método deve avaliar o mecanismo que realmente participa
+da execução.
+
+A comparação antes e depois permite distinguir três problemas
+diferentes:
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{artefato correto, mas não encontrado}
+\NormalTok{→ problema de recuperação ou roteamento}
+
+\NormalTok{artefato encontrado, mas aplicado incorretamente}
+\NormalTok{→ problema de aplicação}
+
+\NormalTok{critério impossível de verificar}
+\NormalTok{→ problema de observabilidade}
+\end{Highlighting}
+\end{Shaded}
+
+Essa abordagem favorece tanto verificações automatizadas quanto inspeção
+manual dos artefatos e resultados produzidos.
+
+\hypertarget{pequeno-loop-de-implementauxe7uxe3o-e-testes}{%
+\section{Pequeno loop de implementação e
+testes}\label{pequeno-loop-de-implementauxe7uxe3o-e-testes}}
+
+Ciclos curtos ajudam a evitar mudanças grandes demais antes de existir
+feedback. O limite de iterações é uma \textbf{política operacional}, não
+uma propriedade dos agentes ou dos modelos.
+
+Neste livro, cinco tentativas podem ser usadas como exemplo de limite
+para um loop controlado:
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{1. Selecionar uma pequena fatia da mudança.}
+\NormalTok{2. Identificar Contract, Rule ou Assertion aplicável, quando houver.}
+\NormalTok{3. Implementar a menor alteração coerente.}
+\NormalTok{4. Executar testes focados e Evals relacionados.}
+\NormalTok{5. Capturar resultados observáveis.}
+\NormalTok{6. Diagnosticar a falha com base nesses resultados.}
+\NormalTok{7. Corrigir somente o que a evidência sustenta.}
+\NormalTok{8. Repetir até o limite configurado.}
+\NormalTok{9. Se o problema persistir, interromper e registrar a decisão externa necessária.}
+\end{Highlighting}
+\end{Shaded}
+
+O número cinco serve apenas como exemplo de orçamento de tentativas:
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{max\_iterations = 5}
+\end{Highlighting}
+\end{Shaded}
+
+Um time pode definir outro limite conforme custo, risco, duração dos
+testes e autonomia permitida ao agente.
+
+Durante essas iterações, capturar logs, resultados de testes, traces e
+estados não significa necessariamente produzir um Evidence Record
+completo a cada tentativa. O Evidence Record formal pertence ao processo
+de avaliação definido anteriormente, quando \texttt{expected},
+\texttt{observed}, verificadores e veredito precisam ser preservados.
+
+Pare antes do limite quando:
+
+\begin{itemize}
+\tightlist
+\item
+  a próxima ação exigir credencial, autoridade ou decisão externa;
+\item
+  a mesma falha se repetir sem produzir nova informação;
+\item
+  fontes aplicáveis apresentarem contradição não resolvida;
+\item
+  a correção ampliar materialmente o escopo aprovado;
+\item
+  o teste não conseguir distinguir sucesso, falha e falso positivo;
+\item
+  faltar observabilidade suficiente para diagnosticar o próximo passo.
+\end{itemize}
+
+A condição de parada também faz parte da confiabilidade do loop.
+Continuar modificando o sistema sem nova evidência não aumenta
+necessariamente a probabilidade de correção.
+
+\hypertarget{adouxe7uxe3o-orientada-por-gates}{%
+\section{Adoção orientada por
+gates}\label{adouxe7uxe3o-orientada-por-gates}}
+
+Classificar, versionar, medir e testar artefatos ainda não significa que
+a prática esteja pronta para ser ampliada em toda a organização. A
+adoção precisa aumentar de escopo conforme aumenta a evidência de que o
+sistema pode ser operado e mantido.
+
+Neste modelo, \textbf{POC, Piloto e Padrão são estágios de adoção}.
+\textbf{Gate 1 e Gate 2 são decisões entre esses estágios}, não novas
+fases do projeto.
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{POC}
+\NormalTok{ ↓}
+\NormalTok{Gate 1}
+\NormalTok{ ↓}
+\NormalTok{Piloto}
+\NormalTok{ ↓}
+\NormalTok{Gate 2}
+\NormalTok{ ↓}
+\NormalTok{Padrão}
+\end{Highlighting}
+\end{Shaded}
+
+Cada gate responde a uma pergunta diferente dos eixos de classificação
+apresentados anteriormente:
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{classificação}
+\NormalTok{→ como o contexto está organizado?}
+
+\NormalTok{gate}
+\NormalTok{→ existe evidência suficiente para ampliar seu uso?}
+\end{Highlighting}
+\end{Shaded}
+
+Leia a figura da esquerda para a direita. Os estágios mostram onde a
+prática está sendo utilizada; os gates verificam se existe evidência
+suficiente para permitir a passagem ao próximo nível de adoção.
+
+\begin{figure}
+\centering
+\includegraphics[width=0.95\textwidth,height=\textheight]{assets/diagrams/08-adocao-evidencia.png}
+\caption{Progressão por gates de evidência.}
+\end{figure}
+
+Se um gate não for satisfeito, o trabalho permanece no estágio atual. O
+próximo passo pode ser corrigir a lacuna, melhorar observabilidade,
+executar novos Evals ou registrar a decisão de interromper a evolução.
+
+O gate não deve ser aprovado porque a POC ``parece funcionar''. A
+decisão precisa utilizar critérios definidos antes da avaliação e
+evidências compatíveis com o aumento de risco, número de consumidores e
+responsabilidade operacional do próximo estágio.
+
+\hypertarget{poc}{%
+\subsection{POC}\label{poc}}
+
+O objetivo da POC é demonstrar que o método pode ser executado e
+avaliado dentro de um domínio delimitado. O foco ainda não é provar
+escala organizacional, mas verificar se a cadeia mínima funciona de
+ponta a ponta.
+
+Uma POC representativa pode incluir:
+
+\begin{itemize}
+\tightlist
+\item
+  um Agent curto, com responsabilidades e condições de parada
+  explícitas;
+\item
+  um Playbook para um fluxo recorrente;
+\item
+  uma Skill com comportamento verificável;
+\item
+  uma Rule crítica;
+\item
+  um Contract relacionado ao cenário;
+\item
+  um conjunto pequeno de Assertions e Evals;
+\item
+  um formato de Evidence Record;
+\item
+  observabilidade suficiente para distinguir comportamento funcional e
+  lineage quando necessário.
+\end{itemize}
+
+Antes das alterações que serão avaliadas, produza uma baseline
+compatível com os mecanismos realmente existentes. Ela pode incluir
+recuperação ou roteamento, aplicação, qualidade do resultado, consumo de
+contexto, latência e esforço de manutenção.
+
+A POC responde principalmente:
+
+\begin{quote}
+\textbf{Conseguimos executar, observar e avaliar o método em um cenário
+controlado?}
+\end{quote}
+
+Ela não precisa demonstrar ainda que a prática funciona para outras
+equipes, domínios ou volumes.
+
+\hypertarget{gate-1}{%
+\subsection{Gate 1}\label{gate-1}}
+
+O Gate 1 decide se o aprendizado obtido na POC possui evidência
+suficiente para ser testado em um escopo maior.
+
+Avance somente quando:
+
+\begin{itemize}
+\tightlist
+\item
+  existirem casos representativos e, quando relevantes e observáveis,
+  cenários negativos;
+\item
+  fontes aprovadas, Assertions e Evals possuírem rastreabilidade
+  suficiente;
+\item
+  falhas puderem ser diferenciadas entre recuperação ou roteamento,
+  aplicação, execução e observabilidade;
+\item
+  custo e latência forem mensuráveis quando relevantes ao caso;
+\item
+  existir responsabilidade explícita pela manutenção do corpus;
+\item
+  os critérios utilizados pelo gate tiverem sido definidos antes da
+  decisão.
+\end{itemize}
+
+Um \texttt{PASS} isolado em uma Eval não é suficiente para atravessar o
+gate. A decisão considera o conjunto de evidências necessárias para o
+aumento de escopo.
+
+\hypertarget{piloto}{%
+\subsection{Piloto}\label{piloto}}
+
+O objetivo do Piloto é verificar se o comportamento observado na POC se
+mantém quando aumentam a variedade de tarefas, consumidores e condições
+de execução.
+
+O Piloto deve introduzir diversidade suficiente para testar
+generalização sem transformar imediatamente a prática em padrão
+organizacional. Conforme o contexto, isso pode significar envolver
+outras equipes, novos tipos de tarefa, diferentes operadores ou outros
+ambientes de execução.
+
+Durante o Piloto:
+
+\begin{itemize}
+\tightlist
+\item
+  mantenha Evals e baselines versionadas;
+\item
+  meça sucesso, falha e retrabalho;
+\item
+  inspecione falsos positivos e falsos negativos relevantes;
+\item
+  observe comportamento fora do cenário original;
+\item
+  compare variações entre operadores, hosts ou modelos quando essas
+  variações realmente fizerem parte do escopo;
+\item
+  avalie se nomenclatura, navegação e sinais de aplicabilidade continuam
+  compreensíveis;
+\item
+  registre o esforço necessário para manter os artefatos consistentes.
+\end{itemize}
+
+O Piloto responde:
+
+\begin{quote}
+\textbf{O método continua confiável quando sai das condições controladas
+da POC?}
+\end{quote}
+
+\hypertarget{gate-2}{%
+\subsection{Gate 2}\label{gate-2}}
+
+O Gate 2 decide se o método demonstrou estabilidade suficiente para se
+tornar uma prática compartilhada e governada.
+
+Avance somente quando:
+
+\begin{itemize}
+\tightlist
+\item
+  a qualidade permanecer dentro dos limites previamente definidos fora
+  do caso original;
+\item
+  falsos positivos e falsos negativos críticos permanecerem dentro dos
+  limites aceitos para o domínio;
+\item
+  regressões puderem ser detectadas por Evals versionadas;
+\item
+  a manutenção não depender de conhecimento implícito concentrado em uma
+  única pessoa;
+\item
+  controles de segurança e acesso aplicáveis estiverem integrados ao
+  processo;
+\item
+  ownership, revisão, rollback, depreciação e migração estiverem
+  definidos;
+\item
+  custo e esforço operacional forem compatíveis com o benefício
+  esperado.
+\end{itemize}
+
+Os limites utilizados pelo Gate 2 devem ser estabelecidos antes da
+decisão. Expressões como ``qualidade boa'' ou ``poucos erros'' não
+constituem critérios verificáveis sem uma definição prévia do que é
+aceitável.
+
+\hypertarget{padruxe3o-controlado}{%
+\subsection{Padrão controlado}\label{padruxe3o-controlado}}
+
+O objetivo do estágio de Padrão é operar a prática de maneira
+compartilhada sem perder a capacidade de modificá-la com segurança.
+
+Isso exige, conforme o escopo:
+
+\begin{itemize}
+\tightlist
+\item
+  curadoria;
+\item
+  ownership;
+\item
+  versionamento;
+\item
+  revisão periódica;
+\item
+  telemetria relevante;
+\item
+  regressão automatizada ou reproduzível;
+\item
+  política de mudança;
+\item
+  depreciação;
+\item
+  rollback;
+\item
+  migração.
+\end{itemize}
+
+``Padrão'' não significa congelado. Significa que mudanças passam por um
+processo controlado, possuem responsáveis e podem ser avaliadas contra
+expectativas preservadas.
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{POC}
+\NormalTok{→ provar execução e observabilidade}
+
+\NormalTok{Gate 1}
+\NormalTok{→ decidir se vale ampliar o experimento}
+
+\NormalTok{Piloto}
+\NormalTok{→ testar variedade e generalização}
+
+\NormalTok{Gate 2}
+\NormalTok{→ decidir se existe estabilidade para compartilhar}
+
+\NormalTok{Padrão}
+\NormalTok{→ operar e evoluir sob governança}
+\end{Highlighting}
+\end{Shaded}
+
+\Needspace{18\baselineskip}
+
+\begin{tipbox}{Gate não é veredito de Eval}
+
+Uma Eval responde se determinado comportamento observado satisfaz
+critérios previamente definidos.
+
+Um Gate responde uma pergunta diferente: \textbf{o conjunto de
+evidências disponíveis é suficiente para aumentar o escopo de adoção?}
+
+Por isso, vários Evidence Records podem sustentar uma única decisão de
+gate, e uma Eval com \texttt{PASS} não implica automaticamente
+\texttt{advance}.
+
+\end{tipbox}
+
+\begin{examplebox}{Registro mínimo de uma decisão de gate}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\FunctionTok{gateId}\KeywordTok{:}\AttributeTok{ GATE{-}1}
+\FunctionTok{criteriaVersion}\KeywordTok{:}\AttributeTok{ }\FloatTok{1.0.0}
+\FunctionTok{scope}\KeywordTok{:}\AttributeTok{ }\StringTok{"Relatórios assíncronos"}
+
+\FunctionTok{evidenceIds}\KeywordTok{:}
+\AttributeTok{  }\KeywordTok{{-}}\AttributeTok{ EV{-}RECOVERY{-}0042}
+\AttributeTok{  }\KeywordTok{{-}}\AttributeTok{ EV{-}APPLICATION{-}0042}
+
+\FunctionTok{decision}\KeywordTok{:}\AttributeTok{ }\StringTok{"advance | remain | stop"}
+\FunctionTok{decidedBy}\KeywordTok{:}\AttributeTok{ }\StringTok{"papel ou grupo responsável"}
+\FunctionTok{decidedAt}\KeywordTok{:}\AttributeTok{ }\StringTok{"AAAA{-}MM{-}DD"}
+
+\FunctionTok{limitations}\KeywordTok{:}
+\AttributeTok{  }\KeywordTok{{-}}\AttributeTok{ }\StringTok{"Risco ou evidência ainda ausente."}
+
+\FunctionTok{nextReviewAt}\KeywordTok{:}\AttributeTok{ }\StringTok{"AAAA{-}MM{-}DD"}
+\end{Highlighting}
+\end{Shaded}
+
+\end{examplebox}
+
+O operador preenche \texttt{evidenceIds} somente com Evidence Records já
+produzidos pelo processo de avaliação. \texttt{criteriaVersion}
+identifica quais critérios estavam vigentes no momento da decisão.
+
+A pessoa ou grupo identificado em \texttt{decidedBy} utiliza essas
+evidências para registrar uma das três decisões:
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{advance}
+\NormalTok{→ evidência suficiente para aumentar o escopo}
+
+\NormalTok{remain}
+\NormalTok{→ permanecer no estágio atual enquanto lacunas são tratadas}
+
+\NormalTok{stop}
+\NormalTok{→ interromper a evolução naquele escopo}
+\end{Highlighting}
+\end{Shaded}
+
+A decisão de gate não modifica retroativamente os Evidence Records que a
+sustentaram.
+
+\hypertarget{antipadruxf5es-recorrentes}{%
+\section{Antipadrões recorrentes}\label{antipadruxf5es-recorrentes}}
+
+Depois de acompanhar classificação, manutenção, refatoração e adoção,
+alguns erros recorrentes podem ser identificados pelo efeito que
+produzem sobre recuperação, aplicação e governança.
+
+\begin{longtable}[]{@{}
+  >{\raggedright\arraybackslash}p{(\columnwidth - 4\tabcolsep) * \real{0.3333}}
+  >{\raggedright\arraybackslash}p{(\columnwidth - 4\tabcolsep) * \real{0.3333}}
+  >{\raggedright\arraybackslash}p{(\columnwidth - 4\tabcolsep) * \real{0.3333}}@{}}
+\toprule\noalign{}
+\begin{minipage}[b]{\linewidth}\raggedright
+Antipadrão
+\end{minipage} & \begin{minipage}[b]{\linewidth}\raggedright
+Por que falha
+\end{minipage} & \begin{minipage}[b]{\linewidth}\raggedright
+Correção
+\end{minipage} \\
+\midrule\noalign{}
+\endhead
+\bottomrule\noalign{}
+\endlastfoot
+Agent com centenas de linhas & Dilui prioridades e mistura
+responsabilidades diferentes. & Manter identidade, invariantes,
+roteamento e condições de parada; recuperar detalhes quando
+aplicáveis. \\
+Tudo vira Skill & Confunde conhecimento, restrições e coordenação com
+capacidade especializada executável. & Classificar cada artefato pela
+responsabilidade que desempenha. \\
+Pastas sem mecanismo de descoberta & Organização compreensível para
+humanos não garante recuperação pelo Agent ou host. & Definir navegação,
+roteamento, sinais de aplicabilidade ou metadados quando interpretados
+pelo consumidor e verificar o comportamento com Evals. \\
+HOT/WARM/COLD usado como importância & Temperatura passa a representar
+julgamento subjetivo em vez de política de carga. & Classificar pela
+necessidade de carregamento e tratar autoridade em eixo separado. \\
+Canal transitório tratado como fonte canônica & Perda ou atraso de
+mensagens pode deixar consumidores sem mecanismo confiável de
+reconciliação. & Definir uma fonte de estado compatível com as garantias
+do sistema; no estudo de caso, estado durável + consulta por API. \\
+Avaliar apenas presença de termos & Encontrar palavras esperadas não
+demonstra participação correta nem aplicação do conteúdo. & Utilizar
+verificadores compatíveis com recuperação, aplicação e resultado
+realmente observáveis. \\
+Evidence Record como texto persuasivo & Mistura fato, interpretação e
+justificativa e dificulta reconstrução do veredito. & Preservar
+expected, observed, verificadores, resultados, limitações e verdict de
+forma estruturada. \\
+Aprovar gate porque a demonstração ``parece funcionar'' & Substitui
+critérios prévios por julgamento retrospectivo. & Definir critérios
+antes da decisão e sustentá-la com Evidence Records compatíveis. \\
+\end{longtable}
+
+Os antipadrões não devem ser tratados como uma lista de proibições
+universais. Eles representam sinais de que responsabilidades diferentes
+podem estar sendo misturadas ou que uma decisão importante deixou de ser
+verificável.
+
+\hypertarget{crituxe9rios-de-sucesso}{%
+\section{Critérios de sucesso}\label{crituxe9rios-de-sucesso}}
+
+Uma estrutura de Context Engineering não é bem-sucedida apenas porque
+possui Agents, Skills, Rules, Playbooks e pastas organizadas. Ela
+precisa produzir efeitos observáveis sobre execução, manutenção e
+qualidade.
+
+Sinais de que a estrutura está cumprindo seu papel incluem:
+
+\begin{itemize}
+\tightlist
+\item
+  pessoas e Agents encontram os artefatos aplicáveis com menos
+  ambiguidade;
+\item
+  menos conteúdo irrelevante entra no contexto sem perda de informação
+  necessária;
+\item
+  obrigações críticas são recuperadas e aplicadas nos cenários em que
+  realmente são exigidas;
+\item
+  respostas e implementações permanecem compatíveis com Rules, Contracts
+  e outras fontes aprovadas;
+\item
+  falhas produzem evidência suficiente para distinguir recuperação,
+  aplicação, execução e falta de observabilidade;
+\item
+  regressões podem ser detectadas por Assertions e Evals preservadas;
+\item
+  custo total por tarefa concluída permanece sustentável para o domínio;
+\item
+  mudanças nos artefatos podem ser avaliadas contra baselines
+  anteriores;
+\item
+  ownership e ciclo de revisão são explícitos;
+\item
+  a equipe consegue evoluir a base sem depender de conhecimento
+  implícito concentrado em uma única pessoa.
+\end{itemize}
+
+Nem todos esses sinais precisam utilizar a mesma métrica. O critério
+importante é que o time consiga relacionar:
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{mudança}
+\NormalTok{→ comportamento esperado}
+\NormalTok{→ comportamento observado}
+\NormalTok{→ evidência}
+\NormalTok{→ decisão}
+\end{Highlighting}
+\end{Shaded}
+
+Quando essa cadeia pode ser reconstruída, governança deixa de significar
+apenas organização de arquivos e passa a significar \textbf{capacidade
+de evoluir o contexto sem perder controle sobre seu comportamento}.
+
+A parte de governança termina nesse ponto: os conceitos já possuem
+classificação, política de autoridade, convenções de escrita, orçamento,
+ciclo de vida, estratégia de refatoração, loops controlados e gates de
+adoção.
+
+O workbook transforma esses princípios em \textbf{templates e
+laboratórios reutilizáveis}, permitindo criar, executar e avaliar os
+artefatos sem interromper a rota conceitual deste livro.
+
+\newpage
+
+\hypertarget{workbook-e-laboratuxf3rios}{%
+\chapter{Workbook e laboratórios}\label{workbook-e-laboratuxf3rios}}
+
+Os templates extensos, prompts, YAML, JSON, execuções guiadas e
+checkpoints foram separados do fluxo de leitura e estão no
+\textbf{Workbook de Context Engineering V5}, incluído neste pacote.
+
+Essa divisão não reduz o método. Ela cria duas rotas complementares:
+
+\begin{itemize}
+\tightlist
+\item
+  o livro principal ensina o modelo mental, os papéis, as decisões e os
+  limites;
+\item
+  o workbook conduz a implementação, a avaliação e o registro de
+  evidências.
+\end{itemize}
+
+Use o workbook quando precisar copiar um artefato, executar um
+laboratório ou reproduzir uma Eval. Use a pasta \texttt{lab/} como fonte
+canônica dos arquivos completos; os blocos do workbook explicam como
+consumi-los.
+
+\hypertarget{checklist-do-curador}{%
+\section{Checklist do curador}\label{checklist-do-curador}}
+
+\small
+
+\hypertarget{estrutura}{%
+\subsection{Estrutura}\label{estrutura}}
+
+\begin{itemize}
+\tightlist
+\item[$\square$]
+  Cada artefato possui uma função principal reconhecível.
+\item[$\square$]
+  Conteúdo normativo não está escondido em exemplo.
+\item[$\square$]
+  O agent card continua curto e estável.
+\item[$\square$]
+  Playbooks coordenam; skills executam capacidades delimitadas.
+\end{itemize}
+
+\hypertarget{recuperauxe7uxe3o}{%
+\subsection{Recuperação}\label{recuperauxe7uxe3o}}
+
+\begin{itemize}
+\tightlist
+\item[$\square$]
+  Títulos e descrições usam a linguagem real dos usuários.
+\item[$\square$]
+  Sinônimos relevantes aparecem nos metadados ou evals.
+\item[$\square$]
+  Consultas negativas evitam recuperação excessiva.
+\item[$\square$]
+  O conteúdo recuperado é registrado para auditoria.
+\end{itemize}
+
+\hypertarget{aplicauxe7uxe3o}{%
+\subsection{Aplicação}\label{aplicauxe7uxe3o}}
+
+\begin{itemize}
+\tightlist
+\item[$\square$]
+  Evals verificam uso correto, não apenas localização.
+\item[$\square$]
+  Contracts possuem resultados observáveis.
+\item[$\square$]
+  Rules possuem obrigação, proibição, fallback e evidência.
+\item[$\square$]
+  A execução deixa Evidence Records suficientes.
+\end{itemize}
+
+\hypertarget{operauxe7uxe3o}{%
+\subsection{Operação}\label{operauxe7uxe3o}}
+
+\begin{itemize}
+\tightlist
+\item[$\square$]
+  Proprietário, versão e revisão estão definidos.
+\item[$\square$]
+  Conflitos possuem política de resolução.
+\item[$\square$]
+  Métricas consideram qualidade, latência e custo total.
+\item[$\square$]
+  Existe caminho de rollback para mudanças relevantes.
+\end{itemize}
+
+\normalsize
+
+\newpage
+
+\hypertarget{glossuxe1rio-essencial}{%
+\chapter{Glossário essencial}\label{glossuxe1rio-essencial}}
+
+\footnotesize
+
+\begin{longtable}[]{@{}
+  >{\raggedright\arraybackslash}p{(\columnwidth - 2\tabcolsep) * \real{0.5000}}
+  >{\raggedright\arraybackslash}p{(\columnwidth - 2\tabcolsep) * \real{0.5000}}@{}}
+\toprule\noalign{}
+\begin{minipage}[b]{\linewidth}\raggedright
+Termo
+\end{minipage} & \begin{minipage}[b]{\linewidth}\raggedright
+Definição operacional
+\end{minipage} \\
+\midrule\noalign{}
+\endhead
+\bottomrule\noalign{}
+\endlastfoot
+Agent & Coordenador com missão, invariantes, roteamento e condições de
+parada. \\
+Agent Card & Conteúdo curto carregado como orientação principal do
+agente. \\
+Playbook & Procedimento coordenado para uma classe de situações. \\
+Skill & Capacidade ativável, delimitada e verificável. \\
+Knowledge & Conteúdo consultivo que sustenta entendimento e decisão. \\
+Rule & Obrigação, proibição ou fallback com força normativa definida. \\
+Domain Rule & Obrigação canônica do domínio, independente do mecanismo
+de injeção do host. \\
+Cursor Project Rule & Arquivo nativo \texttt{.cursor/rules/*.mdc} que
+aplica ou referencia instruções em escopo definido. \\
+Contract & Fronteira verificável de entradas, saídas e condições. \\
+Eval & Caso de avaliação com critérios observáveis. \\
+Assertion & Expectativa identificada e rastreável que deve ser aplicada
+ou evitada. \\
+Agente sob avaliação & Agente que consome o contexto refatorado e
+executa o caso do eval. \\
+Eval Runner & Componente que executa casos e captura fontes, respostas,
+tools, traces e testes. \\
+Autor do Eval & Responsável por derivar e versionar casos e assertions a
+partir de fontes aprovadas. \\
+Evidence Recorder & Componente que organiza fatos coletados em um
+Evidence Record. \\
+Evidence Record & Registro estruturado que conecta contexto, decisão,
+execução e resultado. \\
+Critério determinístico & Condição decidida por regra reproduzível, como
+schema, igualdade, status, campo obrigatório ou ordem registrada em
+trace. \\
+Critério semântico & Condição que exige interpretar equivalência de
+sentido, adequação ou contradição, inclusive quando aparece por
+paráfrase. \\
+Critério híbrido & Critério que combina checks determinísticos com
+avaliação semântica apenas na parte que exige interpretação. \\
+Frontmatter & Metadados YAML no topo do artefato, usados por mecanismos
+de descoberta, governança ou roteamento que os interpretem. \\
+Host & Aplicação que executa o agente e disponibiliza regras, skills,
+tools e contexto. \\
+Runtime & Mecanismos em execução que selecionam contexto, chamam modelo
+e tools, registram estado e aplicam guardrails. \\
+Corpus & Conjunto versionado de artefatos disponível para uma avaliação
+ou execução. \\
+\texttt{id} & Identificador técnico estável para referência e
+auditoria. \\
+\texttt{name} & Nome de catálogo ou leitura; em Agent Skills, possui
+regras formais próprias. \\
+HOT & Conteúdo mínimo carregado por padrão. \\
+WARM & Conteúdo recuperado por intenção ou condição frequente. \\
+COLD & Conteúdo profundo ou raro, carregado sob demanda explícita. \\
+Progressive disclosure & Entrega gradual de detalhe conforme a
+necessidade. \\
+NAVIGATION & Conteúdo que aponta caminhos e relações. \\
+LOOKUP & Conteúdo recuperado por consulta direcionada. \\
+DEEP DIVE & Conteúdo de aprofundamento especializado. \\
+NORMATIVE & Conteúdo obrigatório dentro da aplicabilidade declarada. \\
+ADVISORY & Recomendação que admite julgamento contextual. \\
+ILLUSTRATIVE & Exemplo sem força normativa própria. \\
+Recuperabilidade & Capacidade de encontrar o conteúdo correto para uma
+necessidade. \\
+Idempotência & Propriedade que evita efeitos lógicos duplicados em
+repetições equivalentes. \\
+SignalR & Tecnologia de comunicação em tempo real entre servidor e
+clientes .NET. \\
+Fonte de verdade & Estado autoritativo usado para resolver
+divergências. \\
+\end{longtable}
+
+\normalsize
+
+\hypertarget{conclusuxe3o}{%
+\chapter{Conclusão}\label{conclusuxe3o}}
+
+Engenharia de contexto não é produzir mais arquivos. É construir um
+sistema no qual orientação, capacidade, conhecimento, obrigação,
+contrato, avaliação e evidência tenham funções distintas e conexões
+verificáveis.
+
+A oficina ensinou o modelo mental sem exigir jargão técnico. A transição
+mostrou que HOT/WARM/COLD é uma política de carregamento, não uma escala
+de importância. O backend demonstrou que a separação só se torna
+confiável quando encontra contracts, rules, evals e Evidence Records.
+
+O objetivo final não é uma árvore de pastas elegante. É uma equipe ---
+humana e assistida por IA --- capaz de encontrar o contexto certo,
+executar dentro dos limites corretos e provar o resultado com custo
+sustentável.
+
+Para colocar o método em prática, preserve sete decisões:
+
+\begin{enumerate}
+\def\labelenumi{\arabic{enumi}.}
+\tightlist
+\item
+  \textbf{Comece pela responsabilidade.} Não escolha a pasta antes de
+  entender a função do conteúdo.
+\item
+  \textbf{Mantenha a orientação central pequena e decisiva.} Papel,
+  invariantes, roteamento, parada e conclusão merecem prioridade.
+\item
+  \textbf{Separe coordenação de capacidade.} Playbooks organizam
+  jornadas; skills executam atividades delimitadas.
+\item
+  \textbf{Trate temperatura como carregamento.} HOT, WARM e COLD não
+  substituem autoridade, tipo ou forma de acesso.
+\item
+  \textbf{Formalize o que precisa ser verificado.} Rules e contracts
+  precisam produzir condições observáveis.
+\item
+  \textbf{Teste recuperação e aplicação.} Encontrar a fonte correta é
+  necessário, mas não suficiente.
+\item
+  \textbf{Registre fatos auditáveis.} Evidence Records devem conectar
+  fontes, ações, testes, resultados e riscos.
+\end{enumerate}
+
+Comece pequeno, meça o comportamento real e expanda apenas o que
+demonstrar utilidade. A organização mais valiosa é aquela que permanece
+compreensível para pessoas, recuperável por agentes e verificável pela
+engenharia.
+
+\newpage
+
+\hypertarget{referuxeancias-e-leituras-recomendadas}{%
+\chapter{Referências e leituras
+recomendadas}\label{referuxeancias-e-leituras-recomendadas}}
+
+\hypertarget{especificauxe7uxf5es-e-guias}{%
+\section{Especificações e guias}\label{especificauxe7uxf5es-e-guias}}
+
+\begin{itemize}
+\tightlist
+\item
+  Cursor. \textbf{Rules}. \url{https://cursor.com/docs/rules}.
+\item
+  Cursor. \textbf{Subagents}. \url{https://cursor.com/docs/subagents}.
+\item
+  Cursor. \textbf{Agent Skills}. \url{https://cursor.com/docs/skills}.
+\item
+  Cursor. \textbf{Model Context Protocol}.
+  \url{https://cursor.com/docs/mcp}.
+\item
+  Cursor. \textbf{Hooks}. \url{https://cursor.com/docs/hooks}.
+\item
+  Cursor. \textbf{Codebase search}.
+  \url{https://cursor.com/docs/agent/tools/search}.
+\item
+  Agent Skills. \textbf{Overview}. \url{https://agentskills.io/home}.
+\item
+  Agent Skills. \textbf{Specification}.
+  \url{https://agentskills.io/specification}.
+\item
+  Agent Skills. \textbf{How to add skills support to your agent}.
+  \url{https://agentskills.io/client-implementation/adding-skills-support}.
+\item
+  Agent Skills. \textbf{Optimizing skill descriptions}.
+  \url{https://agentskills.io/skill-creation/optimizing-descriptions}.
+\item
+  Model Context Protocol. \textbf{Tools}.
+  \url{https://modelcontextprotocol.io/specification/2026-07-28/server/tools}.
+\item
+  Model Context Protocol. \textbf{Resources}.
+  \url{https://modelcontextprotocol.io/specification/2026-07-28/server/resources}.
+\item
+  Anthropic. \textbf{Effective context engineering for AI agents}.
+  \url{https://www.anthropic.com/engineering/effective-context-engineering-for-ai-agents}.
+\item
+  Anthropic. \textbf{Prompting best practices}.
+  \url{https://platform.claude.com/docs/en/build-with-claude/prompt-engineering/claude-prompting-best-practices}.
+  Acesso em 3 ago. 2026.
+\end{itemize}
+
+\hypertarget{fundamentos-de-aprendizagem-e-contexto}{%
+\section{Fundamentos de aprendizagem e
+contexto}\label{fundamentos-de-aprendizagem-e-contexto}}
+
+\begin{itemize}
+\tightlist
+\item
+  Gentner, D.; Loewenstein, J.; Thompson, L. \textbf{Learning and
+  Transfer: A General Role for Analogical Encoding}. Journal of
+  Educational Psychology, 2003.
+  \url{https://groups.psych.northwestern.edu/gentner/papers/GentnerLoewensteinThompson03.pdf}.
+\item
+  Liu, N. F. et al.~\textbf{Lost in the Middle: How Language Models Use
+  Long Contexts}. TACL, 2024.
+  \url{https://aclanthology.org/2024.tacl-1.9/}.
+\item
+  Sweller, J. \textbf{Cognitive Load During Problem Solving: Effects on
+  Learning}. Cognitive Science, 1988.
+  \url{https://doi.org/10.1207/s15516709cog1202_4}.
+\item
+  Mayer, R. E.; Moreno, R. \textbf{Nine Ways to Reduce Cognitive Load in
+  Multimedia Learning}. Educational Psychologist, 2003.
+  \url{https://doi.org/10.1207/S15326985EP3801_6}.
+\item
+  Zeng, Z. et al.~\textbf{LLMBar: An Open-Source Benchmark for
+  Instruction-Following}. 2023. \url{https://arxiv.org/abs/2310.07641}.
+\end{itemize}
+
+\hypertarget{tecnologias-do-estudo-de-caso}{%
+\section{Tecnologias do estudo de
+caso}\label{tecnologias-do-estudo-de-caso}}
+
+\begin{itemize}
+\item
+  IETF. \textbf{RFC 9110 --- HTTP Semantics}, seção 15.3.3
+  (\texttt{202\ Accepted}).
+  \url{https://www.rfc-editor.org/rfc/rfc9110.html\#name-202-accepted}.
+\item
+  Microsoft. \textbf{ASP.NET Core SignalR overview}.
+  \url{https://learn.microsoft.com/aspnet/core/signalr/introduction}.
+\item
+  Microsoft. \textbf{Background tasks with hosted services in ASP.NET
+  Core}.
+  \url{https://learn.microsoft.com/aspnet/core/fundamentals/host/hosted-services}.
+\item
+  Microsoft. \textbf{Azure Service Bus messaging overview}.
+  \url{https://learn.microsoft.com/azure/service-bus-messaging/service-bus-messaging-overview}.
+\end{itemize}
+
+\enlargethispage{3\baselineskip}
+
+\begin{infobox}{Nota sobre autoria e referências}
+
+Este material organiza conceitos públicos, práticas de engenharia e uma
+proposta editorial própria. As referências permitem aprofundamento e
+atribuem as bases utilizadas; os exemplos, templates e decisões de
+organização foram adaptados ao objetivo didático deste E-book.
+
+\end{infobox}
+
+\backmatter
+\end{document}

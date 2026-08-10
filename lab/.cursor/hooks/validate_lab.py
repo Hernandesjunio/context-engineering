@@ -45,4 +45,4 @@ if contract_check.returncode:
 
 if errors:
     sys.exit(1)
-print("PASS laboratório V5 Beta 2")
+print("PASS laboratório V5")

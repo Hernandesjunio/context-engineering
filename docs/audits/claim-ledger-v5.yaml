@@ -1,0 +1,74 @@
+ledgerStatus: "validated-for-v5-release"
+baselineSha256: "578e37d6ff7aabc49dae4f20d34e9f5b83c6672df5a5de77227a40a4f5f765ba"
+claims:
+  - id: CLAIM-001
+    statement: "A posição da informação pode afetar o desempenho em alguns cenários de contexto longo."
+    class: llm-behavior
+    source: "Liu et al., TACL 2024"
+    scope: "modelos, tarefas e protocolos avaliados no estudo"
+    forbiddenGeneralization: "percentual ou posição universal"
+    status: PASS
+  - id: CLAIM-002
+    statement: "Dificuldade humana de leitura e custo de KV cache são superfícies diferentes."
+    class: inference-runtime
+    source: "política técnica da edição; Sweller 1988; Kwon et al. 2023"
+    scope: "separação conceitual"
+    forbiddenGeneralization: "inferir memória ou latência a partir de densidade semântica"
+    status: PASS
+  - id: CLAIM-003
+    statement: "Agent Skills aplica progressive disclosure e exige name e description no SKILL.md."
+    class: open-spec
+    source: "https://agentskills.io/specification"
+    scope: "especificação consultada em 2026-08-09"
+    forbiddenGeneralization: "estender comportamento a qualquer pasta ou host"
+    status: PASS
+  - id: CLAIM-004
+    statement: "Rules, Skills, subagents e hooks possuem mecanismos documentados no Cursor."
+    class: product
+    source: "documentação oficial do Cursor"
+    scope: "documentação consultada em 2026-08-09"
+    forbiddenGeneralization: "tratar a ontologia completa do livro como nativa"
+    status: PASS
+  - id: CLAIM-005
+    statement: "Frontmatter auxilia identidade e descoberta quando interpretado pelo consumidor; não garante cache ou roteamento por si só."
+    class: product-and-convention
+    source: "Agent Skills Specification + política editorial"
+    scope: "Skill e metadados internos explicitamente separados"
+    forbiddenGeneralization: "atribuir efeitos ao YAML sem consumidor"
+    status: PASS
+  - id: CLAIM-006
+    statement: "202 Accepted não comprova conclusão."
+    class: standard
+    source: "RFC 9110 section 15.3.3"
+    scope: "semântica HTTP"
+    forbiddenGeneralization: "inferir durabilidade do job pelo status"
+    status: PASS
+  - id: CLAIM-007
+    statement: "No estudo, estado durável consultável é canônico e SignalR é notificação."
+    class: illustrative-architecture
+    source: "Contract e Rule do estudo; Microsoft SignalR docs"
+    scope: "arquitetura de referência do livro"
+    forbiddenGeneralization: "regra universal de sistemas realtime"
+    status: PASS
+  - id: CLAIM-008
+    statement: "Resultado correto não prova participação ou lineage do artefato."
+    class: evaluation-policy
+    source: "política técnica da edição"
+    scope: "quando o host não expõe evidência suficiente"
+    forbiddenGeneralization: "marcar lineage PASS por inferência"
+    status: PASS
+  - id: CLAIM-009
+    statement: "Propriedades calculáveis devem preferir verificadores determinísticos."
+    class: evaluation-policy
+    source: "política técnica da edição"
+    scope: "schema, igualdade, ordem, estado e status"
+    forbiddenGeneralization: "proibir LLM-as-a-Judge em critérios semânticos"
+    status: PASS
+  - id: CLAIM-010
+    statement: "Separar livro e workbook é uma decisão editorial informada, não uma medição de carga cognitiva."
+    class: editorial-convention
+    source: "Mayer & Moreno 2003; plano aprovado"
+    scope: "V5"
+    forbiddenGeneralization: "afirmar ganho cognitivo comprovado sem teste com leitores"
+    status: PASS
+

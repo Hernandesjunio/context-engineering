@@ -1,21 +1,26 @@
 {
+  "version": "5.0.0",
   "status": "PASS",
-  "pdf": "ebook/context-engineering-para-times-de-desenvolvimento-v5-beta2.pdf",
-  "sha256": "4601f66b4664f7c14a3ed55e1b781ef364a4b6a23b6792b681da265262f4f1e5",
-  "declaredPages": 76,
-  "renderedPages": 76,
-  "pageSize": "A4",
-  "invalidPages": [],
-  "visualInspection": {
-    "allPagesReviewedInContactSheets": true,
-    "targetedPagesReviewedAtFullResolution": [23, 25, 30, 33, 34, 44, 65, 66, 67],
-    "chapterFiveOpeningReviewed": true,
-    "cumulativeMapReviewed": true,
-    "frontmatterComparisonTableContinuationReviewed": true,
-    "chapterFiveClosingReviewed": true,
-    "optionalSkillAnatomyRelocationReviewed": true,
-    "diagramTextOverflowFound": false,
-    "diagramArrowOverlapFound": false,
-    "blockingLayoutDefects": []
-  }
+  "book": {
+    "pdf": "ebook/context-engineering-para-times-de-desenvolvimento-v5.pdf",
+    "declaredPages": 66,
+    "renderedPages": 66,
+    "invalidPages": [],
+    "contactSheet": "validation/contact-sheet-book-v5.png"
+  },
+  "workbook": {
+    "pdf": "workbook/workbook-context-engineering-v5.pdf",
+    "declaredPages": 96,
+    "renderedPages": 96,
+    "invalidPages": [],
+    "contactSheet": "validation/contact-sheet-workbook-v5.png"
+  },
+  "diagrams": {
+    "png": 9,
+    "svg": 9,
+    "contactSheet": "validation/diagrams-contact-v5.png",
+    "status": "PASS"
+  },
+  "totalPages": 162,
+  "visualInspection": "PASS"
 }

@@ -1,0 +1,76 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1200" height="760" viewBox="0 0 1200 760">
+  <rect width="1200" height="760" rx="28" fill="#F7F9FC"/>
+  <style>
+    .title{font:700 31px 'DejaVu Sans',sans-serif;fill:#17212B}
+    .phase{font:700 16px 'DejaVu Sans',sans-serif;fill:#425166;letter-spacing:.5px}
+    .head{font:700 19px 'DejaVu Sans',sans-serif;fill:white}
+    .body{font:400 15px 'DejaVu Sans',sans-serif;fill:white}
+    .dark{fill:#17212B}
+    .note{font:400 15px 'DejaVu Sans',sans-serif;fill:#425166}
+    .edge{stroke:#2563EB;stroke-width:3;fill:none;marker-end:url(#arrow)}
+    .expected{stroke:#6D5BD0;stroke-width:3;fill:none;marker-end:url(#arrowPurple)}
+    .observed{stroke:#147D7E;stroke-width:3;fill:none;marker-end:url(#arrowTeal)}
+  </style>
+  <defs>
+    <marker id="arrow" markerWidth="11" markerHeight="11" refX="9.5" refY="5.5" orient="auto" markerUnits="userSpaceOnUse">
+      <path d="M0,0 L10,5.5 L0,11 Z" fill="#2563EB"/>
+    </marker>
+    <marker id="arrowPurple" markerWidth="11" markerHeight="11" refX="9.5" refY="5.5" orient="auto" markerUnits="userSpaceOnUse">
+      <path d="M0,0 L10,5.5 L0,11 Z" fill="#6D5BD0"/>
+    </marker>
+    <marker id="arrowTeal" markerWidth="11" markerHeight="11" refX="9.5" refY="5.5" orient="auto" markerUnits="userSpaceOnUse">
+      <path d="M0,0 L10,5.5 L0,11 Z" fill="#147D7E"/>
+    </marker>
+  </defs>
+
+  <text x="48" y="58" class="title">Da fonte e da execução ao Evidence Record</text>
+
+  <text x="55" y="105" class="phase">EXPECTATIVA APROVADA</text>
+  <rect x="55" y="125" width="250" height="105" rx="16" fill="#0B1B34"/>
+  <text x="180" y="168" class="head" text-anchor="middle">Fontes aprovadas</text>
+  <text x="180" y="199" class="body" text-anchor="middle">requisito · Rule · Contract</text>
+
+  <path d="M305 178 H365" class="edge"/>
+  <rect x="375" y="125" width="250" height="105" rx="16" fill="#2E66E8"/>
+  <text x="500" y="168" class="head" text-anchor="middle">Assertions</text>
+  <text x="500" y="199" class="body" text-anchor="middle">obrigações e proibições</text>
+
+  <path d="M625 178 H685" class="edge"/>
+  <rect x="695" y="125" width="250" height="105" rx="16" fill="#6D5BD0"/>
+  <text x="820" y="168" class="head" text-anchor="middle">Eval Spec</text>
+  <text x="820" y="199" class="body" text-anchor="middle">o esperado antes de executar</text>
+
+  <text x="55" y="315" class="phase">EXECUÇÃO OBSERVADA</text>
+  <rect x="55" y="335" width="250" height="105" rx="16" fill="#0B1B34"/>
+  <text x="180" y="378" class="head" text-anchor="middle">Agent</text>
+  <text x="180" y="409" class="body" text-anchor="middle">decide e coordena</text>
+
+  <path d="M305 388 H365" class="edge"/>
+  <rect x="375" y="335" width="250" height="105" rx="16" fill="#1C8A68"/>
+  <text x="500" y="373" class="head" text-anchor="middle">Recursos aplicados</text>
+  <text x="500" y="402" class="body" text-anchor="middle">Playbook · Rules · Contract</text>
+  <text x="500" y="425" class="body" text-anchor="middle">Skills · tools</text>
+
+  <path d="M625 388 H685" class="edge"/>
+  <rect x="695" y="335" width="250" height="105" rx="16" fill="#147D7E"/>
+  <text x="820" y="378" class="head" text-anchor="middle">Estado e traces</text>
+  <text x="820" y="409" class="body" text-anchor="middle">o observado na execução</text>
+
+  <path d="M945 178 H1030 V465 H630 V485" class="expected"/>
+  <text x="945" y="451" class="note" text-anchor="middle" fill="#6D5BD0">esperado</text>
+  <path d="M820 440 V460 H480 V485" class="observed"/>
+  <text x="720" y="452" class="note" text-anchor="middle" fill="#147D7E">observado</text>
+  <rect x="430" y="485" width="250" height="105" rx="16" fill="#C85A00"/>
+  <text x="555" y="528" class="head" text-anchor="middle">Avaliar</text>
+  <text x="555" y="559" class="body" text-anchor="middle">esperado × observado</text>
+
+  <path d="M555 590 V635" class="edge"/>
+  <rect x="430" y="645" width="250" height="82" rx="16" fill="#6D5BD0"/>
+  <text x="555" y="682" class="head" text-anchor="middle">Evidence Record</text>
+  <text x="555" y="708" class="body" text-anchor="middle">PASS · FAIL · INCONCLUSIVE</text>
+
+  <rect x="755" y="545" width="380" height="105" rx="14" fill="#FFFFFF" stroke="#9AA8B8" stroke-width="2"/>
+  <text x="780" y="580" class="dark" style="font:700 16px 'DejaVu Sans',sans-serif">Regra de leitura</text>
+  <text x="780" y="609" class="note">a Eval Spec fixa o esperado;</text>
+  <text x="780" y="634" class="note">a instrumentação fornece o observado.</text>
+</svg>

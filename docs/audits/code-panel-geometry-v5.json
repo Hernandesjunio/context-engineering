@@ -1,0 +1,38 @@
+{
+  "book": {
+    "pdf": "ebook/context-engineering-para-times-de-desenvolvimento-v5.pdf",
+    "pages": 66,
+    "panels": 78,
+    "monospaceCharacters": 13930,
+    "minimumRightGapPt": 16.912,
+    "minimumRightGapLocation": {
+      "page": 41,
+      "character": ",",
+      "charX1": 524.659,
+      "panelX1": 541.571
+    },
+    "violationsBelow3Pt": [],
+    "status": "PASS"
+  },
+  "workbook": {
+    "pdf": "workbook/workbook-context-engineering-v5.pdf",
+    "pages": 96,
+    "panels": 193,
+    "monospaceCharacters": 52280,
+    "minimumRightGapPt": 7.972,
+    "minimumRightGapLocation": {
+      "page": 24,
+      "character": "o",
+      "charX1": 533.599,
+      "panelX1": 541.571
+    },
+    "violationsBelow3Pt": [],
+    "status": "PASS"
+  },
+  "total": {
+    "pages": 162,
+    "panels": 271,
+    "monospaceCharacters": 66210,
+    "status": "PASS"
+  }
+}

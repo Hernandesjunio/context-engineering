@@ -6,17 +6,19 @@ O acervo separa **fontes editáveis**, **artefatos de distribuição**, **aprese
 
 ## Conteúdo em destaque
 
-> A V5 Beta 2 é uma edição em revisão externa (`5.0.0-beta.2`), ainda não a edição final publicada.
+> A V5 é a edição final (`5.0.0`), encerrada pelo autor em 9 de agosto de 2026. Organiza o material em dois volumes complementares: o livro principal e um workbook hands-on.
 
 | Material | Formato | Finalidade |
 |---|---|---|
-| [Context Engineering para Times de Desenvolvimento V5 Beta 2](docs/ebooks/context-engineering-para-times-de-desenvolvimento-v5-beta2.md) | Markdown | Fonte canônica e editável do e-book. |
-| [E-book V5 Beta 2 — PDF](downloads/ebooks/context-engineering-para-times-de-desenvolvimento-v5-beta2.pdf) | PDF | Leitura e compartilhamento offline. |
-| [Como recompilar o e-book](docs/ebooks/build/BUILD.md) | Markdown | Instruções e scripts para reconstruir o PDF a partir do Markdown ou do LaTeX. |
+| [Context Engineering para Times de Desenvolvimento V5](docs/ebooks/ebook/context-engineering-para-times-de-desenvolvimento-v5.md) | Markdown | Fonte canônica e editável do livro principal. |
+| [Livro principal V5 — PDF](downloads/ebooks/context-engineering-para-times-de-desenvolvimento-v5.pdf) | PDF | Leitura e compartilhamento offline do livro principal. |
+| [Workbook V5](docs/ebooks/workbook/workbook-context-engineering-v5.md) | Markdown | Fonte canônica e editável do workbook: prompts, schemas, templates, execuções e laboratórios completos. |
+| [Workbook V5 — PDF](downloads/ebooks/workbook-context-engineering-v5.pdf) | PDF | Leitura e compartilhamento offline do workbook. |
+| [Como recompilar o e-book](docs/ebooks/build/BUILD.md) | Markdown | Instruções e scripts para reconstruir os dois PDFs a partir do Markdown ou do LaTeX. |
 | [Apresentação V4](presentations/context-engineering-para-times-de-desenvolvimento-v4-apresentacao.pptx) | PPTX | Apresentação do conteúdo para workshops e reuniões; ainda não atualizada para a V5. |
-| [Estrutura e decisões editoriais da V5 Beta 2](docs/audits/context-engineering-v5-beta2-estrutura.md) | Markdown | Racional das mudanças estruturais em relação à versão anterior. |
-| [Relatório de validação V5 Beta 2](docs/audits/validation-report-v5-beta2.md) | Markdown | Escopo de verificação, checks determinísticos, hashes de integridade e limitações conhecidas. |
-| [Laboratório executável V5 Beta 2](lab/README.md) | Projeto Cursor | Kit A e Kit B executáveis para praticar contexto, avaliação e evidência no Cursor. |
+| [Estrutura e decisões editoriais da V5](docs/audits/estrutura-final-v5.md) | Markdown | Racional da separação em livro principal e workbook e da arquitetura editorial final. |
+| [Relatório de validação V5](docs/audits/validation-report-v5.md) | Markdown | Escopo de verificação, checks determinísticos, hashes de integridade e limitações conhecidas. |
+| [Laboratório executável V5](lab/README.md) | Projeto Cursor | Kit A e Kit B executáveis para praticar contexto, avaliação e evidência no Cursor. |
 
 ## Estrutura do repositório
 
@@ -24,11 +26,12 @@ O acervo separa **fontes editáveis**, **artefatos de distribuição**, **aprese
 .
 ├── docs/
 │   ├── audits/              # Auditorias, checklists e evidências de qualidade
-│   └── ebooks/              # Fontes Markdown canônicas dos e-books e seus assets de build
-│       ├── assets/          # Capa, diagramas e demais recursos referenciados pelo Markdown
-│       └── build/           # Scripts e instruções para recompilar o PDF a partir do Markdown/LaTeX
+│   └── ebooks/              # Fontes Markdown canônicas dos volumes e seus assets de build
+│       ├── ebook/           # Livro principal: Markdown, LaTeX, estilo e assets (capa, diagramas)
+│       ├── workbook/        # Workbook: Markdown, LaTeX, estilo e assets próprios
+│       └── build/           # Scripts e instruções para recompilar os PDFs a partir do Markdown/LaTeX
 ├── downloads/
-│   └── ebooks/              # PDFs prontos para leitura e distribuição
+│   └── ebooks/              # PDFs prontos para leitura e distribuição (livro e workbook)
 ├── presentations/           # Materiais de apresentação editáveis (PPTX)
 ├── lab/                     # Laboratório executável Cursor-first (projeto .cursor/ independente)
 ├── archive/                 # Versões substituídas, preservadas para rastreabilidade
@@ -44,8 +47,8 @@ Os arquivos Markdown em `docs/` são revisáveis por diff, pesquisáveis e adequ
 
 ### Organização por tipo de artefato e ciclo de vida
 
-- `docs/ebooks/` concentra conhecimento em evolução, sua fonte canônica e os assets de build (capa, diagramas, estilo e filtro Pandoc) que o Markdown referencia por caminho relativo.
-- `docs/ebooks/build/` reúne os scripts (`build.ps1`/`build.sh`/`render-diagrams.*`) e o guia `BUILD.md` que reproduzem o PDF a partir do Markdown ou do `.tex`. Fica dentro de `docs/ebooks/` porque os scripts resolvem caminhos relativos ao próprio diretório do e-book (o mesmo nível do Markdown, do estilo e dos assets), e não faz sentido como categoria de topo por não ter conteúdo de leitura próprio.
+- `docs/ebooks/` concentra conhecimento em evolução e sua fonte canônica. A partir da V5, o e-book é composto por dois volumes (livro principal e workbook) que compartilham build e convenção, mas têm nomes de diagrama e capa que podem colidir entre si; por isso cada volume tem seu próprio subdiretório (`ebook/`, `workbook/`), cada um com Markdown, LaTeX, estilo e assets (capa, diagramas, filtro Pandoc) referenciados por caminho relativo dentro do próprio subdiretório.
+- `docs/ebooks/build/` reúne os scripts (`build.ps1`/`build.sh`/`render-diagrams.*`/`restructure.py`/`validate_markdown.py`) e o guia `BUILD.md` que reproduzem os PDFs a partir do Markdown ou do `.tex`. Fica dentro de `docs/ebooks/` porque os scripts resolvem caminhos relativos ao próprio diretório do e-book (mesmo nível de `ebook/` e `workbook/`), e não faz sentido como categoria de topo por não ter conteúdo de leitura próprio.
 - `downloads/` contém pacotes prontos para distribuição, cujo ciclo de atualização é vinculado à respectiva fonte.
 - `presentations/` isola materiais orientados a comunicação síncrona, que possuem formato e ritmo de revisão diferentes dos e-books.
 - `docs/audits/` mantém as evidências de avaliação, validações e decisões editoriais próximas da documentação, mas sem misturá-las ao conteúdo didático.
@@ -65,13 +68,13 @@ Utilize nomes em minúsculas, com hífens e versão no sufixo:
 <assunto>-v<versão>.<extensão>
 ```
 
-Exemplo: `context-engineering-para-times-de-desenvolvimento-v5-beta2.md`.
+Exemplo: `context-engineering-para-times-de-desenvolvimento-v5.md`.
 
-Versões em revisão externa usam um sufixo de pré-lançamento (`v5-beta2`) em vez de um número inteiro. O sufixo é mantido em todos os artefatos derivados da mesma revisão (Markdown, PDF, laboratório, auditorias) até a edição final ser promovida com um número de versão inteiro.
+Versões em revisão externa usam um sufixo de pré-lançamento (ex.: `v5-beta2`) em vez de um número inteiro. O sufixo é mantido em todos os artefatos derivados da mesma revisão (Markdown, PDF, laboratório, auditorias) até a edição final ser promovida com um número de versão inteiro, como ocorreu com a V5 (`5.0.0`).
 
-O mesmo identificador de versão deve aparecer na fonte e nos artefatos derivados correspondentes. Quando uma versão deixar de ser a recomendada, mantenha-a somente se houver necessidade de rastreabilidade; nesse caso, mova-a para uma futura área `archive/` em vez de deixá-la nos diretórios de conteúdo atual.
+O mesmo identificador de versão deve aparecer na fonte e nos artefatos derivados correspondentes. Quando uma versão deixar de ser a recomendada, mantenha-a somente se houver necessidade de rastreabilidade; nesse caso, mova-a para a área `archive/` em vez de deixá-la nos diretórios de conteúdo atual.
 
-Para artefatos que são árvores de diretório inteiras, como `lab/`, os arquivos internos mantêm nomes fixos exigidos pelo host (`SKILL.md`, `hooks.json`, `mcp.json`) e não recebem sufixo de versão individualmente. Nesse caso, a versão vai no nome da pasta de arquivamento (`archive/lab/v4/`), preservando a árvore interna intacta.
+Para artefatos que são árvores de diretório inteiras, como `lab/`, os arquivos internos mantêm nomes fixos exigidos pelo host (`SKILL.md`, `hooks.json`, `mcp.json`) e não recebem sufixo de versão individualmente. Nesse caso, a versão vai no nome da pasta de arquivamento (`archive/lab/v5-beta2/`), preservando a árvore interna intacta.
 
 ## Política de manutenção
 

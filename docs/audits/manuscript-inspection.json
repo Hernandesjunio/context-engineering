@@ -1,12 +1,25 @@
 {
+  "version": "5.0.0",
   "status": "PASS",
-  "path": "ebook/context-engineering-para-times-de-desenvolvimento-v5-beta2.md",
-  "sha256": "5521c41fa1738007b5431bcf734565bb29cf4cc903eb099cc1a7d0d6a7d2f4c1",
-  "signalsAreHeuristics": true,
-  "headings": 113,
-  "headingJumps": [],
-  "imageReferences": 8,
-  "missingImages": [],
-  "unbalancedCodeFence": false,
-  "longParagraphSignals": []
+  "book": {
+    "path": "ebook/context-engineering-para-times-de-desenvolvimento-v5.md",
+    "sha256": "80ab08b5588269ffc6f27f9ba3391ab426f7af636012a520988c58f7c93df804",
+    "headings": 96,
+    "headingJumps": [],
+    "imageReferences": 3,
+    "missingImages": [],
+    "unbalancedCodeFence": false,
+    "longParagraphSignals": []
+  },
+  "workbook": {
+    "path": "workbook/workbook-context-engineering-v5.md",
+    "sha256": "2b91dd61cb896220f8e4d8a8266f70d8348852248040cadd4e348202bb7f702e",
+    "headings": 108,
+    "headingJumps": [],
+    "imageReferences": 0,
+    "missingImages": [],
+    "unbalancedCodeFence": false,
+    "longParagraphSignals": []
+  },
+  "signalsAreHeuristics": true
 }

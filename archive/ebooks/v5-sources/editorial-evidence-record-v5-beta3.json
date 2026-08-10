@@ -1,0 +1,50 @@
+{
+  "evidenceId": "BUILD-EVIDENCE-V5-BETA3-REVISED",
+  "mode": "validate-rendered",
+  "inputs": {
+    "source": "V5 Beta 3 editada pelo autor",
+    "manuscript": {
+      "path": "ebook/context-engineering-para-times-de-desenvolvimento-v5-beta3.md",
+      "sha256": "e1974e013556898644037a65cc641e7c87654a5b47b50d576272c3be963e511b"
+    },
+    "latex": {
+      "path": "ebook/context-engineering-para-times-de-desenvolvimento-v5-beta3.tex",
+      "sha256": "f4ed29c0b2c8c5ba19cda558ab1345c3974e08e27468a974e7daba28350f509b"
+    },
+    "pdf": {
+      "path": "ebook/context-engineering-para-times-de-desenvolvimento-v5-beta3.pdf",
+      "sha256": "90c29d6f231cd4a622f81f971976b11ed4d780543a973045dc915c96c3d502f3"
+    },
+    "author": "Hernandes Junio de Assis",
+    "invitedReviewer": "Julio Henrique dos Santos",
+    "audience": "times de desenvolvimento iniciando em engenharia de contexto"
+  },
+  "expected": [
+    "Preservar o conteúdo editorial fornecido pelo autor.",
+    "Recriar o LaTeX a partir do Markdown e gerar um PDF A4 completo.",
+    "Manter imagens, tabelas, código e callouts legíveis.",
+    "Executar o laboratório sem falhas.",
+    "Não apresentar evidências editoriais da baseline anterior como se validassem a revisão atual."
+  ],
+  "observed": [
+    "O Markdown foi convertido para LaTeX e compilado em 136 páginas A4.",
+    "A hierarquia que produzia a numeração 6.0.1 foi normalizada.",
+    "As Figuras 1.1 e 8.1 foram corrigidas e verificadas isoladamente e dentro do PDF.",
+    "As 136 páginas foram renderizadas e inspecionadas em contact sheets.",
+    "O laboratório Cursor-first concluiu com PASS."
+  ],
+  "checks": {
+    "packageIntegrity": "PASS",
+    "markdownStructure": "PASS",
+    "markdownToLatexBuild": "PASS",
+    "visualPdf": "PASS",
+    "labValidation": "PASS",
+    "technicalClaimReaudit": "REVALIDATION_REQUIRED"
+  },
+  "verdict": "PASS_FOR_BUILD_AND_VISUAL_REVIEW",
+  "limitations": [
+    "Este registro valida build, estrutura e renderização; não substitui nova auditoria técnica do conteúdo ampliado.",
+    "Os avisos Overfull hbox foram inspecionados visualmente e não produziram corte observado, mas podem ser refinados em uma etapa tipográfica posterior.",
+    "Afirmações dependentes do Cursor devem ser revalidadas quando a documentação ou a versão do produto mudar."
+  ]
+}

@@ -1,6 +1,6 @@
 $ErrorActionPreference = "Stop"
 $RootDir = Split-Path -Parent $PSScriptRoot
-$DiagramDir = Join-Path $RootDir "assets\diagrams"
+$DiagramDir = Join-Path $RootDir "ebook\assets\diagrams"
 
 Get-ChildItem -Path $DiagramDir -Filter "*.svg" | ForEach-Object {
     $Png = [System.IO.Path]::ChangeExtension($_.FullName, ".png")

@@ -1,0 +1,22 @@
+{
+  "schemaVersion": "1.0.0",
+  "evidenceId": "EV-ASYNC-REPORT-001",
+  "evalId": "EVAL-ASYNC-REPORT-001",
+  "correlationId": "corr-9812",
+  "expected": {
+    "artifacts": ["RULE-ASYNC-001", "CONTRACT-REPORT-001", "PLAYBOOK-ASYNC-001"],
+    "assertions": ["ASSERT-REPORT-001", "ASSERT-REPORT-002", "ASSERT-REPORT-003"]
+  },
+  "observed": {
+    "artifacts": ["RULE-ASYNC-001", "CONTRACT-REPORT-001", "PLAYBOOK-ASYNC-001"],
+    "durableStatus": "completed",
+    "persistedCompletionSequence": 451,
+    "notificationPublishedSequence": 452,
+    "verifier": "causalOrderCheck",
+    "statusApi": "consistent",
+    "testsPassed": 42,
+    "testsFailed": 0
+  },
+  "verdict": "PASS",
+  "residualRisks": []
+}

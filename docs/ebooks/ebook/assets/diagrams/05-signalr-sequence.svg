@@ -1,0 +1,61 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1200" height="720" viewBox="0 0 1200 720">
+  <rect width="1200" height="720" rx="28" fill="#F7F9FC"/>
+  <style>
+    .title{font:700 30px 'DejaVu Sans',sans-serif;fill:#17212B}
+    .actor{font:700 18px 'DejaVu Sans',sans-serif;fill:#17212B}
+    .label{font:400 16px 'DejaVu Sans',sans-serif;fill:#17212B}
+    .strong{font:700 16px 'DejaVu Sans',sans-serif;fill:#16815D}
+    .life{stroke:#94A3B8;stroke-width:2;stroke-dasharray:8 8}
+    .message{stroke:#2563EB;stroke-width:3.5;fill:none;marker-end:url(#arrow)}
+  </style>
+  <defs>
+    <marker id="arrow" markerWidth="11" markerHeight="11" refX="9.5" refY="5.5" orient="auto" markerUnits="userSpaceOnUse">
+      <path d="M0,0 L10,5.5 L0,11 Z" fill="#2563EB"/>
+    </marker>
+  </defs>
+
+  <text x="60" y="64" class="title">Operação assíncrona: persistir antes de notificar</text>
+
+  <g class="actor" text-anchor="middle">
+    <text x="110" y="120">Front-end</text>
+    <text x="330" y="120">API</text>
+    <text x="560" y="120">Worker</text>
+    <text x="790" y="120">Banco</text>
+    <text x="1030" y="120">SignalR</text>
+  </g>
+
+  <g class="life">
+    <line x1="110" y1="140" x2="110" y2="650"/>
+    <line x1="330" y1="140" x2="330" y2="650"/>
+    <line x1="560" y1="140" x2="560" y2="650"/>
+    <line x1="790" y1="140" x2="790" y2="650"/>
+    <line x1="1030" y1="140" x2="1030" y2="650"/>
+  </g>
+
+  <path d="M110 190 H330" class="message"/>
+  <text x="145" y="177" class="label">1. POST /reports</text>
+
+  <path d="M330 245 H790" class="message"/>
+  <text x="430" y="232" class="label">2. criar job durável</text>
+
+  <path d="M330 300 H110" class="message"/>
+  <text x="145" y="287" class="label">3. 202 + jobId + statusUrl</text>
+
+  <path d="M330 355 H560" class="message"/>
+  <text x="385" y="342" class="label">4. processar</text>
+
+  <path d="M560 420 H790" class="message"/>
+  <text x="605" y="407" class="label">5. persistir estado final</text>
+
+  <path d="M790 485 H560" class="message"/>
+  <text x="640" y="472" class="strong">6. commit confirmado</text>
+
+  <path d="M560 540 H1030" class="message"/>
+  <text x="700" y="527" class="label">7. publicar conclusão</text>
+
+  <path d="M1030 595 H110" class="message"/>
+  <text x="545" y="582" class="label">8. atualizar tela</text>
+
+  <rect x="270" y="625" width="660" height="52" rx="12" fill="#EAF3FF" stroke="#2563EB" stroke-width="2"/>
+  <text x="600" y="658" text-anchor="middle" class="actor">Reconexão ou dúvida → GET statusUrl → verdade durável</text>
+</svg>
