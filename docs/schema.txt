@@ -1,0 +1,54 @@
+{
+  "candidates": [                        // Respostas possíveis do modelo (geralmente 1)
+    {
+      "content": {                       // Conteúdo gerado pelo modelo
+        "parts": [
+          { "text": "..." }              // Trechos de texto da resposta (pode haver vários)
+        ],
+        "role": "model"                  // Quem produziu o conteúdo ("model" ou "user")
+      },
+      "finishReason": "STOP",            // Motivo do fim da geração:
+                                         //   STOP = normal | MAX_TOKENS | SAFETY | RECITATION
+      "index": 0,                        // Posição deste candidate na lista
+      "groundingMetadata": {             // ★ Metadados do Google Search Grounding
+        "searchEntryPoint": {
+          "renderedContent": "<div>..."  // HTML/CSS pronto p/ exibir chips "Google it"
+        },                               //   na UI (sugestões de busca ao usuário)
+        "webSearchQueries": [            // Queries efetivamente disparadas no Google
+          "taxa selic atual"             //   (útil p/ auditar o que foi pesquisado)
+        ],
+        "groundingChunks": [             // ★ Fontes recuperadas da web (o que você mapeia)
+          {
+            "web": {
+              "uri": "https://vertexaisearch...",  // URL (na prática: redirect do Vertex AI Search;
+              "title": "meelion.com"               //   o domínio real aparece no title)
+            }
+          }
+        ],
+        "groundingSupports": [           // ★ Vínculo trecho-resposta ↔ fonte
+          {
+            "segment": {
+              "startIndex": 0,           //   início do trecho no texto (chars)
+              "endIndex": 76,            //   fim do trecho no texto (chars)
+              "text": "A taxa Selic..."  //   o próprio trecho (conveniência)
+            },
+            "groundingChunkIndices": [0] //   índices em groundingChunks que sustentam o trecho
+          }
+        ]
+      }
+    }
+  ],
+  "usageMetadata": {                     // Consumo de tokens da chamada
+    "promptTokenCount": 24,              //   tokens do seu prompt
+    "candidatesTokenCount": 70,          //   tokens gerados na resposta
+    "totalTokenCount": 843,              //   total faturado (prompt + resposta + ferramentas)
+    "promptTokensDetails": [             // Detalhamento por modalidade (TEXT, IMAGE...)
+      { "modality": "TEXT", "tokenCount": 24 }
+    ],
+    "toolUsePromptTokenCount": 113,      // Tokens consumidos pelo fluxo da tool (search)
+    "thoughtsTokenCount": 636,           // Tokens de raciocínio interno (modelos "thinking" 2.x)
+    "serviceTier": "standard"            // Tier de serviço usado
+  },
+  "modelVersion": "gemini-2.5-flash",    // Versão exata do modelo que respondeu
+  "responseId": "WHrjape2..."            // ID único da resposta (suporte/rastreabilidade)
+}

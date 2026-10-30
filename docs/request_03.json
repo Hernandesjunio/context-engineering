@@ -1,0 +1,20 @@
+{
+  "contents": [
+    {
+      "role": "user",
+      "parts": [
+        {
+          "text": "PERGUNTA: O que diz o último Boletim Focus sobre a projeção de inflação?\n\nPesquise na web exclusivamente nos domínios autorizados abaixo.\nDOMÍNIOS AUTORIZADOS: bcb.gov.br\nCONSULTA RESTRITA: O que diz o último Boletim Focus sobre a projeção de inflação? (site:bcb.gov.br)\nResponda de forma concisa e direta. Ao final da resposta, inclua uma seção \"Fontes:\" listando as URLs utilizadas."
+        }
+      ]
+    }
+  ],
+  "tools": [
+    {
+      "googleSearch": {}
+    }
+  ],
+  "generationConfig": {
+    "maxOutputTokens": 16384
+  }
+}
